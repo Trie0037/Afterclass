@@ -1,6 +1,6 @@
 import React from "react";
 
-const OnePitch = props => {
+const Project = props => {
   return (
     <div key={props._id}>
       <div>title: {props.title}</div>
@@ -16,4 +16,4 @@ const OnePitch = props => {
     </div>
   );
 };
-export default OnePitch;
+export default Project;
