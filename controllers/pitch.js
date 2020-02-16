@@ -10,7 +10,7 @@ module.exports = {
         res.json(err);
       });
   },
-  getAllPitches: function(req, res) {
+  getAllProjects: function(req, res) {
     Pitch.find(req.query)
       .then(function(doc) {
         res.json(doc);
@@ -20,7 +20,6 @@ module.exports = {
       });
   },
   upVote: function(req, res) {
-    console.log(req.params)
     Pitch.updateOne(
       { "_id": req.params.pitchId },
       { $inc: { upvote: 1 }}

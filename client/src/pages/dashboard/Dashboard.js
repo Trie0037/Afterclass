@@ -9,7 +9,7 @@ import Title from "../../components/Title";
 import getUser from "../../utils/api";
 import API from "../../utils/pitchApi";
 import PitchContainer from "../../components/PitchContainer";
-import OnePitch from "../../components/OnePitch";
+import Project from "../../components/Project";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Dashboard extends Component {
       username: "",
       title: "",
       description: "",
-      allPitches: [],
+      projects: [],
       date: {},
       url: "",
       titlesAndDescriptions: []
@@ -26,26 +26,23 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.getAllPitches();
-    console.log(this.props);
     getUser().then(response => {
-      console.log(response.data);
       if (response.data.user) {
-        this.setState(
-          {
-            username: response.data.user.username
-          },
-          () => {}
-        );
+        this.setState({ username: response.data.user.username }, () => {
+          this.getAllProjects();
+        });
       }
     });
   }
 
-  getAllPitches = () => {
-    console.log("get all pitches");
-    API.getAllPitches().then(res => {
-      this.setState({ allPitches: res.data });
-    });
+  getAllProjects = () => {
+    API.getAllProjects()
+      .then(res => {
+        this.setState({ projects: res.data });
+      })
+      .catch(err => {
+        alert(err);
+      });
   };
 
   handleChange = event => {
@@ -80,13 +77,13 @@ class Dashboard extends Component {
       upvote: 0,
       downvote: 0
     };
-    console.log(this.state.username);
-    console.log(userInput);
-    API.savePitch(userInput).then(() => {
-      this.getAllPitches();
-    }).catch(err => {
-      alert(err)
-    })
+    API.savePitch(userInput)
+      .then(() => {
+        this.getAllProjects();
+      })
+      .catch(err => {
+        alert(err);
+      });
   };
 
   pitchContainer = props => {
@@ -96,9 +93,13 @@ class Dashboard extends Component {
 
   handleUpVote = (event, pitchId) => {
     event.preventDefault();
-    API.handleUpVote(pitchId).then(() => {
-      this.getAllPitches()
-    })
+    API.handleUpVote(pitchId)
+      .then(() => {
+        this.getAllProjects()
+      })
+      .catch(err => {
+        alert(err);
+      });
   };
 
   handleDownVote = () => {
@@ -108,7 +109,7 @@ class Dashboard extends Component {
   render() {
     return (
       <Container fluid>
-     
+
         <Row>
           <Col size="md-12">
             <Jumbotron>
@@ -251,16 +252,16 @@ class Dashboard extends Component {
         <br></br>
         <br></br>
         <br></br>
-        {this.state.allPitches.map(pitch => {
+        {this.state.projects.map(project => {
           return (
-            <OnePitch
-              key={pitch._id}
-              id={pitch._id}
-              username={pitch.username}
-              title={pitch.title}
-              description={pitch.description}
-              upvote={pitch.upvote}
-              downvote={pitch.downvote}
+            <Project
+              key={project._id}
+              id={project._id}
+              username={project.username}
+              title={project.title}
+              description={project.description}
+              upvote={project.upvote}
+              downvote={project.downvote}
               handleUpVote={this.handleUpVote}
               handleDownVote={this.handleDownVote}
             />
