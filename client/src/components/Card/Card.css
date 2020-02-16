@@ -1,0 +1,43 @@
+.card {
+  background: #fff;
+  border-radius: 2px;
+  margin: 1rem;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  text-align: left;
+  transition: transform .25s;
+}
+
+.card > .img-container {
+  height: 80%;
+  overflow: hidden;
+  text-align: center;
+  background:white;
+}
+.card > .img-container > img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.0625) translateY(-2px);
+}
+
+.card > .content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 15px;
+}
+
+.card > .content > ul {
+  list-style-type: none;
+}
+
+.card > .content > ul > li {
+  margin-top: 18px;
+}
+
+.card > #projectTitle {
+  list-style-type: none;
+}
