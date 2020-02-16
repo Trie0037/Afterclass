@@ -49,7 +49,7 @@ app.use( (req, res, next) => {
 // Define API routes here
 const pitchController = require("./controllers/pitch");
 router.post("/api/saved", pitchController.insert);
-router.get("/api/getAllPitches", pitchController.getAllPitches);
+router.get("/api/getAllProjects", pitchController.getAllProjects);
 router.put("/api/upVote/:pitchId", pitchController.upVote)
 app.use('/user', user)
 app.use(router);

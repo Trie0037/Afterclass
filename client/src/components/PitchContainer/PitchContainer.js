@@ -1,6 +1,5 @@
 /* Nav Bar being rendered on the page here*/
 import React from "react";
-import Dashboard from '../../pages/dashboard';
 import "./PitchContainer.css";
 
 const PitchContainer = ({title, description, upVote, downVote, index, handleUpVote, handleDownVote}) =>
