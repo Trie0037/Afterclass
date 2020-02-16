@@ -2,13 +2,12 @@
 import React from "react";
 // import "./Nav.css";
 
-
-const Nav = () =>
+const Nav = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
     <div className="container-fluid">
-        <a className="navbar-brand" href="/">
-          After Class
-        </a>
+      <a className="navbar-brand" href="/">
+        After Class
+      </a>
       <div>
         <span className="nav-Links">
           <a href="/" className="navbar-brand">
@@ -29,6 +28,7 @@ const Nav = () =>
         </span>
       </div>
     </div>
-  </nav>;
+  </nav>
+);
 
 export default Nav;

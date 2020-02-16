@@ -95,21 +95,28 @@ class Dashboard extends Component {
     event.preventDefault();
     API.handleUpVote(pitchId)
       .then(() => {
-        this.getAllProjects()
+        this.getAllProjects();
       })
       .catch(err => {
         alert(err);
       });
   };
 
-  handleDownVote = () => {
-    console.log("delete")
+  handleDownVote = (event, pitchId) => {
+    event.preventDefault();
+    API.handleDownVote(pitchId)
+      .then(() => {
+        this.getAllProjects();
+      })
+      .catch(err => {
+        alert(err);
+      });
+    console.log("delete");
   };
 
   render() {
     return (
       <Container fluid>
-
         <Row>
           <Col size="md-12">
             <Jumbotron>
@@ -132,7 +139,7 @@ class Dashboard extends Component {
         </Row>
         <Row>
           <Col size="md-12">
-            <Title style={{ textAlign: "center" }}>Your Projects</Title>
+            <h1>Your Projects</h1>
           </Col>
         </Row>
         <Row>
@@ -174,15 +181,7 @@ class Dashboard extends Component {
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
-            <Title
-              style={{
-                textAlign: "center",
-                backgroundColor: "lightgrey",
-                padding: "25px"
-              }}
-            >
-              Make A Project Suggestion
-            </Title>
+            <h1>Make A Project Suggestion</h1>
           </Col>
           <Col size="md-2"></Col>
         </Row>
@@ -211,60 +210,22 @@ class Dashboard extends Component {
           </Col>
           <Col size="md-2"></Col>
         </Row>
-        <br></br>
-        <Row>
-          <Col size="md-2"></Col>
-          <Col size="md-8">
-            <Title
-              style={{
-                textAlign: "center",
-                backgroundColor: "lightgrey",
-                padding: "25px"
-              }}
-            >
-              Vote on a Project
-            </Title>
-          </Col>
-          <Col size="md-2"></Col>
-        </Row>
-
-        <Row>
-          <Col size="md-2"></Col>
-          <Col size="md-8" id="pitch-container" style={{ textAlign: "center" }}>
-            {/* {this.state.titlesAndDescriptions.map((pair, index) => {
-              console.log(pair);
-              console.log(index);
-              return (
-                <PitchContainer
-                  title={pair.title}
-                  handleUpVote={this.handleUpVote}
-                  upVote={pair.upVote}
-                  index={index}
-                  description={pair.description}
-                  handleDownVote={this.handleDownVote}
-                  downVote={pair.downVote}
-                />
-              );
-            })} */}
-          </Col>
-          <Col size="md-2"></Col>
-        </Row>
-        <br></br>
-        <br></br>
-        <br></br>
+        <hr></hr>
         {this.state.projects.map(project => {
           return (
-            <Project
-              key={project._id}
-              id={project._id}
-              username={project.username}
-              title={project.title}
-              description={project.description}
-              upvote={project.upvote}
-              downvote={project.downvote}
-              handleUpVote={this.handleUpVote}
-              handleDownVote={this.handleDownVote}
-            />
+            <Title>
+              <Project
+                key={project._id}
+                id={project._id}
+                username={project.username}
+                title={project.title}
+                description={project.description}
+                upvote={project.upvote}
+                downvote={project.downvote}
+                handleUpVote={this.handleUpVote}
+                handleDownVote={this.handleDownVote}
+              />{" "}
+            </Title>
           );
         })}
       </Container>

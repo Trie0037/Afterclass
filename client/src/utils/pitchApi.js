@@ -1,14 +1,17 @@
 import axios from "axios";
-const api = {
+const API = {
   getAllProjects: () => {
-    return axios.get("/api/getAllProjects")
+    return axios.get("/api/getAllProjects");
   },
-  savePitch: (pitchObj) => {
+  savePitch: pitchObj => {
     return axios.post("/api/saved", pitchObj);
   },
-  handleUpVote: (pitchId) => {
+  handleUpVote: pitchId => {
     return axios.put(`/api/upVote/${pitchId}`);
+  },
+  handleDownVote: pitchId => {
+    return axios.put(`/api/downVote/${pitchId}`);
   }
-}
+};
 
-export default api
+export default API;
