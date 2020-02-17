@@ -11,7 +11,8 @@ const Project = props => {
       <button onClick={event => props.handleUpVote(event, props.id)}>
         Up
       </button>
-      <button onClick={props.handleDownVote}>Down</button>
+      <button onClick={event => props.handleDownVote(event, props.id)}>
+        Down</button>
       <hr></hr>
     </div>
   );
