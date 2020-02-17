@@ -2,7 +2,7 @@ import React from "react";
 
 const Project = props => {
   return (
-    <div key={props._id}>
+    <div>
       <div>title: {props.title}</div>
       <div>description: {props.description}</div>
       <div>username: {props.username}</div>
