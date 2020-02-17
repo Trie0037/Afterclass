@@ -91,6 +91,20 @@ class Dashboard extends Component {
     let descriptionLength = Object.keys(this.state.description).value;
   };
 
+  // Toggle Completed idea
+  //  handleVotes = (e, projectId) => {
+  //   e.preventDefault();
+  //   API.handleVotes(projectId)
+  //     votes: this.state.votes.map(votes => {
+  //       if (vote.id === upvote) {
+  //         vote.completed = !vote.completed;
+  //       }else (vote.id === downvote) {
+  //         vote.completed = !vote.completed;
+  //       }return vote;
+  //    })
+  //   };
+  // };
+
   handleUpVote = (event, projectId) => {
     event.preventDefault();
     API.handleUpVote(projectId)
