@@ -6,11 +6,11 @@ const API = {
   savePitch: pitchObj => {
     return axios.post("/api/saved", pitchObj);
   },
-  handleUpVote: pitchId => {
-    return axios.put(`/api/upVote/${pitchId}`);
+  handleUpVote: projectId => {
+    return axios.put(`/api/upVote/${projectId}`);
   },
-  handleDownVote: pitchId => {
-    return axios.put(`/api/downVote/${pitchId}`);
+  handleDownVote: projectId => {
+    return axios.put(`/api/downVote/${projectId}`);
   }
 };
 

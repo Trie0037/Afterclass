@@ -91,9 +91,9 @@ class Dashboard extends Component {
     let descriptionLength = Object.keys(this.state.description).value;
   };
 
-  handleUpVote = (event, pitchId) => {
+  handleUpVote = (event, projectId) => {
     event.preventDefault();
-    API.handleUpVote(pitchId)
+    API.handleUpVote(projectId)
       .then(() => {
         this.getAllProjects();
       })
@@ -102,16 +102,15 @@ class Dashboard extends Component {
       });
   };
 
-  handleDownVote = (event, pitchId) => {
+  handleDownVote = (event, projectId) => {
     event.preventDefault();
-    API.handleDownVote(pitchId)
+    API.handleDownVote(projectId)
       .then(() => {
         this.getAllProjects();
       })
       .catch(err => {
         alert(err);
       });
-    console.log("delete");
   };
 
   render() {
@@ -213,9 +212,8 @@ class Dashboard extends Component {
         <hr></hr>
         {this.state.projects.map(project => {
           return (
-            <Title>
+            <Title key={project._id}>
               <Project
-                key={project._id}
                 id={project._id}
                 username={project.username}
                 title={project.title}
@@ -224,7 +222,7 @@ class Dashboard extends Component {
                 downvote={project.downvote}
                 handleUpVote={this.handleUpVote}
                 handleDownVote={this.handleDownVote}
-              />{" "}
+              />
             </Title>
           );
         })}
