@@ -6,8 +6,7 @@ var pitchSchema = new Schema({
   title: String,
   description: String,
   username: String,
-  upvote: Number,
-  downvote: Number,
+  votes: Number,
   date: { type: Date, default: Date.now }
 });
 

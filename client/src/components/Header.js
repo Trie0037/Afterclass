@@ -13,7 +13,7 @@ export default function Header() {
       </Link>{" "}
       <Link
         style={linkStyle}
-        to={{ pathname: "https://safe-taiga-87184.herokuapp.com/" }}
+        to={{ pathname: "https://after-class.herokuapp.com/" }}
         target="_blank"
       >
         Projects |

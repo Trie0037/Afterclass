@@ -21,7 +21,7 @@ module.exports = {
       });
   },
   upVote: function (req, res) {
-    Pitch.updateOne({ _id: req.params.projectId }, { $inc: { upvote: 1 } })
+    Pitch.updateOne({ _id: req.params.projectId }, { $inc: { votes: 1 } })
       .then(function (doc) {
         res.json(doc);
       })
@@ -30,7 +30,7 @@ module.exports = {
       });
   },
   downVote: function (req, res) {
-    Pitch.updateOne({ _id: req.params.projectId }, { $inc: { downvote: -1 } })
+    Pitch.updateOne({ _id: req.params.projectId }, { $inc: { votes: -1 } })
       .then(function (doc) {
         res.json(doc);
       })

@@ -8,7 +8,7 @@ import Card from "../../components/Card";
 import Title from "../../components/Title";
 import getUser from "../../utils/api";
 import API from "../../utils/pitchApi";
-import PitchContainer from "../../components/PitchContainer";
+// import PitchContainer from "../../components/PitchContainer";
 import Project from "../../components/Project";
 
 class Dashboard extends Component {
@@ -74,8 +74,7 @@ class Dashboard extends Component {
       title: this.state.title,
       description: this.state.description,
       username: this.state.username,
-      upvote: 0,
-      downvote: 0
+      votes: 0,
     };
     API.savePitch(userInput)
       .then(() => {
@@ -85,25 +84,6 @@ class Dashboard extends Component {
         alert(err);
       });
   };
-
-  pitchContainer = props => {
-    let titleLength = Object.keys(this.state.title).value;
-    let descriptionLength = Object.keys(this.state.description).value;
-  };
-
-  // Toggle Completed idea
-  //  handleVotes = (e, projectId) => {
-  //   e.preventDefault();
-  //   API.handleVotes(projectId)
-  //     votes: this.state.votes.map(votes => {
-  //       if (vote.id === upvote) {
-  //         vote.completed = !vote.completed;
-  //       }else (vote.id === downvote) {
-  //         vote.completed = !vote.completed;
-  //       }return vote;
-  //    })
-  //   };
-  // };
 
   handleUpVote = (event, projectId) => {
     event.preventDefault();
@@ -232,8 +212,7 @@ class Dashboard extends Component {
                 username={project.username}
                 title={project.title}
                 description={project.description}
-                upvote={project.upvote}
-                downvote={project.downvote}
+                votes={project.votes}
                 handleUpVote={this.handleUpVote}
                 handleDownVote={this.handleDownVote}
               />
