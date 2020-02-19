@@ -7,7 +7,8 @@ var pitchSchema = new Schema({
   description: String,
   username: String,
   upvote: Number,
-  downvote: Number
+  downvote: Number,
+  date: { type: Date, default: Date.now }
 });
 
 var Pitch = mongoose.model("Pitch", pitchSchema);
