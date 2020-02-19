@@ -8,18 +8,45 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #153f94;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(172, 63, 63);
 }
 
 h1 {
+  color: rgb(81, 81, 235);
   text-align: center;
+}
+
+.btn {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  display: inline-block;
+  border: none;
+  background: #555;
+  color: #fff;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgb(117, 21, 21);
+}
+
+.img-container {
+  overflow-wrap: normal;
+  display: inline-block;
+  border: none;
+  background: #555;
+  color: rgb(150, 27, 27);
+  padding: 7px 20px;
+  cursor: pointer;
 }
 
 .App-link {

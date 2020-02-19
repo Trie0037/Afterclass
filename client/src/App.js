@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp";
 import './App.css';
 // import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Header from "./components/Header";
 
 
 class App extends Component {
@@ -69,12 +70,15 @@ class App extends Component {
   render() {
     return (
       <Router>
-    <div>
-      <Nav />
+    <div className="App">
+      <div className="container">
+
+      <Header />
       <Switch>
       {/* <Route exact path="/" username={this.state.username} component={Home} /> */}
       <Route
-        exact path='/'
+        exact
+        path='/'
         component={() => <Home username={this.state.username} />}
       />
       <Route exact path="/home" component={Home} />
@@ -82,6 +86,7 @@ class App extends Component {
       <Route exact path="/login" component={Login} />
       <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
+    </div>
     </div>
   </Router>
       );
