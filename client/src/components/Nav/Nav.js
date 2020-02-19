@@ -1,34 +1,58 @@
 /* Nav Bar being rendered on the page here*/
 import React from "react";
-// import "./Nav.css";
+import { Link } from "react-router-dom";
+import "./Nav.css";
 
 const Nav = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "blue" }}>
     <div className="container-fluid">
-      <a className="navbar-brand" href="/">
-        After Class
-      </a>
+      <Link style={{ headerStyle }} to="/" rel="noopener noreferrer">
+        <h1 style={{ color: "Orange", fontSize: "30px"}}>After Class</h1>
+      </Link>{" "}
+      <Link
+        style={linkStyle}
+        to={{ pathname: "https://safe-taiga-87184.herokuapp.com/" }}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Portfolio
+      </Link>{" "}
       <div>
         <span className="nav-Links">
-          <a href="/" className="navbar-brand">
-            Home
-          </a>
-          <a href="/" className="navbar-brand">
-            About
-          </a>
-          <a href="/" className="navbar-brand">
-            Projects
-          </a>
-          <a href="/login" className="navbar-brand">
-            Login
-          </a>
-          <a href="/signup" className="navbar-brand">
+          <Link style={linkStyle} to="/" rel="noopener noreferrer">
+            Home |
+          </Link>{" "}
+          <Link style={linkStyle} to="/" rel="noopener noreferrer">
+            About |
+          </Link>{" "}
+          <Link style={linkStyle} to="/" rel="noopener noreferrer">
+            Projects |
+          </Link>{" "}
+          <Link style={linkStyle} to="/login" rel="noopener noreferrer">
+            Login |
+          </Link>{"  "}
+          <Link style={linkStyle} to="/" rel="noopener noreferrer">
+            Logout |
+          </Link>{" "}
+          <Link style={linkStyle} to="/signup" rel="noopener noreferrer">
             Signup
-          </a>
+          </Link>
         </span>
       </div>
     </div>
   </nav>
 );
+
+const headerStyle = {
+  background: "#333",
+  color: "#fff",
+  textAlign: "center",
+  padding: "10px"
+};
+
+const linkStyle = {
+  color: "orange",
+  textDecoration: "none"
+};
 
 export default Nav;
