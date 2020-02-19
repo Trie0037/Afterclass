@@ -6,8 +6,7 @@ const Project = props => {
       <div>title: {props.title}</div>
       <div>description: {props.description}</div>
       <div>username: {props.username}</div>
-      <div>upvote: {props.upvote}</div>
-      <div>downvote: {props.downvote}</div>
+      <div>votes: {props.votes}</div>
       <button onClick={event => props.handleUpVote(event, props.id)}>
         Up
       </button>
