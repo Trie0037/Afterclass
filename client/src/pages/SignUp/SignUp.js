@@ -92,7 +92,6 @@ class SignUp extends Component {
                 value={this.state.username}
                 onChange={this.handleChange}
               />
-              {console.log(this.state)}
             </div>
           </div>
           <div className="form-group">

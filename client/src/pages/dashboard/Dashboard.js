@@ -15,6 +15,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userId: "",
       username: "",
       title: "",
       description: "",
@@ -27,8 +28,12 @@ class Dashboard extends Component {
 
   componentDidMount() {
     getUser().then(response => {
+      console.log(response)
       if (response.data.user) {
-        this.setState({ username: response.data.user.username }, () => {
+        this.setState({
+          username: response.data.user.username,
+          userId: response.data.user._id
+        }, () => {
           this.getAllProjects();
         });
       }
@@ -70,13 +75,13 @@ class Dashboard extends Component {
         description: this.state.description
       })
     });
-    const userInput = {
+    const payload = {
       title: this.state.title,
       description: this.state.description,
       username: this.state.username,
       votes: 0,
     };
-    API.savePitch(userInput)
+    API.saveProject(payload)
       .then(() => {
         this.getAllProjects();
       })
@@ -89,7 +94,13 @@ class Dashboard extends Component {
     event.preventDefault();
     API.handleUpVote(projectId)
       .then(() => {
-        this.getAllProjects();
+        API.recordVotedProject(this.state.userId, projectId)
+          .then(() => {
+            this.getAllProjects();
+          })
+          .catch(err => {
+            alert(err);
+          });
       })
       .catch(err => {
         alert(err);
@@ -100,7 +111,13 @@ class Dashboard extends Component {
     event.preventDefault();
     API.handleDownVote(projectId)
       .then(() => {
-        this.getAllProjects();
+        API.recordVotedProject(this.state.userId, projectId)
+          .then(() => {
+            this.getAllProjects();
+          })
+          .catch(err => {
+            alert(err);
+          });
       })
       .catch(err => {
         alert(err);
