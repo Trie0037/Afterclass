@@ -54,6 +54,7 @@ router.get("/api/getAllProjects", pitchController.getAllProjects);
 router.put("/api/upVote/:projectId", pitchController.upVote);
 router.put("/api/downVote/:projectId", pitchController.downVote);
 router.put("/api/recordVotedProject/:userId/:projectId", pitchController.recordVotedProject);
+router.get("/api/checkIfUserVotedForThisProject/:userId/:projectId", pitchController.checkIfUserVotedForThisProject);
 app.use("/user", user);
 app.use(router);
 

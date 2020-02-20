@@ -7,10 +7,10 @@ const Project = props => {
       <div>description: {props.description}</div>
       <div>username: {props.username}</div>
       <div>votes: {props.votes}</div>
-      <button onClick={event => props.handleUpVote(event, props.id)}>
+      <button onClick={event => props.hasUserVotedOnThisProject(event, props.id, "upVote")}>
         Up
       </button>
-      <button onClick={event => props.handleDownVote(event, props.id)}>
+      <button onClick={event => props.hasUserVotedOnThisProject(event, props.id, "downVote")}>
         Down</button>
       <hr></hr>
     </div>
