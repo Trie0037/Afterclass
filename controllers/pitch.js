@@ -1,6 +1,6 @@
 const Pitch = require("../models/Pitch");
 const User = require("../models/User");
-const { ObjectId } = require("mongodb");
+const ObjectId = require("mongodb").ObjectId;
 
 module.exports = {
   insert: function (req, res) {
@@ -52,6 +52,31 @@ module.exports = {
         { _id: ObjectId(req.params.userId) },
         { $push: { votedProjects: req.params.projectId } }
       )
+      .then(function (doc) {
+        res.json(doc);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  },
+  checkIfUserVotedForThisProject: function (req, res) {
+    console.log(req.params)
+    User
+      .aggregate([
+        { $match: { _id: ObjectId(req.params.userId) } },
+        {
+          $project: {
+            votedProjects: {
+              $filter: {
+                input: "$votedProjects",
+                as: "votedProjects",
+                cond: { $eq: ["$$votedProjects", req.params.projectId] }
+              }
+            },
+            _id: 0
+          }
+        }
+      ])
       .then(function (doc) {
         res.json(doc);
       })

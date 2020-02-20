@@ -14,6 +14,9 @@ const API = {
   },
   recordVotedProject: (userId, projectId) => {
     return axios.put(`/api/recordVotedProject/${userId}/${projectId}`);
+  },
+  checkIfUserVotedForThisProject: (userId, projectId) => {
+    return axios.get(`/api/checkIfUserVotedForThisProject/${userId}/${projectId}`);
   }
 };
 
