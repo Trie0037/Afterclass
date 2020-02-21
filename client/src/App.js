@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-//import { Route, Redirect } from 'react-router';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Dashboard from "./pages/dashboard";
 import SignUp from "./pages/SignUp";
 import './App.css';
 // import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
 import Header from "./components/Header";
 
 

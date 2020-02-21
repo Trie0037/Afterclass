@@ -92,7 +92,7 @@ class Dashboard extends Component {
       .then(res => {
         const votedProjectId = res.data[0].votedProjects;
         if (projectId.toString() === votedProjectId.toString()) {
-          alert("You cannot cast another vote on a project you have already voted on.")
+          alert("You cannot cast another vote on a project you have already voted on.");
         } else {
           switch (voteType) {
             case "upVote":
@@ -102,12 +102,12 @@ class Dashboard extends Component {
               this.handleDownVote(projectId);
               break;
             default:
-              alert("Vote Type Error.")
+              alert("Vote Type Error.");
           }
         }
       })
       .catch(err => {
-        console.log(err)
+        alert(err);
       })
   };
 
