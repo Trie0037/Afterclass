@@ -20,22 +20,27 @@ class Dashboard extends Component {
       projects: [],
       date: {},
       url: "",
+      disableUpVoteButton: false,
+      disableDownVoteButton: false,
       titlesAndDescriptions: []
     };
-  };
+  }
 
   componentDidMount() {
     getUser().then(response => {
       if (response.data.user) {
-        this.setState({
-          username: response.data.user.username,
-          userId: response.data.user._id
-        }, () => {
-          this.getAllProjects();
-        });
+        this.setState(
+          {
+            username: response.data.user.username,
+            userId: response.data.user._id
+          },
+          () => {
+            this.getAllProjects();
+          }
+        );
       }
     });
-  };
+  }
 
   getAllProjects = () => {
     API.getAllProjects()
@@ -75,7 +80,7 @@ class Dashboard extends Component {
       title: this.state.title,
       description: this.state.description,
       username: this.state.username,
-      votes: 0,
+      votes: 0
     };
     API.saveProject(payload)
       .then(() => {
@@ -88,11 +93,21 @@ class Dashboard extends Component {
 
   hasUserVotedOnThisProject = (event, projectId, voteType) => {
     event.preventDefault();
+    this.setState({
+      disableDownVoteButton: true, //disables downvote button until db check completed
+      disableUpVoteButton: true //disables upvote button until db check completed
+    });
     API.checkIfUserVotedForThisProject(this.state.userId, projectId)
       .then(res => {
         const votedProjectIdFromDatabase = res.data[0].votedProjects;
         if (projectId.toString() === votedProjectIdFromDatabase.toString()) {
-          alert("You cannot cast another vote on a project you have already voted on.");
+          alert(
+            "You cannot cast another vote on a project you have already voted on."
+          );
+          this.setState({
+            disableUpVoteButton: false, //enables button for upvote
+            disableDownVoteButton: false //enables button for downvote
+          })
         } else {
           switch (voteType) {
             case "upVote":
@@ -108,6 +123,10 @@ class Dashboard extends Component {
       })
       .catch(err => {
         alert(err);
+        this.setState({
+          disableDownVoteButton: false, //enables button for downvote
+          disableUpVoteButton: false //enables button for upvote
+        });
       });
   };
 
@@ -116,14 +135,30 @@ class Dashboard extends Component {
       .then(() => {
         API.recordVotedProject(this.state.userId, projectId)
           .then(() => {
-            this.getAllProjects();
+            this.setState(
+              {
+                disableDownVoteButton: false, //enables button for downvote
+                disableUpVoteButton: false //enables button for upvote
+              },
+              () => {
+                this.getAllProjects();
+              }
+            );
           })
           .catch(err => {
             alert(err);
+            this.setState({
+              disableDownVoteButton: false, //enables button for downvote
+              disableUpVoteButton: false //enables button for upvote
+            });
           });
       })
       .catch(err => {
         alert(err);
+        this.setState({
+          disableDownVoteButton: false, //enables button for downvote
+          disableUpVoteButton: false //enables button for upvote
+        });
       });
   };
 
@@ -132,14 +167,30 @@ class Dashboard extends Component {
       .then(() => {
         API.recordVotedProject(this.state.userId, projectId)
           .then(() => {
-            this.getAllProjects();
+            this.setState(
+              {
+                disableDownVoteButton: false, //enables button for downvote
+                disableUpVoteButton: false //enables button for upvote
+              },
+              () => {
+                this.getAllProjects();
+              }
+            );
           })
           .catch(err => {
             alert(err);
+            this.setState({
+              disableDownVoteButton: false, //enables button for downvote
+              disableUpVoteButton: false //enables button for upvote
+            });
           });
       })
       .catch(err => {
         alert(err);
+        this.setState({
+          disableDownVoteButton: false, //enables button for downvote
+          disableUpVoteButton: false //enables button for upvote
+        });
       });
   };
 
@@ -250,6 +301,8 @@ class Dashboard extends Component {
                 description={project.description}
                 votes={project.votes}
                 hasUserVotedOnThisProject={this.hasUserVotedOnThisProject}
+                disableUpVoteButton={this.state.disableUpVoteButton}
+                disableDownVoteButton={this.state.disableDownVoteButton}
               />
             </Title>
           );
