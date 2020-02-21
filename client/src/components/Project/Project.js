@@ -7,11 +7,22 @@ const Project = props => {
       <div>Description: {props.description}</div>
       <div>Creator: {props.username}</div>
       <div>Votes: {props.votes}</div>
-      <button onClick={event => props.hasUserVotedOnThisProject(event, props.id, "upVote")}>
+      <button
+        onClick={event =>
+          props.hasUserVotedOnThisProject(event, props.id, "upVote")
+        }
+        disabled={props.disableUpVoteButton}
+      >
         Up Vote
       </button>
-      <button onClick={event => props.hasUserVotedOnThisProject(event, props.id, "downVote")}>
-        Down Vote</button>
+      <button
+        onClick={event =>
+          props.hasUserVotedOnThisProject(event, props.id, "downVote")
+        }
+        disabled={props.disableDownVoteButton}
+      >
+        Down Vote
+      </button>
       <hr></hr>
     </div>
   );
