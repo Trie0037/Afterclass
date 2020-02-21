@@ -4,8 +4,9 @@ const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username: { type: String, unique: false, required: false },
-	password: { type: String, unique: false, required: false }
+	username: { type: String, unique: false, required: false },
+	password: { type: String, unique: false, required: false },
+	votedProjects: [{}]
 });
 
 // Define schema methods
@@ -25,7 +26,6 @@ userSchema.pre('save', function (next) {
 		next()
 	} else {
 		console.log('models/user.js hashPassword in pre save');
-		
 		this.password = this.hashPassword(this.password)
 		next()
 	}
@@ -34,7 +34,7 @@ userSchema.pre('save', function (next) {
 console.log("CREATE USER:")
 
 //const User = mongoose.model("User", userSchema);
-if(mongoose.models.User) {
+if (mongoose.models.User) {
 	User = mongoose.model("User");
 } else {
 	User = mongoose.model("User", userSchema);

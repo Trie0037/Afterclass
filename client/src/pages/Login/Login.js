@@ -22,32 +22,22 @@ class Login extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log("sign-up-form, username: ");
-    console.log(this.state.username);
-    //console.log(this.state.password)
-    //request to server here
     axios
       .post("/user/login", {
         username: this.state.username,
         password: this.state.password
       })
       .then(response => {
-        //console.log("This is the response" + response.data)
-        //console.log(response)
         if (response.data) {
-          console.log("successful Login");
           this.setState({
             shouldRedirectDashboard: true
           });
         } else {
           alert("Login error");
-          console.log("Login error");
         }
       })
       .catch(error => {
-        alert("Login error");
-        console.log("Login server error: ");
-        console.log(error);
+        alert(error);
       });
   }
   render() {

@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
-// import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import "./Home.css";
 import getUser from "../../utils/api";
 import Card from "../../components/Card";
-import Title from "../../components/Title";
 
 class Home extends Component {
   constructor(props) {
@@ -17,9 +15,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     getUser().then(response => {
-      console.log(response.data);
       if (response.data.user) {
         this.setState({
           username: response.data.user.username,

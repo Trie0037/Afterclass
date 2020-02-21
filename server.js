@@ -14,7 +14,6 @@ const router = new express.Router();
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
 app.use(morgan("dev"));
 
 // Serve up static assets (usually on heroku)
@@ -54,6 +53,8 @@ router.post("/api/saved", pitchController.insert);
 router.get("/api/getAllProjects", pitchController.getAllProjects);
 router.put("/api/upVote/:projectId", pitchController.upVote);
 router.put("/api/downVote/:projectId", pitchController.downVote);
+router.put("/api/recordVotedProject/:userId/:projectId", pitchController.recordVotedProject);
+router.get("/api/checkIfUserVotedForThisProject/:userId/:projectId", pitchController.checkIfUserVotedForThisProject);
 app.use("/user", user);
 app.use(router);
 
@@ -74,6 +75,9 @@ mongoose.connect(db, function(error) {
     console.log("mongoose connection is successful");
   }
 });
+
+// Display mongo queries for debugging
+// mongoose.set("debug", true);
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);

@@ -3,15 +3,15 @@ import React from "react";
 const Project = props => {
   return (
     <div>
-      <div>title: {props.title}</div>
-      <div>description: {props.description}</div>
-      <div>username: {props.username}</div>
-      <div>votes: {props.votes}</div>
-      <button onClick={event => props.handleUpVote(event, props.id)}>
-        Up
+      <div>Project Title: {props.title}</div>
+      <div>Description: {props.description}</div>
+      <div>Creator: {props.username}</div>
+      <div>Votes: {props.votes}</div>
+      <button onClick={event => props.hasUserVotedOnThisProject(event, props.id, "upVote")}>
+        Up Vote
       </button>
-      <button onClick={event => props.handleDownVote(event, props.id)}>
-        Down</button>
+      <button onClick={event => props.hasUserVotedOnThisProject(event, props.id, "downVote")}>
+        Down Vote</button>
       <hr></hr>
     </div>
   );

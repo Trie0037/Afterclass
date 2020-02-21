@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
-// import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import "./Dashboard.css";
@@ -8,13 +7,13 @@ import Card from "../../components/Card";
 import Title from "../../components/Title";
 import getUser from "../../utils/api";
 import API from "../../utils/pitchApi";
-// import PitchContainer from "../../components/PitchContainer";
 import Project from "../../components/Project";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userId: "",
       username: "",
       title: "",
       description: "",
@@ -28,7 +27,10 @@ class Dashboard extends Component {
   componentDidMount() {
     getUser().then(response => {
       if (response.data.user) {
-        this.setState({ username: response.data.user.username }, () => {
+        this.setState({
+          username: response.data.user.username,
+          userId: response.data.user._id
+        }, () => {
           this.getAllProjects();
         });
       }
@@ -60,7 +62,6 @@ class Dashboard extends Component {
   };
 
   handleSubmit = event => {
-    // alert('A name was submitted: ' + this.state.title);
     event.preventDefault();
     this.setState({
       title: event.target.value,
@@ -70,13 +71,13 @@ class Dashboard extends Component {
         description: this.state.description
       })
     });
-    const userInput = {
+    const payload = {
       title: this.state.title,
       description: this.state.description,
       username: this.state.username,
       votes: 0,
     };
-    API.savePitch(userInput)
+    API.saveProject(payload)
       .then(() => {
         this.getAllProjects();
       })
@@ -85,22 +86,57 @@ class Dashboard extends Component {
       });
   };
 
-  handleUpVote = (event, projectId) => {
+  hasUserVotedOnThisProject = (event, projectId, voteType) => {
     event.preventDefault();
+    API.checkIfUserVotedForThisProject(this.state.userId, projectId)
+      .then(res => {
+        const votedProjectId = res.data[0].votedProjects;
+        if (projectId.toString() === votedProjectId.toString()) {
+          alert("You cannot cast another vote on a project you have already voted on.");
+        } else {
+          switch (voteType) {
+            case "upVote":
+              this.handleUpVote(projectId);
+              break;
+            case "downVote":
+              this.handleDownVote(projectId);
+              break;
+            default:
+              alert("Vote Type Error.");
+          }
+        }
+      })
+      .catch(err => {
+        alert(err);
+      })
+  };
+
+  handleUpVote = projectId => {
     API.handleUpVote(projectId)
       .then(() => {
-        this.getAllProjects();
+        API.recordVotedProject(this.state.userId, projectId)
+          .then(() => {
+            this.getAllProjects();
+          })
+          .catch(err => {
+            alert(err);
+          });
       })
       .catch(err => {
         alert(err);
       });
   };
 
-  handleDownVote = (event, projectId) => {
-    event.preventDefault();
+  handleDownVote = projectId => {
     API.handleDownVote(projectId)
       .then(() => {
-        this.getAllProjects();
+        API.recordVotedProject(this.state.userId, projectId)
+          .then(() => {
+            this.getAllProjects();
+          })
+          .catch(err => {
+            alert(err);
+          });
       })
       .catch(err => {
         alert(err);
@@ -213,8 +249,7 @@ class Dashboard extends Component {
                 title={project.title}
                 description={project.description}
                 votes={project.votes}
-                handleUpVote={this.handleUpVote}
-                handleDownVote={this.handleDownVote}
+                hasUserVotedOnThisProject={this.hasUserVotedOnThisProject}
               />
             </Title>
           );
