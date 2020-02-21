@@ -60,7 +60,6 @@ module.exports = {
       });
   },
   checkIfUserVotedForThisProject: function (req, res) {
-    console.log(req.params)
     User
       .aggregate([
         { $match: { _id: ObjectId(req.params.userId) } },

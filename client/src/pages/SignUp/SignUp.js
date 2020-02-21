@@ -22,8 +22,6 @@ class SignUp extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log("sign-up-form, username: ");
-    console.log(this.state.username);
 
     //request to server here
     axios
@@ -32,41 +30,30 @@ class SignUp extends Component {
         password: this.state.password
       })
       .then(response => {
-        console.log("This is the response" + response.data);
-        console.log(response);
         if (response.data) {
-          console.log("successful signup");
           axios
             .post("/user/login", {
               username: this.state.username,
               password: this.state.password
             })
             .then(response => {
-              console.log("This is the response" + response.data);
-              console.log(response);
               if (response.data) {
-                console.log("successful Login");
                 this.setState({
                   shouldRedirectHome: true
                 });
               } else {
                 alert("Sign-up error");
-                console.log("Sign-up error");
               }
             })
             .catch(error => {
               alert("Sign up error");
-              console.log("Sign up server error: ");
-              console.log(error);
             });
         } else {
           alert("Sign-up error");
-          console.log("Sign-up error");
         }
       })
       .catch(error => {
-        console.log("Sign up error: ");
-        console.log(error);
+        alert(error);
       });
   }
   render() {
