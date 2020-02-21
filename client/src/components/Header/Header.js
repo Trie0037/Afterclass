@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+const Header = () => {
   return (
     <header style={{ headerStyle }}>
       <h1>After Class</h1>
@@ -29,7 +29,7 @@ export default function Header() {
         Signup
       </Link>
     </header>
-  );
+  )
 }
 
 const headerStyle = {
@@ -43,3 +43,5 @@ const linkStyle = {
   color: "orange",
   textDecoration: "none"
 };
+
+export default Header;

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
-import "./Dashboard.css";
 import Card from "../../components/Card";
 import Title from "../../components/Title";
 import getUser from "../../utils/api";
 import API from "../../utils/pitchApi";
 import Project from "../../components/Project";
+import "./Dashboard.css";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Dashboard extends Component {
       url: "",
       titlesAndDescriptions: []
     };
-  }
+  };
 
   componentDidMount() {
     getUser().then(response => {
@@ -35,7 +35,7 @@ class Dashboard extends Component {
         });
       }
     });
-  }
+  };
 
   getAllProjects = () => {
     API.getAllProjects()
@@ -90,8 +90,8 @@ class Dashboard extends Component {
     event.preventDefault();
     API.checkIfUserVotedForThisProject(this.state.userId, projectId)
       .then(res => {
-        const votedProjectId = res.data[0].votedProjects;
-        if (projectId.toString() === votedProjectId.toString()) {
+        const votedProjectIdFromDatabase = res.data[0].votedProjects;
+        if (projectId.toString() === votedProjectIdFromDatabase.toString()) {
           alert("You cannot cast another vote on a project you have already voted on.");
         } else {
           switch (voteType) {
@@ -108,7 +108,7 @@ class Dashboard extends Component {
       })
       .catch(err => {
         alert(err);
-      })
+      });
   };
 
   handleUpVote = projectId => {
