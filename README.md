@@ -15,4 +15,4 @@ Project meet up locations will be based on group attendee suggestions.
 
 
 
-Group members were: Justin Trieschmann, Hassan Lakis, Ray Becoskie, Abdullahi Abdirashid, and Randall Olson
+Group members were: Meng Vang, Justin Trieschmann, Hassan Lakis, Ray Becoskie, Abdullahi Abdirashid, and Randall Olson
