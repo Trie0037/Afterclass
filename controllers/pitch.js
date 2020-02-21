@@ -1,5 +1,5 @@
-const Pitch = require("../models/Pitch");
-const User = require("../models/User");
+const Pitch = require("../models/pitch");
+const User = require("../models/user");
 const ObjectId = require("mongodb").ObjectId;
 
 module.exports = {
