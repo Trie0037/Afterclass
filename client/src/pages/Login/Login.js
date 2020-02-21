@@ -87,7 +87,7 @@ class Login extends Component {
             <div className="col-7"></div>
 
             <button
-              className="btn btn-primary col-1 col-mr-auto"
+              className="btn btn-primary" style={{ flex: "1 1 0%" }}
               onClick={this.handleSubmit}
             >
               Login
@@ -100,3 +100,4 @@ class Login extends Component {
 }
 
 export default Login;
+
