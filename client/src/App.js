@@ -9,7 +9,6 @@ import './App.css';
 // import NoMatch from "./pages/NoMatch";
 import Header from "./components/Header";
 
-
 class App extends Component {
   constructor() {
     super()
@@ -30,16 +29,16 @@ class App extends Component {
   }
 
   componentWillUpdate() {
-    if(! this.state.username) {
+    if (!this.state.username) {
       this.getUser()
       console.log("Updating user");
     }
-    window.addEventListener("popstate", function(){
+    window.addEventListener("popstate", function () {
       console.log("history changed");
     })
   }
 
-  updateUser (userObject) {
+  updateUser(userObject) {
     this.setState(userObject)
     //console.log(userObject)
   }
@@ -68,29 +67,28 @@ class App extends Component {
   render() {
     return (
       <Router>
-    <div className="App">
-      <div className="container">
+        <div className="App">
+          <div className="container">
 
-      <Header />
-      <Switch>
-      {/* <Route exact path="/" username={this.state.username} component={Home} /> */}
-      <Route
-        exact
-        path='/'
-        component={() => <Home username={this.state.username} />}
-      />
-      <Route exact path="/home" component={Home} />
-      <Route exact path="/signup" component={SignUp} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/dashboard" component={Dashboard} />
-      </Switch>
-    </div>
-    </div>
-  </Router>
-      );
-    }
+            <Header />
+            <Switch>
+              {/* <Route exact path="/" username={this.state.username} component={Home} /> */}
+              <Route
+                exact
+                path='/'
+                component={() => <Home username={this.state.username} />}
+              />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/dashboard" component={Dashboard} />
+            </Switch>
+          </div>
+        </div>
+      </Router>
+    );
+  }
 }
-  
 
 export default App;
 
