@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import "./Home.css";
 import getUser from "../../utils/api";
 import Card from "../../components/Card";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
@@ -89,8 +90,15 @@ class Home extends Component {
               name="Project 3 Continuation"
               description="Implementing all the other great ideas."
               image="https://images.pexels.com/photos/7369/startup-photos.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350"
-              handleJoinButton={this.handleJoinButton}
-            />
+              handleJoinButton={this.handleJoinButton}/>
+              <Link
+              style={linkStyle}
+              to={{ pathname: "https://after-class.herokuapp.com/" }}
+              target="_blank"
+            >
+              Projects 
+            </Link>{" "}
+            
           </Col>
           <Col size="md-4">
             <Card
@@ -98,6 +106,13 @@ class Home extends Component {
               description="Who doesn't want to know more?"
               image="https://cdn-images-1.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"
             />
+            <Link
+              style={linkStyle}
+              to={{ pathname: "https://reactjs.org/" }}
+              target="_blank"
+            >
+              Reactjs 
+            </Link>{" "}
           </Col>
           <Col size="md-4">
             <Card
@@ -105,6 +120,13 @@ class Home extends Component {
               description="Let's get it once and for all!"
               image="http://getbootstrap.com/docs/4.1/assets/brand/bootstrap-social.png"
             />
+             <Link
+              style={linkStyle}
+              to={{ pathname: "https://getbootstrap.com/" }}
+              target="_blank"
+            >
+              Bootstrap 
+            </Link>{" "}
           </Col>
         </Row>
 
@@ -150,5 +172,10 @@ class Home extends Component {
     );
   }
 }
+
+const linkStyle = {
+  color: "orange",
+  textDecoration: "none"
+};
 
 export default Home;
