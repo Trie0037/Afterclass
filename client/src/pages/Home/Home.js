@@ -6,7 +6,6 @@ import getUser from "../../utils/api";
 import Card from "../../components/Card";
 import { Link } from "react-router-dom";
 
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -88,23 +87,23 @@ class Home extends Component {
         <Row>
           <Col size="md-4">
             <Card
-              name="Project 3 Continuation"
-              description="Implementing all the other great ideas."
+              name="Afterclass"
+              description="Enhanced version of Project3"
               image="https://images.pexels.com/photos/7369/startup-photos.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350"
-              handleJoinButton={this.handleJoinButton}/>
-              <Link
+              handleJoinButton={this.handleJoinButton}
+            />
+            <Link
               style={linkStyle}
               to={{ pathname: "https://after-class.herokuapp.com/" }}
               target="_blank"
             >
-              Projects 
+              Projects
             </Link>{" "}
-            
           </Col>
           <Col size="md-4">
             <Card
-              name="React"
-              description="Who doesn't want to know more?"
+              name="Reactjs"
+              description="VintageGroup favorate"
               image="https://cdn-images-1.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"
             />
             <Link
@@ -112,21 +111,21 @@ class Home extends Component {
               to={{ pathname: "https://reactjs.org/" }}
               target="_blank"
             >
-              Reactjs 
+              Reactjs
             </Link>{" "}
           </Col>
           <Col size="md-4">
             <Card
               name="Bootstrap"
-              description="Let's get it once and for all!"
+              description="Frontend Style"
               image="http://getbootstrap.com/docs/4.1/assets/brand/bootstrap-social.png"
             />
-             <Link
+            <Link
               style={linkStyle}
               to={{ pathname: "https://getbootstrap.com/" }}
               target="_blank"
             >
-              Bootstrap 
+              Bootstrap
             </Link>{" "}
           </Col>
         </Row>
@@ -141,31 +140,33 @@ class Home extends Component {
           <Col size="md-2"></Col>
           <Col size="md-2">
             <Card
+              name="HTML"
+              description="6PM-9PM"
+              image="http://ictacademy.com.ng/wp-content/uploads/2017/10/14570828119302_illu-cours_html5-css3.png"
+            />
+          </Col>
+          <Col size="md-2">
+            {" "}
+            <Card
               name="Javascript"
               description="11AM-1PM"
               image="https://cdn-images-1.medium.com/max/1052/1*DN7ToydkJZEdVaJVK_Nhvw.png"
             />
           </Col>
           <Col size="md-2">
+            {" "}
             <Card
               name="JQuery"
               description="1PM-5PM"
               image="https://cms-assets.tutsplus.com/uploads/users/48/posts/28781/preview_image/jquery-3.png"
             />
           </Col>
+
           <Col size="md-2">
             <Card
               name="MYSQL"
               description="3PM-5PM"
               image="https://cdn-images-1.medium.com/max/1020/1*6bR8EymfDrVLb408TUNk-g.jpeg"
-            />
-          </Col>
-
-          <Col size="md-2">
-            <Card
-              name="HTML"
-              description="6PM-9PM"
-              image="http://ictacademy.com.ng/wp-content/uploads/2017/10/14570828119302_illu-cours_html5-css3.png"
             />
           </Col>
         </Row>
