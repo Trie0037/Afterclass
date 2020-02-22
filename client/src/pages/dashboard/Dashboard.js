@@ -221,28 +221,28 @@ class Dashboard extends Component {
             <Card
               name="CSS"
               description="Would like to go deeper."
-              image="https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/creative-css3-tutorials.jpg"
+              image="/assets/images/css3.webp"
             />
           </Col>
           <Col size="md-2">
             <Card
               name="ES6"
               description="Breaking habits."
-              image="https://cdn-images-1.medium.com/max/1200/1*SL4sWHdjGR3vo0x5ta3xfw.jpeg"
+              image="/assets/images/es6.jpeg" 
             />
           </Col>
           <Col size="md-2">
             <Card
               name="Testing"
               description="Pretty important."
-              image="https://mherman.org/assets/img/blog/mocha-chaijs.png"
+              image="/assets/images/mocha-chaijs.png"
             />
           </Col>
           <Col size="md-2">
             <Card
               name="Java"
               description="Start from scratch."
-              image="https://cdn-images-1.medium.com/max/960/1*ZGEUEy_SifxtHG-CSAWsZA.png"
+              image="/assets/images/java.png"
             />
           </Col>
           <Col size="md-2"></Col>

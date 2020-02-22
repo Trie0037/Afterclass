@@ -23,10 +23,6 @@ h1 {
   background: rgb(182, 88, 12);
 }
 
-image {
-  height: ;
-}
-
 .img-container {
   text-align: center;
   overflow-wrap: normal;
@@ -34,12 +30,11 @@ image {
   border: none;
   background: #555;
   color: rgb(150, 27, 27);
-  padding: 7px 20px;
+  padding: 25px 7px;
   cursor: pointer;
 }
 
 .card {
-  width: 50vw;
   height: 50vh;
   justify-content: center;
   align-content: center;
@@ -51,16 +46,17 @@ image {
   position: relative;
   width: 100%;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
-  text-align: left;
   transition: transform 0.25s;
 }
 
 .card > .img-container {
-  height: 90%;
-  /* background: white; */
+  height: 100%;
+  width: 100%;
+  background: white;
 }
 .card > .img-container > img {
   width: 100%;
+  height: 115px;
   cursor: pointer;
 }
 
@@ -71,7 +67,7 @@ image {
 .card > .content {
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .card > .content > ul {
@@ -79,7 +75,17 @@ image {
 }
 
 .card > .content > ul > li {
-  margin-top: 18px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-right: 40px;
+}
+
+#projectTitle { 
+ font-size: medium;
+}
+
+#projectDes {
+  font-size: small; 
 }
 
 .title {
