@@ -17,6 +17,9 @@ const API = {
   },
   checkIfUserVotedForThisProject: (userId, projectId) => {
     return axios.get(`/api/checkIfUserVotedForThisProject/${userId}/${projectId}`);
+  },
+  getProjectsBelongingToUser: userId => {
+  return axios.get(`/api/getProjectsBelongingToUser/${userId}`);
   }
 };
 

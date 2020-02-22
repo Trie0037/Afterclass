@@ -55,6 +55,7 @@ router.put("/api/upVote/:projectId", pitchController.upVote);
 router.put("/api/downVote/:projectId", pitchController.downVote);
 router.put("/api/recordVotedProject/:userId/:projectId", pitchController.recordVotedProject);
 router.get("/api/checkIfUserVotedForThisProject/:userId/:projectId", pitchController.checkIfUserVotedForThisProject);
+router.get("/api/getProjectsBelongingToUser/:userId", pitchController.getProjectsBelongingToUser);
 app.use("/user", user);
 app.use(router);
 
@@ -77,7 +78,7 @@ mongoose.connect(db, function(error) {
 });
 
 // Display mongo queries for debugging
-// mongoose.set("debug", true);
+mongoose.set("debug", true);
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);

@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var pitchSchema = new Schema({
+  userId: String,
   title: String,
   description: String,
   username: String,
