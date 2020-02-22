@@ -22,6 +22,7 @@ class Dashboard extends Component {
       url: "",
       disableUpVoteButton: false,
       disableDownVoteButton: false,
+      disableSubmitButton: false,
       titlesAndDescriptions: []
     };
   }
@@ -66,29 +67,51 @@ class Dashboard extends Component {
     });
   };
 
+  isInputBlank = str => {
+    return !str || /^\s*$/.test(str);
+  };
+
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({
-      title: event.target.value,
-      description: event.target.value,
-      titlesAndDescriptions: [...this.state.titlesAndDescriptions].concat({
-        title: this.state.title,
-        description: this.state.description
-      })
-    });
-    const payload = {
-      title: this.state.title,
-      description: this.state.description,
-      username: this.state.username,
-      votes: 0
-    };
-    API.saveProject(payload)
-      .then(() => {
-        this.getAllProjects();
-      })
-      .catch(err => {
-        alert(err);
-      });
+    if (
+      this.isInputBlank(this.state.title) ||
+      this.isInputBlank(this.state.description)
+    ) {
+      alert("Invalid Input!");
+    } else {
+      if (this.state.title === "" || this.state.description === "") {
+        alert("Invalid Input!");
+      } else {
+        this.setState({
+          title: event.target.value,
+          description: event.target.value,
+          disableSubmitButton: true,
+          titlesAndDescriptions: [...this.state.titlesAndDescriptions].concat({
+            title: this.state.title,
+            description: this.state.description
+          })
+        });
+        const payload = {
+          title: this.state.title,
+          description: this.state.description,
+          username: this.state.username,
+          votes: 0
+        };
+        API.saveProject(payload)
+          .then(() => {
+            this.setState({
+              disableSubmitButton: false //re-enables submit button
+            });
+            this.getAllProjects();
+          })
+          .catch(err => {
+            alert(err);
+            this.setState({
+              disableSubmitButton: false //re-enable submit button when an error is caught
+            });
+          });
+      }
+    }
   };
 
   hasUserVotedOnThisProject = (event, projectId, voteType) => {
@@ -107,7 +130,7 @@ class Dashboard extends Component {
           this.setState({
             disableUpVoteButton: false, //enables button for upvote
             disableDownVoteButton: false //enables button for downvote
-          })
+          });
         } else {
           switch (voteType) {
             case "upVote":
@@ -283,7 +306,11 @@ class Dashboard extends Component {
                 onChange={this.handleChange2}
                 value={this.state.description}
               />
-              <FormBtn style={{ height: "125px" }} onClick={this.handleSubmit}>
+              <FormBtn
+                style={{ height: "125px" }}
+                onClick={this.handleSubmit}
+                disabled={this.state.disableSubmitButton}
+              >
                 Submit
               </FormBtn>
             </form>
