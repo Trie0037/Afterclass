@@ -82,3 +82,9 @@ mongoose.connect(db, function(error) {
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
+
+var https = require("https");
+setInterval(function() {
+    https.get("https://lifeafterclass.herokuapp.com/");
+}, 300000); // ping app every 5 minutes (300000)
+
