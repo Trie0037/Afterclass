@@ -103,7 +103,7 @@ class Home extends Component {
           <Col size="md-4">
             <Card
               name="Reactjs"
-              description="VintageGroup favorite"
+              description="VintageGroup favorate"
               image="https://cdn-images-1.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"
             />
             <Link

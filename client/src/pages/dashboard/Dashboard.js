@@ -24,26 +24,37 @@ class Dashboard extends Component {
       disableDownVoteButton: false,
       disableSubmitButton: false
     };
-  };
+  }
 
   componentDidMount() {
     getUser().then(response => {
       if (response.data.user) {
-        this.setState({
-          username: response.data.user.username,
-          userId: response.data.user._id
-        }, () => {
-          this.getAllProjects();
-        });
-      };
+        this.setState(
+          {
+            username: response.data.user.username,
+            userId: response.data.user._id
+          },
+          () => {
+            this.getAllProjects();
+            this.getProjectsBelongingToUser();
+          }
+        );
+      }
     });
-  };
+  }
 
   getAllProjects = () => {
     API.getAllProjects()
       .then(res => this.setState({ projects: res.data }))
       .catch(err => alert(err));
   };
+
+  getProjectsBelongingToUser = () => {
+    API.getProjectsBelongingToUser(this.state.userId)
+    .then(res => {
+      console.log(res)
+    })
+  }
 
   handleChange = e => {
     let { name, value } = e.target;
@@ -67,6 +78,7 @@ class Dashboard extends Component {
       } else {
         this.setState({ disableSubmitButton: true });
         const payload = {
+          userId: this.state.userId,
           title: this.state.title,
           description: this.state.description,
           username: this.state.username,
@@ -74,14 +86,17 @@ class Dashboard extends Component {
         };
         API.saveProject(payload)
           .then(() => {
-            //re-enables submit button 
-            this.setState({
-              disableSubmitButton: false,
-              title: "",
-              description: ""
-            }, () => {
-              this.getAllProjects();
-            });
+            //re-enables submit button
+            this.setState(
+              {
+                disableSubmitButton: false,
+                title: "",
+                description: ""
+              },
+              () => {
+                this.getAllProjects();
+              }
+            );
           })
           .catch(err => {
             alert(err);
@@ -102,7 +117,9 @@ class Dashboard extends Component {
       .then(res => {
         const votedProjectIdFromDatabase = res.data[0].votedProjects;
         if (projectId.toString() === votedProjectIdFromDatabase.toString()) {
-          alert("You cannot cast another vote on a project you have already voted on.");
+          alert(
+            "You cannot cast another vote on a project you have already voted on."
+          );
           this.setState({
             disableUpVoteButton: false, //enables button for upvote
             disableDownVoteButton: false //enables button for downvote
@@ -134,12 +151,15 @@ class Dashboard extends Component {
       .then(() => {
         API.recordVotedProject(this.state.userId, projectId)
           .then(() => {
-            this.setState({
-              disableDownVoteButton: false, //enables button for downvote
-              disableUpVoteButton: false //enables button for upvote
-            }, () => {
-              this.getAllProjects();
-            });
+            this.setState(
+              {
+                disableDownVoteButton: false, //enables button for downvote
+                disableUpVoteButton: false //enables button for upvote
+              },
+              () => {
+                this.getAllProjects();
+              }
+            );
           })
           .catch(err => {
             alert(err);
@@ -163,12 +183,15 @@ class Dashboard extends Component {
       .then(() => {
         API.recordVotedProject(this.state.userId, projectId)
           .then(() => {
-            this.setState({
-              disableDownVoteButton: false, //enables button for downvote
-              disableUpVoteButton: false //enables button for upvote
-            }, () => {
-              this.getAllProjects();
-            });
+            this.setState(
+              {
+                disableDownVoteButton: false, //enables button for downvote
+                disableUpVoteButton: false //enables button for upvote
+              },
+              () => {
+                this.getAllProjects();
+              }
+            );
           })
           .catch(err => {
             alert(err);
@@ -215,40 +238,7 @@ class Dashboard extends Component {
             <h1>Your Projects</h1>
           </Col>
         </Row>
-        <Row>
-          <Col size="md-2"></Col>
-          <Col size="md-2">
-            <Card
-              name="CSS"
-              description="Would like to go deeper."
-              image="/assets/images/css3.webp"
-            />
-          </Col>
-          <Col size="md-2">
-            <Card
-              name="ES6"
-              description="Breaking habits."
-              image="/assets/images/es6.jpeg" 
-            />
-          </Col>
-          <Col size="md-2">
-            <Card
-              name="Testing"
-              description="Pretty important."
-              image="/assets/images/mocha-chaijs.png"
-            />
-          </Col>
-          <Col size="md-2">
-            <Card
-              name="Java"
-              description="Start from scratch."
-              image="/assets/images/java.png"
-            />
-          </Col>
-          <Col size="md-2"></Col>
-        </Row>
-        <br></br>
-        <br></br>
+
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
