@@ -18,6 +18,10 @@
   color: rgb(172, 63, 63);
 }
 
+.nav-Links {
+  width: 50%;
+}
+
 h1 {
   color: rgb(81, 81, 235);
   text-align: center;
@@ -37,6 +41,11 @@ h1 {
 
 .btn:hover {
   background: rgb(117, 21, 21);
+}
+
+.delete-btn {
+  float: right;
+  color: #e74944;
 }
 
 .img-container {
@@ -61,3 +70,176 @@ h1 {
     transform: rotate(360deg);
   }
 }
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  margin: 1rem;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  text-align: left;
+  transition: transform .25s;
+}
+
+/* .card {
+  width: 50vw;
+  height: 50vh;
+ 
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+ 
+} */
+
+.card > .img-container {
+  height: 80%;
+  overflow: hidden;
+  text-align: center;
+  background:white;
+}
+.card > .img-container > img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.0625) translateY(-2px);
+}
+
+.card > .content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 15px;
+}
+
+.card > .content > ul {
+  list-style-type: none;
+}
+
+.card > .content > ul > li {
+  margin-top: 18px;
+}
+
+.card > #projectTitle {
+  list-style-type: none;
+}
+
+.list-overflow-container {
+  max-height: 545px;
+  border: 1px #DDDDDD solid;
+  border-radius: 4px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.list-overflow-container ul {
+  margin: 0;
+}
+
+.list-overflow-container li {
+  border-radius: 0px;
+  border-left: none;
+  border-right: none;
+}
+
+.list-overflow-container li * {
+  cursor: pointer;
+}
+
+.list-overflow-container li a {
+  color: #2A878C;
+}
+
+.list-overflow-container li:first-child {
+  border-top: none;
+}
+
+.list-overflow-container li:last-child {
+  border-bottom: none;
+}
+
+#title {
+  display: inline-block;
+  margin-top: 30px;
+  color: white;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  text-decoration: underline;
+  color: #2A77AE;
+  margin-bottom: 50px;
+}
+
+button.up-vote, button.down-vote{
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+}
+
+/* up and down vote buttons */
+button.up-vote,
+button.down-vote {
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+}
+
+#big-idea {
+  font-family: "Open Sans Condensed", sans-serif;
+  height: 75px;
+  font-size: 25px;
+  color: white;
+  margin-top: 20px;
+  border-style: solid;
+  border-color: white;
+  border-width: 0px 0px 2px 0px;
+}
+::placeholder {
+  font-size: 100px;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: white;
+} /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder {
+  color: white;
+} /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder {
+  color: white;
+} /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder {
+  color: white;
+} /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder {
+  color: white;
+}
+
+.list-group-item {
+  line-height: 1;
+}
+button.comments {
+  float: right;
+}
+.pitch-item {
+  cursor: pointer;
+}
+
+.wrapper {
+  padding-top: 50px;
+  background: #ECEFF1;
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 20px;
+  justify-content: space-around;
+  align-content: flex-start;
+  overflow: auto;
+}
+
+

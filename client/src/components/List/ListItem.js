@@ -1,5 +1,5 @@
 import React from "react";
-import "./List.css";
+import "../../App.css";
 export const ListItem = props => (
   <li className="list-group-item">
     {props.children}

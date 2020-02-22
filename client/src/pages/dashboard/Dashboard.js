@@ -7,7 +7,7 @@ import Title from "../../components/Title";
 import getUser from "../../utils/api";
 import API from "../../utils/pitchApi";
 import Project from "../../components/Project";
-import "./Dashboard.css";
+import "../../App.css";
 
 class Dashboard extends Component {
   constructor(props) {

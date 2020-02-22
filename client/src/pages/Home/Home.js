@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import { Col, Row, Container } from "../../components/Grid";
-import "./Home.css";
+import "../../App.css";
 import getUser from "../../utils/api";
 import Card from "../../components/Card";
 import { Link } from "react-router-dom";
+
 
 class Home extends Component {
   constructor(props) {

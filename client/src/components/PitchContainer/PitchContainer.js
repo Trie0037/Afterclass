@@ -1,6 +1,6 @@
 /* Nav Bar being rendered on the page here*/
 import React from "react";
-import "./PitchContainer.css";
+import "../../App.css";
 
 const PitchContainer = ({
   title,

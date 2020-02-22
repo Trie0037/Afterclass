@@ -1,4 +1,5 @@
 import React, { component } from "react";
+import "../../App.css";
 
 
 export default class Toggle extends component {
