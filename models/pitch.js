@@ -11,6 +11,8 @@ var pitchSchema = new Schema({
   date: { type: Date, default: Date.now }
 });
 
+pitchSchema.index({ userId: "text" });
+
 var Pitch = mongoose.model("Pitch", pitchSchema);
 
 module.exports = Pitch;
