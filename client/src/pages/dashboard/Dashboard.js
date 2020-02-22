@@ -22,49 +22,32 @@ class Dashboard extends Component {
       url: "",
       disableUpVoteButton: false,
       disableDownVoteButton: false,
-      disableSubmitButton: false,
-      titlesAndDescriptions: []
+      disableSubmitButton: false
     };
-  }
+  };
 
   componentDidMount() {
     getUser().then(response => {
       if (response.data.user) {
-        this.setState(
-          {
-            username: response.data.user.username,
-            userId: response.data.user._id
-          },
-          () => {
-            this.getAllProjects();
-          }
-        );
-      }
+        this.setState({
+          username: response.data.user.username,
+          userId: response.data.user._id
+        }, () => {
+          this.getAllProjects();
+        });
+      };
     });
-  }
+  };
 
   getAllProjects = () => {
     API.getAllProjects()
-      .then(res => {
-        this.setState({ projects: res.data });
-      })
-      .catch(err => {
-        alert(err);
-      });
+      .then(res => this.setState({ projects: res.data }))
+      .catch(err => alert(err));
   };
 
-  handleChange = event => {
-    this.setState({
-      title: event.target.value
-      // description: event.target.value
-    });
-  };
-
-  handleChange2 = event => {
-    this.setState({
-      // title: event.target.value,
-      description: event.target.value
-    });
+  handleChange = e => {
+    let { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   isInputBlank = str => {
@@ -82,15 +65,7 @@ class Dashboard extends Component {
       if (this.state.title === "" || this.state.description === "") {
         alert("Invalid Input!");
       } else {
-        this.setState({
-          title: event.target.value,
-          description: event.target.value,
-          disableSubmitButton: true,
-          titlesAndDescriptions: [...this.state.titlesAndDescriptions].concat({
-            title: this.state.title,
-            description: this.state.description
-          })
-        });
+        this.setState({ disableSubmitButton: true });
         const payload = {
           title: this.state.title,
           description: this.state.description,
@@ -99,16 +74,19 @@ class Dashboard extends Component {
         };
         API.saveProject(payload)
           .then(() => {
+            //re-enables submit button 
             this.setState({
-              disableSubmitButton: false //re-enables submit button
+              disableSubmitButton: false,
+              title: "",
+              description: ""
+            }, () => {
+              this.getAllProjects();
             });
-            this.getAllProjects();
           })
           .catch(err => {
             alert(err);
-            this.setState({
-              disableSubmitButton: false //re-enable submit button when an error is caught
-            });
+            //re-enable submit button when an error is caught
+            this.setState({ disableSubmitButton: false });
           });
       }
     }
@@ -124,9 +102,7 @@ class Dashboard extends Component {
       .then(res => {
         const votedProjectIdFromDatabase = res.data[0].votedProjects;
         if (projectId.toString() === votedProjectIdFromDatabase.toString()) {
-          alert(
-            "You cannot cast another vote on a project you have already voted on."
-          );
+          alert("You cannot cast another vote on a project you have already voted on.");
           this.setState({
             disableUpVoteButton: false, //enables button for upvote
             disableDownVoteButton: false //enables button for downvote
@@ -158,15 +134,12 @@ class Dashboard extends Component {
       .then(() => {
         API.recordVotedProject(this.state.userId, projectId)
           .then(() => {
-            this.setState(
-              {
-                disableDownVoteButton: false, //enables button for downvote
-                disableUpVoteButton: false //enables button for upvote
-              },
-              () => {
-                this.getAllProjects();
-              }
-            );
+            this.setState({
+              disableDownVoteButton: false, //enables button for downvote
+              disableUpVoteButton: false //enables button for upvote
+            }, () => {
+              this.getAllProjects();
+            });
           })
           .catch(err => {
             alert(err);
@@ -190,15 +163,12 @@ class Dashboard extends Component {
       .then(() => {
         API.recordVotedProject(this.state.userId, projectId)
           .then(() => {
-            this.setState(
-              {
-                disableDownVoteButton: false, //enables button for downvote
-                disableUpVoteButton: false //enables button for upvote
-              },
-              () => {
-                this.getAllProjects();
-              }
-            );
+            this.setState({
+              disableDownVoteButton: false, //enables button for downvote
+              disableUpVoteButton: false //enables button for upvote
+            }, () => {
+              this.getAllProjects();
+            });
           })
           .catch(err => {
             alert(err);
@@ -268,7 +238,6 @@ class Dashboard extends Component {
               image="https://mherman.org/assets/img/blog/mocha-chaijs.png"
             />
           </Col>
-
           <Col size="md-2">
             <Card
               name="Java"
@@ -276,7 +245,6 @@ class Dashboard extends Component {
               image="https://cdn-images-1.medium.com/max/960/1*ZGEUEy_SifxtHG-CSAWsZA.png"
             />
           </Col>
-
           <Col size="md-2"></Col>
         </Row>
         <br></br>
@@ -288,22 +256,21 @@ class Dashboard extends Component {
           </Col>
           <Col size="md-2"></Col>
         </Row>
-
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
             <form action="POST">
               <Input
-                // className="new-pitch"
+                name="title"
                 placeholder="Title of project!"
                 onChange={this.handleChange}
                 value={this.state.title}
               />
               <TextArea
-                // className="new-pitch"
+                name="description"
                 style={{ height: "125px" }}
                 placeholder="Describe your project!"
-                onChange={this.handleChange2}
+                onChange={this.handleChange}
                 value={this.state.description}
               />
               <FormBtn
