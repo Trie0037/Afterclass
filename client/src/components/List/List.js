@@ -1,5 +1,5 @@
 import React from "react";
-import "./List.css";
+import "../../App.css";
 
 export const List = ({ children }) => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Title.css";
+import "../../App.css";
 
 const Title = props => <h1 key={props._id} className="title">{props.children}</h1>;
 

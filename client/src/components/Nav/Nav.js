@@ -1,7 +1,7 @@
 /* Nav Bar being rendered on the page here*/
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Nav.css";
+import "../../App.css";
 
 const Nav = () => (
   <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "blue" }}>
