@@ -7,16 +7,22 @@ h1 {
   text-align: center;
 }
 
-/* Upvote button */
-/* .btnStyle { 
-  background: "green";
-  color: "#fff";
-  border: "none";
-  padding: "5px 9px";
-  border-radius: "5%";
-  cursor: "pointer";
-  margin-top: "5px";
-} */
+.upVoteButton {
+  background: green;
+}
+
+.downVoteButton {
+  background: red;
+}
+
+.btnStyle { 
+  color: #fff;
+  border: none;
+  padding: 5px 9px;
+  border-radius: 5%;
+  cursor: pointer;
+  margin-top: 5px;
+}
 
 .btn {
   justify-content: center;
