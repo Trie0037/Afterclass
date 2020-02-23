@@ -10,12 +10,13 @@ const Card = props => (
         // onClick={() => props.handleJoinButton(props.name)}
       />
     </div>
-    <div className="content">
+    <div className="content-unordered-list">
       <ul>
         <li>
-          <strong id="projectTitle">Title:</strong> {props.name}
-          </li><li>
-          <strong id="projectDes">Description:</strong> {props.description}
+          <strong>Title:</strong> {props.name}
+        </li>
+        <li>
+          <strong>Description:</strong> {props.description}
         </li>
       </ul>
     </div>
