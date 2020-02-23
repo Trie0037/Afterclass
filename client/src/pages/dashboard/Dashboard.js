@@ -6,7 +6,9 @@ import Title from "../../components/Title";
 import getUser from "../../utils/api";
 import API from "../../utils/pitchApi";
 import Project from "../../components/Project";
+import UserProject from "../../components/UserProject";
 import "../../App.css";
+import Card from "../../components/Card";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class Dashboard extends Component {
       title: "",
       description: "",
       projects: [],
+      userProjects: [],
       date: {},
       url: "",
       disableUpVoteButton: false,
@@ -50,10 +53,11 @@ class Dashboard extends Component {
 
   getProjectsBelongingToUser = () => {
     API.getProjectsBelongingToUser(this.state.userId)
-    .then(res => {
-      console.log(res)
-    })
-  }
+      .then(res => {
+        this.setState({ userProjects: res.data });
+      })
+      .catch(err => alert(err));
+  };
 
   handleChange = e => {
     let { name, value } = e.target;
@@ -238,6 +242,20 @@ class Dashboard extends Component {
           </Col>
         </Row>
 
+        {this.state.userProjects.map(userProject => {
+          return (
+            <Title key={userProject._id}>
+              <UserProject
+                key={userProject._id}
+                title={userProject.title}
+                description={userProject.description}
+                votes={userProject.votes}
+                date={userProject.date}
+              />
+            </Title>
+          );
+        })}
+
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
@@ -273,7 +291,7 @@ class Dashboard extends Component {
           </Col>
           <Col size="md-2"></Col>
         </Row>
-        <hr></hr>
+       
         {this.state.projects.map(project => {
           return (
             <Title key={project._id}>
