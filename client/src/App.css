@@ -26,7 +26,7 @@ h1 {
 
 .btnStyle {
   color: #fff;
-  border: none;
+  border: 1px solid white;
   padding: 5px 9px;
   border-radius: 5%;
   cursor: pointer;
@@ -38,15 +38,15 @@ h1 {
   align-content: center;
   text-align: center;
   display: inline-block;
-  border: none;
+  border: 1px solid black;
   background: #555;
-  color: #fff;
+  color: rgb(51, 175, 107);
   padding: 7px 20px;
   cursor: pointer;
 }
 
 .btn:hover {
-  background: rgb(182, 88, 12);
+  background: rgb(48, 109, 33);
 }
 
 .img-container {
@@ -55,12 +55,13 @@ h1 {
   display: inline-block;
   border: none;
   background: #555;
-  color: rgb(150, 27, 27);
+  color: #911e1e;
   padding: 25px 7px;
   cursor: pointer;
 }
 
 .card {
+  border: 10px solid white;
   max-width: 100%;
   word-wrap: break-word;
   height: 100%;
@@ -73,7 +74,6 @@ h1 {
 .content-unordered-list {
   max-width: 100%;
   word-wrap: break-word;
-
   font-size: small;
   text-align: left;
   padding: 0;
@@ -100,7 +100,7 @@ h1 {
 }
 
 .projectStyle {
-  color: rgb(250, 94, 54);
+  color: rgb(240, 154, 42);
   text-align: left;
 }
 
