@@ -78,9 +78,6 @@ class Home extends Component {
           <Col size="md-2"></Col>
         </Row>
 
-        <br></br>
-        <br></br>
-
         <Row>
           <Col size="md-12">
             <h1>Join these Projects!</h1>

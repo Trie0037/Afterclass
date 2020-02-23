@@ -103,7 +103,8 @@ class SignUp extends Component {
             <div className="col-7"></div>
 
             <button
-               className="btn btn-primary" style={{ flex: "1 1 0%" }}
+              className="btn btn-primary"
+              style={{ flex: "1 1 0%", border: "black" }}
               onClick={this.handleSubmit}
             >
               Sign up

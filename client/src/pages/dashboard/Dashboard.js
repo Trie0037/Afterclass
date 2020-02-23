@@ -26,7 +26,7 @@ class Dashboard extends Component {
       disableDownVoteButton: false,
       disableSubmitButton: false
     };
-  };
+  }
 
   componentDidMount() {
     getUser().then(response => {
@@ -43,7 +43,7 @@ class Dashboard extends Component {
         );
       }
     });
-  };
+  }
 
   getAllProjects = () => {
     API.getAllProjects()
@@ -294,11 +294,11 @@ class Dashboard extends Component {
           </Col>
           <Col size="md-2"></Col>
         </Row>
-       
+
         {this.state.projects.map(project => {
           return (
             <Title key={project._id}>
-              <Project 
+              <Project
                 id={project._id}
                 username={project.username}
                 title={project.title}
