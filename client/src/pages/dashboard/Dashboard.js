@@ -244,21 +244,30 @@ class Dashboard extends Component {
             <h1>Your Projects</h1>
           </Col>
         </Row>
+        {
+          this.state.userProjects < 1 ?
+            (
+              <React.Fragment>
+                <div>You have no project suggestions. Create one below!</div>
+                <hr />
+              </React.Fragment>
 
-        {this.state.userProjects.map(userProject => {
-          return (
-            <Title key={userProject._id}>
-              <UserProject
-                key={userProject._id}
-                title={userProject.title}
-                description={userProject.description}
-                votes={userProject.votes}
-                date={userProject.date}
-              />
-            </Title>
-          );
-        })}
-
+            ) : (
+              this.state.userProjects.map(userProject => {
+                return (
+                  <Title key={userProject._id}>
+                    <UserProject
+                      key={userProject._id}
+                      title={userProject.title}
+                      description={userProject.description}
+                      votes={userProject.votes}
+                      date={userProject.date}
+                    />
+                  </Title>
+                );
+              })
+            )
+        }
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
@@ -304,6 +313,7 @@ class Dashboard extends Component {
                 title={project.title}
                 description={project.description}
                 votes={project.votes}
+                date={project.date}
                 hasUserVotedOnThisProject={this.hasUserVotedOnThisProject}
                 disableUpVoteButton={this.state.disableUpVoteButton}
                 disableDownVoteButton={this.state.disableDownVoteButton}

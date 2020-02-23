@@ -99,7 +99,7 @@ h1 {
   list-style-type: none;
 }
 
-.projectStyle {
+.yourProjectStyle {
   color: rgb(240, 154, 42);
   text-align: left;
 }
@@ -115,5 +115,4 @@ h1 {
   font-size: 1rem;
   /* text-decoration: underline; */
   color: #2a77ae;
-  margin-bottom: 50px;
 }
