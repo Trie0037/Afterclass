@@ -228,8 +228,8 @@ class Dashboard extends Component {
                   <h1
                     style={{
                       fontWeight: "bolder",
-                      fontSize: "64px",
-                      color: "blue"
+                      fontSize: "44px",
+                      color: "#fc3504"
                     }}
                   >
                     {this.state.username}
@@ -298,7 +298,7 @@ class Dashboard extends Component {
         {this.state.projects.map(project => {
           return (
             <Title key={project._id}>
-              <Project
+              <Project 
                 id={project._id}
                 username={project.username}
                 title={project.title}

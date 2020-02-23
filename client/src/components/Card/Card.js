@@ -7,7 +7,7 @@ const Card = props => (
       <img
         alt={props.name}
         src={props.image}
-        onClick={() => props.handleJoinButton(props.name)}
+        // onClick={() => props.handleJoinButton(props.name)}
       />
     </div>
     <div className="content">
