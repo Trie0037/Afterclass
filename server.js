@@ -78,7 +78,7 @@ mongoose.connect(db, function(error) {
 });
 
 // Display mongo queries for debugging
-mongoose.set("debug", true);
+// mongoose.set("debug", true);
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
