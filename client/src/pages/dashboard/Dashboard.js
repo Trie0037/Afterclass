@@ -98,6 +98,7 @@ class Dashboard extends Component {
               },
               () => {
                 this.getAllProjects();
+                this.getProjectsBelongingToUser()
               }
             );
           })
@@ -161,6 +162,7 @@ class Dashboard extends Component {
               },
               () => {
                 this.getAllProjects();
+                this.getProjectsBelongingToUser();
               }
             );
           })
@@ -193,6 +195,7 @@ class Dashboard extends Component {
               },
               () => {
                 this.getAllProjects();
+                this.getProjectsBelongingToUser();
               }
             );
           })
