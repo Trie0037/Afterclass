@@ -2,13 +2,14 @@ import React from "react";
 import "../../App.css";
 
 const UserProject = props => {
+  const formattedDate = props.date.substring(0, 10);
   return (
-    <div className="projectStyle">
+    <div className="yourProjectStyle">
       <hr />
-      <div>title: {props.title}</div>
-      <div>description: {props.description}</div>
-      <div>votes: {props.votes}</div>
-      <div>date: {props.date}</div>
+      <div>Project Title: {props.title}</div>
+      <div>Description: {props.description}</div>
+      <div>Votes: {props.votes}</div>
+      <div>Date: {formattedDate}</div>
     </div>
   );
 };
