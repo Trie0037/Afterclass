@@ -5,11 +5,13 @@ const UserProject = props => {
   console.log(props);
   return (
   
-    <div>
+    <div className="projectStyle">
+      <hr></hr>
       <div>title: {props.title}</div>
       <div>description: {props.description}</div>
       <div>votes: {props.votes}</div>
       <div>date: {props.date}</div>
+     
     </div>
   );
 };
