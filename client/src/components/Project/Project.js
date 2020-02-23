@@ -3,7 +3,7 @@ import "../../App.css";
 
 const Project = props => {
   return (
-    <div>
+    <div className="upVoteDownVote">
       <div>Project Title: {props.title}</div>
       <div>Description: {props.description}</div>
       <div>Creator: {props.username}</div>
