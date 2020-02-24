@@ -1,19 +1,51 @@
 *.App {
   text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+div {
+  margin: auto 0 px;
 }
 
 .container {
-  margin-bottom: 100px;
+  /* background: rgb(51, 51, 51); */
+  padding: 0, 0;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 45px;
 }
 
 h1 {
+  font-display: Arial, Helvetica, sans-serif;
   padding: 20px;
-  color: rgb(81, 81, 235);
+  color: #00628c;
   text-align: center;
 }
 
 .jumbotron {
+  margin: 15px;
+  margin-bottom: 0px;
+  padding: 0;
+  border: 1px solid rgb(199, 189, 189);
+  background: rgb(51, 51, 51);
   height: 100%;
+  color: #00ccff;
+  box-shadow: 0 3px 6px rgb(220, 20, 60), 0 3px 6px rgb(220, 20, 60);
+  transition: transform 0.25s;
 }
 
 .upVoteButton {
@@ -22,6 +54,10 @@ h1 {
 
 .downVoteButton {
   background: red;
+}
+
+hr {
+  border-bottom: 1px #ccc dotted;
 }
 
 .btnStyle {
@@ -46,7 +82,7 @@ h1 {
 }
 
 .btn:hover {
-  background: rgb(48, 109, 33);
+  background: #306d21;
 }
 
 .img-container {
@@ -56,18 +92,20 @@ h1 {
   border: none;
   background: #555;
   color: #911e1e;
-  padding: 25px 7px;
+  padding: 5px 7px;
   cursor: pointer;
 }
 
 .card {
-  border: 10px solid white;
+  margin-bottom: 30px;
+  border: 5px solid rgb(199, 189, 189);
   max-width: 100%;
   word-wrap: break-word;
   height: 100%;
   width: 100%;
-  background: #fff;
-  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  background: rgb(51, 51, 51);
+  color: #7044a5;
+  box-shadow: 0 3px 6px rgb(220, 20, 60), 0 3px 6px rgb(220, 20, 60);
   transition: transform 0.25s;
 }
 
@@ -83,8 +121,9 @@ h1 {
 .card > .img-container {
   height: 100%;
   width: 100%;
-  background: white;
+  background: rgb(51, 51, 51);
 }
+
 .card > .img-container > img {
   width: 100%;
   height: 115px;
@@ -100,14 +139,16 @@ h1 {
 }
 
 .yourProjectStyle {
-  color: rgb(240, 154, 42);
+  color: #306d21;
   text-align: left;
 }
 
+/* Aligns upvote/downvote information */
 .upVoteDownVote {
   text-align: left;
 }
 
+/* User project styling */
 .title {
   padding: 10px;
   width: 100%;
@@ -115,4 +156,27 @@ h1 {
   font-size: 1rem;
   /* text-decoration: underline; */
   color: #2a77ae;
+}
+
+.form-label {
+  margin-top: 25px;
+  color: #306d21;
+}
+
+p {
+  text-align: center;
+  font-size: 18;
+  color: #ec652b;
+}
+
+.jumboHeader {
+  color: #00ccff;
+}
+
+.fa {
+  color: #f1da4e;
+}
+
+.projectNotice {
+  color: #306d21;
 }
