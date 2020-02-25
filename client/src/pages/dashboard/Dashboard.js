@@ -216,6 +216,16 @@ class Dashboard extends Component {
       });
   };
 
+  handleEditMyProject = (event, projectId) => {
+    event.preventDefault();
+    console.log("edit: " + projectId)
+  };
+
+  handleDeleteMyProject = (event, projectId) => {
+    event.preventDefault();
+    console.log("delete: " + projectId)
+  };
+
   render() {
     return (
       <Container fluid>
@@ -250,20 +260,22 @@ class Dashboard extends Component {
             <hr />
           </React.Fragment>
         ) : (
-          this.state.userProjects.map(userProject => {
-            return (
-              <Title key={userProject._id}>
-                <UserProject
-                  key={userProject._id}
-                  title={userProject.title}
-                  description={userProject.description}
-                  votes={userProject.votes}
-                  date={userProject.date}
-                />
-              </Title>
-            );
-          })
-        )}
+            this.state.userProjects.map(userProject => {
+              return (
+                <Title key={userProject._id}>
+                  <UserProject
+                    _id={userProject._id}
+                    title={userProject.title}
+                    description={userProject.description}
+                    votes={userProject.votes}
+                    date={userProject.date}
+                    handleDeleteMyProject={this.handleDeleteMyProject}
+                    handleEditMyProject={this.handleEditMyProject}
+                  />
+                </Title>
+              );
+            })
+          )}
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
