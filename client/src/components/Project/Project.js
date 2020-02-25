@@ -24,6 +24,14 @@ const Project = props => {
       </div>
       <div className="row">
         <div className="col-md-3">
+          Creator:
+        </div>
+        <div className="col-md-9">
+          {props.username}
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-3">
           Votes:
         </div>
         <div className="col-md-9">
