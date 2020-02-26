@@ -87,5 +87,15 @@ module.exports = {
       .catch(function (err) {
         res.json(err);
       });
-  }
+  },
+  handleDeleteMyProject: function (req, res) {
+    console.log(req.params.userProjectId)
+    Pitch.deleteOne({ _id: req.params.userProjectId } )
+      .then(function (doc) {
+        res.json(doc);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  },
 };

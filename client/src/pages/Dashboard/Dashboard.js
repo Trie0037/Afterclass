@@ -8,7 +8,7 @@ import API from "../../utils/pitchApi";
 import Project from "../../components/Project";
 import UserProject from "../../components/UserProject";
 import "../../App.css";
-import Card from "../../components/Card";
+// import Card from "../../components/Card";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -218,12 +218,17 @@ class Dashboard extends Component {
 
   handleEditMyProject = (event, projectId) => {
     event.preventDefault();
-    console.log("edit: " + projectId)
+    console.log("edit: " + projectId);
   };
 
-  handleDeleteMyProject = (event, projectId) => {
+  // Need to do a map over current user projects and filter out project to be deleted
+  handleDeleteMyProject = (event, userProjectId) => {
     event.preventDefault();
-    console.log("delete: " + projectId)
+    // console.log("delete: " + userProjectId);
+    API.handleDeleteMyProject(userProjectId).then(() => {
+      this.getAllProjects();
+      this.getProjectsBelongingToUser();
+    });
   };
 
   render() {
@@ -256,26 +261,28 @@ class Dashboard extends Component {
         </Row>
         {this.state.userProjects < 1 ? (
           <React.Fragment>
-            <div className="projectNotice">You have no project suggestions. Create one below!</div>
+            <div className="projectNotice">
+              You have no project suggestions. Create one below!
+            </div>
             <hr />
           </React.Fragment>
         ) : (
-            this.state.userProjects.map(userProject => {
-              return (
-                <Title key={userProject._id}>
-                  <UserProject
-                    _id={userProject._id}
-                    title={userProject.title}
-                    description={userProject.description}
-                    votes={userProject.votes}
-                    date={userProject.date}
-                    handleDeleteMyProject={this.handleDeleteMyProject}
-                    handleEditMyProject={this.handleEditMyProject}
-                  />
-                </Title>
-              );
-            })
-          )}
+          this.state.userProjects.map(userProject => {
+            return (
+              <Title key={userProject._id}>
+                <UserProject
+                  _id={userProject._id}
+                  title={userProject.title}
+                  description={userProject.description}
+                  votes={userProject.votes}
+                  date={userProject.date}
+                  handleDeleteMyProject={this.handleDeleteMyProject}
+                  handleEditMyProject={this.handleEditMyProject}
+                />
+              </Title>
+            );
+          })
+        )}
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
