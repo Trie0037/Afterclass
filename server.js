@@ -10,6 +10,7 @@ const app = express();
 const user = require("./controllers/user");
 const User = require("./models/user");
 const router = new express.Router();
+const https = require("https");
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -78,14 +79,12 @@ mongoose.connect(db, function(error) {
 });
 
 // Display mongo queries for debugging
-mongoose.set("debug", true);
+// mongoose.set("debug", true);
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
 
-var https = require("https");
 setInterval(function() {
     https.get("https://lifeafterclass.herokuapp.com/");
 }, 300000); // ping app every 5 minutes (300000)
-

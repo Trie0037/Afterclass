@@ -29,19 +29,20 @@ const Header = () => {
         Signup
       </Link>
     </header>
-  )
-}
+  );
+};
 
 const headerStyle = {
-  background: "lightblue",
-  color: "orange",
-  textAlign: "center",
-  padding: "10px"
+  background: "purple",
+  color: "purple",
+  textAlign: "",
+  padding: "0px"
 };
 
 const linkStyle = {
-  color: "orange",
-  textDecoration: "none"
+  color: "#E44F27",
+  textDecoration: "none",
+  padding: "5px"
 };
 
 export default Header;

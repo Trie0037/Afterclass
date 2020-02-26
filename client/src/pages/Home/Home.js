@@ -36,7 +36,7 @@ class Home extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>
+              <h1 className="jumboHeader">
                 <strong>
                   <i className="fa fa-newspaper-o" /> Login or Signup to meet
                   others like you!
@@ -53,37 +53,37 @@ class Home extends Component {
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
-            <p style={{ textAlign: "center", fontSize: 18 }}>
+            <p>
               With our Boot Camp winding down and future employment on the
               horizon, we decided to create an app that would provide us with a
               place to continue our education and coding practice with fellow
               classmates and those wishing to grow their skills.
             </p>
-            <p style={{ textAlign: "center", fontSize: 18 }}>
+            <p>
               After Class provides that opportunity for users to login and pick
               the projects or courses that they would like to be involved with.
               The user will also be able to vote on a project that they are
               interested in building with fellow collaborators.
             </p>
-            <p style={{ textAlign: "center", fontSize: 18 }}>
+            <p>
               The group will schedule ongoing practice lessons to enhance their
               knowledge base in areas such as HTML, CSS, Javascript, AJAX,
               JQuery, etc.
             </p>
-            <p style={{ textAlign: "center", fontSize: 18 }}>
+            <p>
               Project meet up locations will be based on group attendee
               suggestions.{" "}
             </p>
           </Col>
           <Col size="md-2"></Col>
         </Row>
-        <br></br>
-        <br></br>
+
         <Row>
           <Col size="md-12">
             <h1>Join these Projects!</h1>
           </Col>
         </Row>
+
         <Row>
           <Col size="md-4">
             <Card
@@ -92,6 +92,25 @@ class Home extends Component {
               image="https://images.pexels.com/photos/7369/startup-photos.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350"
               handleJoinButton={this.handleJoinButton}
             />
+          </Col>
+          <Col size="md-4">
+            <Card
+              name="Reactjs"
+              description="VintageGroup favorate"
+              image="https://cdn-images-1.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"
+            />
+          </Col>
+          <Col size="md-4">
+            <Card
+              name="Bootstrap"
+              description="Frontend Style"
+              image="http://getbootstrap.com/docs/4.1/assets/brand/bootstrap-social.png"
+            />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col size="md-4">
             <Link
               style={linkStyle}
               to={{ pathname: "https://after-class.herokuapp.com/" }}
@@ -101,11 +120,6 @@ class Home extends Component {
             </Link>{" "}
           </Col>
           <Col size="md-4">
-            <Card
-              name="Reactjs"
-              description="VintageGroup favorate"
-              image="https://cdn-images-1.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"
-            />
             <Link
               style={linkStyle}
               to={{ pathname: "https://reactjs.org/" }}
@@ -115,11 +129,6 @@ class Home extends Component {
             </Link>{" "}
           </Col>
           <Col size="md-4">
-            <Card
-              name="Bootstrap"
-              description="Frontend Style"
-              image="http://getbootstrap.com/docs/4.1/assets/brand/bootstrap-social.png"
-            />
             <Link
               style={linkStyle}
               to={{ pathname: "https://getbootstrap.com/" }}
@@ -137,15 +146,14 @@ class Home extends Component {
         </Row>
 
         <Row>
-          <Col size="md-2"></Col>
-          <Col size="md-2">
+          <Col size="md-4">
             <Card
               name="HTML"
               description="6PM-9PM"
               image="http://ictacademy.com.ng/wp-content/uploads/2017/10/14570828119302_illu-cours_html5-css3.png"
             />
           </Col>
-          <Col size="md-2">
+          <Col size="md-4">
             {" "}
             <Card
               name="Javascript"
@@ -153,16 +161,8 @@ class Home extends Component {
               image="https://cdn-images-1.medium.com/max/1052/1*DN7ToydkJZEdVaJVK_Nhvw.png"
             />
           </Col>
-          <Col size="md-2">
-            {" "}
-            <Card
-              name="JQuery"
-              description="1PM-5PM"
-              image="https://cms-assets.tutsplus.com/uploads/users/48/posts/28781/preview_image/jquery-3.png"
-            />
-          </Col>
 
-          <Col size="md-2">
+          <Col size="md-4">
             <Card
               name="MYSQL"
               description="3PM-5PM"
@@ -176,8 +176,10 @@ class Home extends Component {
 }
 
 const linkStyle = {
-  color: "orange",
-  textDecoration: "none"
+  marginTop: "5px",
+  paddingTop: "0px",
+  color: "crimson",
+  textDecoration: ""
 };
 
 export default Home;

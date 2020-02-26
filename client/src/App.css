@@ -1,10 +1,51 @@
 *.App {
   text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+div {
+  margin: auto 0 px;
+}
+
+.container {
+  /* background: rgb(51, 51, 51); */
+  padding: 0, 0;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 45px;
 }
 
 h1 {
-  color: rgb(81, 81, 235);
+  font-display: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  color: #00628c;
   text-align: center;
+}
+
+.jumbotron {
+  margin: 15px;
+  margin-bottom: 0px;
+  padding: 0;
+  border: 1px solid rgb(199, 189, 189);
+  background: rgb(51, 51, 51);
+  height: 100%;
+  color: #00ccff;
+  box-shadow: 0 3px 6px rgb(220, 20, 60), 0 3px 6px rgb(220, 20, 60);
+  transition: transform 0.25s;
 }
 
 .upVoteButton {
@@ -15,9 +56,13 @@ h1 {
   background: red;
 }
 
-.btnStyle { 
+hr {
+  border-bottom: 1px #ccc dotted;
+}
+
+.btnStyle {
   color: #fff;
-  border: none;
+  border: 1px solid white;
   padding: 5px 9px;
   border-radius: 5%;
   cursor: pointer;
@@ -29,15 +74,15 @@ h1 {
   align-content: center;
   text-align: center;
   display: inline-block;
-  border: none;
+  border: 1px solid black;
   background: #555;
-  color: #fff;
+  color: rgb(51, 175, 107);
   padding: 7px 20px;
   cursor: pointer;
 }
 
 .btn:hover {
-  background: rgb(182, 88, 12);
+  background: #306d21;
 }
 
 .img-container {
@@ -46,31 +91,39 @@ h1 {
   display: inline-block;
   border: none;
   background: #555;
-  color: rgb(150, 27, 27);
-  padding: 25px 7px;
+  color: #911e1e;
+  padding: 5px 7px;
   cursor: pointer;
 }
 
 .card {
-  height: 50vh;
-  justify-content: center;
-  align-content: center;
-  justify-items: center;
-  align-items: center;
-  background: #fff;
-  border-radius: 2px;
-  margin: 1rem;
-  position: relative;
+  margin-bottom: 30px;
+  border: 5px solid rgb(199, 189, 189);
+  max-width: 100%;
+  word-wrap: break-word;
+  height: 100%;
   width: 100%;
-  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  background: rgb(51, 51, 51);
+  color: #7044a5;
+  box-shadow: 0 3px 6px rgb(220, 20, 60), 0 3px 6px rgb(220, 20, 60);
   transition: transform 0.25s;
+}
+
+.content-unordered-list {
+  max-width: 100%;
+  word-wrap: break-word;
+  font-size: small;
+  text-align: left;
+  padding: 0;
+  margin-bottom: 35px;
 }
 
 .card > .img-container {
   height: 100%;
   width: 100%;
-  background: white;
+  background: rgb(51, 51, 51);
 }
+
 .card > .img-container > img {
   width: 100%;
   height: 115px;
@@ -81,135 +134,49 @@ h1 {
   transform: scale(1.0625) translateY(-2px);
 }
 
-.card > .content {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 11px;
-}
-
 .card > .content > ul {
   list-style-type: none;
 }
 
-.card > .content > ul > li {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  margin-right: 40px;
+.yourProjectStyle {
+  color: #306d21;
+  text-align: left;
 }
 
-#projectTitle {
-  font-size: medium;
+/* Aligns upvote/downvote information */
+.upVoteDownVote {
+  text-align: left;
 }
 
-#projectDes {
-  font-size: small;
-}
-
+/* User project styling */
 .title {
+  padding: 10px;
   width: 100%;
   text-align: center;
   font-size: 1rem;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   color: #2a77ae;
-  margin-bottom: 50px;
 }
 
-.list-group-item {
-  line-height: 1;
+.form-label {
+  margin-top: 25px;
+  color: #306d21;
 }
 
-.pitch-item {
-  cursor: pointer;
+p {
+  text-align: center;
+  font-size: 18;
+  color: #ec652b;
 }
 
-/* .delete-btn {
-  float: right;
-  color: #e74944;
-} */
-
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-} */
-
-/* .App-header {
-  background-color: #153f94;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(172, 63, 63);
-} */
-
-/* .App-link {
-  color: #61dafb;
+.jumboHeader {
+  color: #00ccff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-/* .nav-Links {
-  width: 50%;
-} */
-
-/* .card > #projectTitle {
-  list-style-type: none;
-} */
-
-/* .list-overflow-container {
-  max-height: 545px;
-  border: 1px #dddddd solid;
-  border-radius: 4px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+.fa {
+  color: #f1da4e;
 }
 
-.list-overflow-container ul {
-  margin: 0;
+.projectNotice {
+  color: #306d21;
 }
-
-.list-overflow-container li {
-  border-radius: 0px;
-  border-left: none;
-  border-right: none;
-}
-
-.list-overflow-container li * {
-  cursor: pointer;
-} */
-
-/* .list-overflow-container li a {
-  color: #2a878c;
-} */
-
-/* .list-overflow-container li:first-child {
-  border-top: none;
-} */
-
-/* .list-overflow-container li:last-child {
-  border-bottom: none;
-} */
-
-/* .form-control::-webkit-input-placeholder {
-  color: white;
-} 
-.form-control:-moz-placeholder {
-  color: white;
-} 
-.form-control::-moz-placeholder {
-  color: white;
-} 
-.form-control:-ms-input-placeholder {
-  color: white;
-} 
-.form-control::-ms-input-placeholder {
-  color: white;
-} */
