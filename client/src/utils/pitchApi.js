@@ -20,6 +20,9 @@ const API = {
   },
   getProjectsBelongingToUser: userId => {
   return axios.get(`/api/getProjectsBelongingToUser/${userId}`);
+  },
+  handleDeleteMyProject: userProjectId => {
+    return axios.delete(`/api/handleDeleteMyProject/${userProjectId}`);
   }
 };
 

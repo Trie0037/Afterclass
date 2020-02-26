@@ -41,7 +41,7 @@ const UserProject = props => {
           <button
             id="deleteMyProjectButton"
             onClick={event => props.handleDeleteMyProject(event, props._id)}
-            disabled>
+            disabled={false}>
             Delete
           </button>
         </div>
@@ -49,7 +49,7 @@ const UserProject = props => {
           <button
             id="editMyProjectButton"
             onClick={event => props.handleEditMyProject(event, props._id)}
-            disabled>
+            disabled={false}>
             Edit
           </button>
         </div>
