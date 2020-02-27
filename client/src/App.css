@@ -46,16 +46,16 @@ h1 {
   background: rgb(51, 51, 51);
   height: 100%;
   color: #00ccff;
-  box-shadow: 0 3px 6px rgb(220, 20, 60), 0 3px 6px rgb(220, 20, 60);
+  box-shadow: 0 3px 6px #E44F27, 0 3px 6px #E44F27;
   transition: transform 0.25s;
 }
 
 .upVoteButton {
-  background: green;
+  background: rgb(4, 71, 4);
 }
 
 .downVoteButton {
-  background: red;
+  background: rgb(124, 8, 8);
 }
 
 hr {
@@ -77,14 +77,14 @@ hr {
   text-align: center;
   display: inline-block;
   border: 1px solid black;
-  background: #555;
-  color: rgb(51, 175, 107, 0.8);
+  background: rgb(51, 51, 51);
+  color: #E44F27;
   padding: 7px 20px;
   cursor: pointer;
 }
 
 .btn:hover {
-  background: #306d21;
+  background: #f1da4e;
 }
 
 .img-container {
@@ -93,7 +93,7 @@ hr {
   display: inline-block;
   border: none;
   background: #555;
-  color: #911e1e;
+  color: #00628c;
   padding: 5px 7px;
   cursor: pointer;
 }
@@ -106,8 +106,8 @@ hr {
   height: 100%;
   width: 100%;
   background: rgb(51, 51, 51);
-  color: #7044a5;
-  box-shadow: 0 3px 6px rgb(220, 20, 60), 0 3px 6px rgb(220, 20, 60);
+  color: #00ccff;
+  box-shadow: 0 3px 6px #E44F27, 0 3px 6px #E44F27;
   transition: transform 0.25s;
 }
 
@@ -141,7 +141,7 @@ hr {
 }
 
 .yourProjectStyle {
-  color: #306d21;
+  color: #E44F27;
   text-align: left;
 }
 
@@ -168,7 +168,7 @@ hr {
 p {
   text-align: center;
   font-size: 18;
-  color: #ec652b;
+  color: #00628c;
 }
 
 .jumboHeader {
