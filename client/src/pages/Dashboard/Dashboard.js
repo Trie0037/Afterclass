@@ -252,7 +252,7 @@ class Dashboard extends Component {
                     style={{
                       fontWeight: "bolder",
                       fontSize: "44px",
-                      color: "#000080"
+                      color: "#00ccff"
                     }}
                   >
                     {this.state.username}

@@ -40,9 +40,10 @@ const headerStyle = {
 };
 
 const linkStyle = {
-  color: "#E44F27",
+  color: "#00628c",
   textDecoration: "none",
-  padding: "5px"
+  padding: "5px",
+  cursor: "pointer"
 };
 
 export default Header;

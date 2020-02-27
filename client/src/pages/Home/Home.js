@@ -89,7 +89,7 @@ class Home extends Component {
             <Card
               name="Afterclass"
               description="Enhanced version of Project3"
-              image="https://images.pexels.com/photos/7369/startup-photos.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+              image="./assets/images/tutorial.jpg"
               handleJoinButton={this.handleJoinButton}
             />
           </Col>
@@ -97,14 +97,14 @@ class Home extends Component {
             <Card
               name="Reactjs"
               description="VintageGroup favorate"
-              image="https://cdn-images-1.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"
+              image="./assets/images/react.png"
             />
           </Col>
           <Col size="md-4">
             <Card
               name="Bootstrap"
               description="Frontend Style"
-              image="http://getbootstrap.com/docs/4.1/assets/brand/bootstrap-social.png"
+              image="\assets\images\bootstrap-social.png"
             />
           </Col>
         </Row>
@@ -150,7 +150,7 @@ class Home extends Component {
             <Card
               name="HTML"
               description="6PM-9PM"
-              image="http://ictacademy.com.ng/wp-content/uploads/2017/10/14570828119302_illu-cours_html5-css3.png"
+              image="./assets/images/html5.png"
             />
           </Col>
           <Col size="md-4">
@@ -158,7 +158,7 @@ class Home extends Component {
             <Card
               name="Javascript"
               description="11AM-1PM"
-              image="https://cdn-images-1.medium.com/max/1052/1*DN7ToydkJZEdVaJVK_Nhvw.png"
+              image="./assets/images/javascript.png"
             />
           </Col>
 
@@ -166,7 +166,7 @@ class Home extends Component {
             <Card
               name="MYSQL"
               description="3PM-5PM"
-              image="https://cdn-images-1.medium.com/max/1020/1*6bR8EymfDrVLb408TUNk-g.jpeg"
+              image="./assets/images/mysql.jpeg"
             />
           </Col>
         </Row>
@@ -178,7 +178,7 @@ class Home extends Component {
 const linkStyle = {
   marginTop: "5px",
   paddingTop: "0px",
-  color: "crimson",
+  color: "#00628c",
   textDecoration: ""
 };
 
