@@ -223,17 +223,18 @@ class Dashboard extends Component {
   };
 
   // Need to do a map over current user projects and filter out project to be deleted
-  handleDeleteMyProject = (userProjectId) => {
-    API.handleDeleteMyProject(userProjectId)
-      .then(() => {
-        this.getAllProjects();
-        this.getProjectsBelongingToUser();
-      });
+  handleDeleteMyProject = userProjectId => {
+    API.handleDeleteMyProject(userProjectId).then(() => {
+      this.getAllProjects();
+      this.getProjectsBelongingToUser();
+    });
   };
 
   handleValidateDeleteMyProject = (event, userProjectId) => {
     event.preventDefault();
-    let response = window.confirm("Are you sure you want to delete this project?");
+    let response = window.confirm(
+      "Are you sure you want to delete this project?"
+    );
     if (response) {
       this.handleDeleteMyProject(userProjectId);
     }
@@ -275,22 +276,24 @@ class Dashboard extends Component {
             <hr />
           </React.Fragment>
         ) : (
-            this.state.userProjects.map(userProject => {
-              return (
-                <Title key={userProject._id}>
-                  <UserProject
-                    _id={userProject._id}
-                    title={userProject.title}
-                    description={userProject.description}
-                    votes={userProject.votes}
-                    date={userProject.date}
-                    handleValidateDeleteMyProject={this.handleValidateDeleteMyProject}
-                    handleEditMyProject={this.handleEditMyProject}
-                  />
-                </Title>
-              );
-            })
-          )}
+          this.state.userProjects.map(userProject => {
+            return (
+              <Title key={userProject._id}>
+                <UserProject
+                  _id={userProject._id}
+                  title={userProject.title}
+                  description={userProject.description}
+                  votes={userProject.votes}
+                  date={userProject.date}
+                  handleValidateDeleteMyProject={
+                    this.handleValidateDeleteMyProject
+                  }
+                  handleEditMyProject={this.handleEditMyProject}
+                />
+              </Title>
+            );
+          })
+        )}
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
