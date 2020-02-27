@@ -40,8 +40,7 @@ const UserProject = props => {
         <div className="col-md-2">
           <button
             id="deleteMyProjectButton"
-            onClick={event => props.handleDeleteMyProject(event, props._id)}
-            disabled>
+            onClick={event => props.handleValidateDeleteMyProject(event, props._id)}>
             Delete
           </button>
         </div>
@@ -49,7 +48,7 @@ const UserProject = props => {
           <button
             id="editMyProjectButton"
             onClick={event => props.handleEditMyProject(event, props._id)}
-            disabled>
+            disabled={true}>
             Edit
           </button>
         </div>

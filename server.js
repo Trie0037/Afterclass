@@ -57,6 +57,7 @@ router.put("/api/downVote/:projectId", pitchController.downVote);
 router.put("/api/recordVotedProject/:userId/:projectId", pitchController.recordVotedProject);
 router.get("/api/checkIfUserVotedForThisProject/:userId/:projectId", pitchController.checkIfUserVotedForThisProject);
 router.get("/api/getProjectsBelongingToUser/:userId", pitchController.getProjectsBelongingToUser);
+router.delete("/api/handleDeleteMyProject/:userProjectId", pitchController.handleDeleteMyProject);
 app.use("/user", user);
 app.use(router);
 

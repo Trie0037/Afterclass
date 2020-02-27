@@ -8,7 +8,8 @@ import API from "../../utils/pitchApi";
 import Project from "../../components/Project";
 import UserProject from "../../components/UserProject";
 import "../../App.css";
-import Card from "../../components/Card";
+
+// import Card from "../../components/Card";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -218,12 +219,24 @@ class Dashboard extends Component {
 
   handleEditMyProject = (event, projectId) => {
     event.preventDefault();
-    console.log("edit: " + projectId)
+    console.log("edit: " + projectId);
   };
 
-  handleDeleteMyProject = (event, projectId) => {
+  // Need to do a map over current user projects and filter out project to be deleted
+  handleDeleteMyProject = (userProjectId) => {
+    API.handleDeleteMyProject(userProjectId)
+      .then(() => {
+        this.getAllProjects();
+        this.getProjectsBelongingToUser();
+      });
+  };
+
+  handleValidateDeleteMyProject = (event, userProjectId) => {
     event.preventDefault();
-    console.log("delete: " + projectId)
+    let response = window.confirm("Are you sure you want to delete this project?");
+    if (response) {
+      this.handleDeleteMyProject(userProjectId);
+    }
   };
 
   render() {
@@ -256,7 +269,9 @@ class Dashboard extends Component {
         </Row>
         {this.state.userProjects < 1 ? (
           <React.Fragment>
-            <div className="projectNotice">You have no project suggestions. Create one below!</div>
+            <div className="projectNotice">
+              You have no project suggestions. Create one below!
+            </div>
             <hr />
           </React.Fragment>
         ) : (
@@ -269,7 +284,7 @@ class Dashboard extends Component {
                     description={userProject.description}
                     votes={userProject.votes}
                     date={userProject.date}
-                    handleDeleteMyProject={this.handleDeleteMyProject}
+                    handleValidateDeleteMyProject={this.handleValidateDeleteMyProject}
                     handleEditMyProject={this.handleEditMyProject}
                   />
                 </Title>
