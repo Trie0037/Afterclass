@@ -35,14 +35,12 @@ class Home extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
               <h1 className="jumboHeader">
                 <strong>
                   <i className="fa fa-newspaper-o" /> Login or Signup to meet
                   others like you!
                 </strong>
               </h1>
-            </Jumbotron>
           </Col>
         </Row>
         <Row>
