@@ -71,14 +71,15 @@ class Dashboard extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const invalidInputMessage = "Input values cannot be blank."
     if (
       this.isInputBlank(this.state.title) ||
       this.isInputBlank(this.state.description)
     ) {
-      alert("Invalid Input!");
+      alert(invalidInputMessage);
     } else {
       if (this.state.title === "" || this.state.description === "") {
-        alert("Invalid Input!");
+        alert(invalidInputMessage);
       } else {
         this.setState({ disableSubmitButton: true });
         const payload = {
@@ -270,30 +271,28 @@ class Dashboard extends Component {
         </Row>
         {this.state.userProjects < 1 ? (
           <React.Fragment>
-            <div className="projectNotice">
+            <div className="noProjectNotification">
               You have no project suggestions. Create one below!
             </div>
             <hr />
           </React.Fragment>
         ) : (
-          this.state.userProjects.map(userProject => {
-            return (
-              <Title key={userProject._id}>
-                <UserProject
-                  _id={userProject._id}
-                  title={userProject.title}
-                  description={userProject.description}
-                  votes={userProject.votes}
-                  date={userProject.date}
-                  handleValidateDeleteMyProject={
-                    this.handleValidateDeleteMyProject
-                  }
-                  handleEditMyProject={this.handleEditMyProject}
-                />
-              </Title>
-            );
-          })
-        )}
+            this.state.userProjects.map(userProject => {
+              return (
+                <Title key={userProject._id}>
+                  <UserProject
+                    _id={userProject._id}
+                    title={userProject.title}
+                    description={userProject.description}
+                    votes={userProject.votes}
+                    date={userProject.date}
+                    handleValidateDeleteMyProject={this.handleValidateDeleteMyProject}
+                    handleEditMyProject={this.handleEditMyProject}
+                  />
+                </Title>
+              );
+            })
+          )}
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
