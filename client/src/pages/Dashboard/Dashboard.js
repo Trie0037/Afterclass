@@ -246,22 +246,20 @@ class Dashboard extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
-              <h1>
-                <strong>
-                  <i className="fa fa-user" /> Welcome{" "}
-                  <h1
-                    style={{
-                      fontWeight: "bolder",
-                      fontSize: "44px",
-                      color: "#00ccff"
-                    }}
-                  >
-                    {this.state.username}
-                  </h1>
-                </strong>
-              </h1>
-            </Jumbotron>
+            <h1 className="welcomeUser">
+              <strong>
+                <i className="fa fa-user" /> Welcome{" "}
+                <h1
+                  style={{
+                    fontWeight: "bolder",
+                    fontSize: "44px",
+                    color: "#00ccff"
+                  }}
+                >
+                  {this.state.username}
+                </h1>
+              </strong>
+            </h1>
           </Col>
         </Row>
         <Row>
@@ -293,13 +291,15 @@ class Dashboard extends Component {
               );
             })
           )}
-        <Row>
-          <Col size="md-2"></Col>
-          <Col size="md-8">
-            <h1>Make A Project Suggestion</h1>
-          </Col>
-          <Col size="md-2"></Col>
-        </Row>
+        <div className="makeProjectSuggestion">
+          <Row>
+            <Col size="md-2"></Col>
+            <Col size="md-8">
+              <h1>Make A Project Suggestion</h1>
+            </Col>
+            <Col size="md-2"></Col>
+          </Row>
+        </div>
         <Row>
           <Col size="md-2"></Col>
           <Col size="md-8">
@@ -328,7 +328,6 @@ class Dashboard extends Component {
           </Col>
           <Col size="md-2"></Col>
         </Row>
-
         {this.state.projects.map(project => {
           return (
             <Title key={project._id}>
