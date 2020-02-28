@@ -40,7 +40,6 @@ class App extends Component {
 
   updateUser(userObject) {
     this.setState(userObject)
-    //console.log(userObject)
   }
 
   getUser() {
@@ -69,7 +68,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="container">
-
             <Header />
             <Switch>
               {/* <Route exact path="/" username={this.state.username} component={Home} /> */}
