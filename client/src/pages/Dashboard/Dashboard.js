@@ -6,9 +6,6 @@ import getUser from "../../utils/api";
 import API from "../../utils/pitchApi";
 import Project from "../../components/Project";
 import UserProject from "../../components/UserProject";
-import "../../App.css";
-
-// import Card from "../../components/Card";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -53,9 +50,7 @@ class Dashboard extends Component {
 
   getProjectsBelongingToUser = () => {
     API.getProjectsBelongingToUser(this.state.userId)
-      .then(res => {
-        this.setState({ userProjects: res.data });
-      })
+      .then(res => this.setState({ userProjects: res.data }))
       .catch(err => alert(err));
   };
 

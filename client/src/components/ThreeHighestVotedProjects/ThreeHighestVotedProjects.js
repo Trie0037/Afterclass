@@ -1,5 +1,4 @@
 import React from "react";
-import "../../App.css";
 
 const ThreeHighestVotedProjects = props => (
   <React.Fragment>
