@@ -23,6 +23,7 @@ div {
 }
 
 #applicationTitle {
+  margin-top: 30px;
   background: rgb(16, 16, 16);
   padding-bottom: 0.1rem;
 }
@@ -148,6 +149,7 @@ hr {
 }
 
 .projectImage {
+  height: 75%;
   width: 35%;
   cursor: pointer;
 }
