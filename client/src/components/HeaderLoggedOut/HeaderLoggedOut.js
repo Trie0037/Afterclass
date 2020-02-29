@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const HeaderLoggedOut = () => {
   return (
     <header id="applicationTitle">
       <h1>After Class</h1>
@@ -41,4 +41,4 @@ const linkStyle = {
   cursor: "pointer"
 };
 
-export default Header;
+export default HeaderLoggedOut;
