@@ -5,9 +5,10 @@ const Card = props => (
   <div className="card">
     <div className="img-container">
       <img
+        className="projectImage"
         alt={props.name}
         src={props.image}
-        // onClick={() => props.handleJoinButton(props.name)}
+      // onClick={() => props.handleJoinButton(props.name)}
       />
     </div>
     <div className="content-unordered-list">

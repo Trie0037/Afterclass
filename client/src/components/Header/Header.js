@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    // <header className="welcomeUser" style={{ headerStyle }}>
     <header id="applicationTitle">
       <h1>After Class</h1>
       <div className="headerLinks">
@@ -31,17 +30,9 @@ const Header = () => {
           Signup
       </Link>
       </div>
-
     </header>
   );
 };
-
-// const headerStyle = {
-//   background: "purple",
-//   color: "purple",
-//   textAlign: "",
-//   padding: "0px"
-// };
 
 const linkStyle = {
   color: "#00628c",
