@@ -23,17 +23,12 @@ class App extends Component {
 
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-    this.updateUser = this.updateUser.bind(this);
-  };
+  }
 
   componentDidMount() {
     this.getUser();
     this.getThreeHighestVotedProjects();
-  };
-
-  updateUser(userObject) {
-    this.setState(userObject);
-  };
+  }
 
   getUser() {
     axios.get("/user/").then(response => {
@@ -49,7 +44,7 @@ class App extends Component {
         });
       }
     });
-  };
+  }
 
   getThreeHighestVotedProjects = () => {
     API.getThreeHighestVotedProjects()
@@ -57,37 +52,57 @@ class App extends Component {
       .catch(err => alert(err));
   };
 
+  handleValidateLoggedOut = event => {
+    event.preventDefault();
+    let response = window.confirm("Are you sure you want to Logout?");
+    if (response) {
+      this.handleLogOut();
+    }
+  }
+
+  handleLogOut = () => {
+    axios.get("/user/logout").then(() => {
+      this.setState({
+        loggedIn: false,
+        username: "null"
+      });
+      window.location=window.location.origin;
+      this.getUser();
+    });
+  };
+
   render() {
     return (
       <Router>
         <div className="App">
           <div className="container">
-            {
-              this.state.loggedIn ?
-                (
-                  <HeaderLoggedIn />
-                ) : (
-                  <HeaderLoggedOut />
-                )
-            }
+            {this.state.loggedIn ? (
+              <HeaderLoggedIn
+                handleValidateLoggedOut={this.handleValidateLoggedOut}
+              />
+            ) : (
+              <HeaderLoggedOut />
+            )}
             <Switch>
-              {/* <Route exact path="/" username={this.state.username} component={Home} /> */}
               <Route
                 exact
                 path="/"
-                component={
-                  () =>
-                    <Home
-                      username={this.state.username}
-                      threeHighestVotedProjects={this.state.threeHighestVotedProjects}
-                    />
-                }
+                component={() => (
+                  <Home
+                    username={this.state.username}
+                    threeHighestVotedProjects={
+                      this.state.threeHighestVotedProjects
+                    }
+                  />
+                )}
               />
               <Route exact path="/home" component={Home} />
               <Route exact path="/signup" component={SignUp} />
-              <Route exact path="/login" component={() => 
-                <Login getUser={this.getUser} /> 
-              } />
+              <Route
+                exact
+                path="/login"
+                component={() => <Login getUser={this.getUser} />}
+              />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/logout" component={Logout} />
               <Route exact path="/about" component={About} />

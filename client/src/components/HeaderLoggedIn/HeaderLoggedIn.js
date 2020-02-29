@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const HeaderLoggedIn = () => {
+const HeaderLoggedIn = props => {
   return (
     <header id="applicationTitle">
       <h1>After Class</h1>
@@ -20,9 +20,12 @@ const HeaderLoggedIn = () => {
           Projects |
         </Link>{" "}
         {"  "}
-        <Link style={linkStyle} to="/logout">
+        <span
+          onClick={event => props.handleValidateLoggedOut(event)}
+          style={linkStyle}
+        >
           Logout
-        </Link>{" "}
+        </span>{" "}
       </div>
     </header>
   );

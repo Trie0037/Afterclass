@@ -23,9 +23,6 @@ const HeaderLoggedOut = () => {
           Login |
         </Link>
         {"  "}
-        <Link style={linkStyle} to="/logout">
-          Logout |
-        </Link>{" "}
         <Link style={linkStyle} to="/signup">
           Signup
         </Link>
