@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 const pitchController = require("./controllers/pitch");
 router.post("/api/saved", pitchController.insert);
 router.get("/api/getAllProjects", pitchController.getAllProjects);
-router.get("/api/getRecentThreeProjects", pitchController.getRecentThreeProjects)
+router.get("/api/getThreeHighestVotedProjects", pitchController.getThreeHighestVotedProjects)
 router.put("/api/upVote/:projectId", pitchController.upVote);
 router.put("/api/downVote/:projectId", pitchController.downVote);
 router.put("/api/recordVotedProject/:userId/:projectId", pitchController.recordVotedProject);

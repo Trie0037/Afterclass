@@ -103,7 +103,7 @@ module.exports = {
         res.json(err);
       });
   },
-  getRecentThreeProjects: function (req, res) {
+  getThreeHighestVotedProjects: function (req, res) {
     Pitch.find(req.query)
       .sort({ votes: -1 })
       .limit(3)

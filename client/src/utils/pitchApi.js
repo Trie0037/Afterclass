@@ -24,8 +24,8 @@ const API = {
   handleDeleteMyProject: userProjectId => {
     return axios.delete(`/api/handleDeleteMyProject/${userProjectId}`);
   },
-  getRecentThreeProjects: () => {
-    return axios.get("/api/getRecentThreeProjects")
+  getThreeHighestVotedProjects: () => {
+    return axios.get("/api/getThreeHighestVotedProjects")
   }
 };
 

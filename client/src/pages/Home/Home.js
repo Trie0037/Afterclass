@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/pitchApi";
-import "../../App.css";
 import Card from "../../components/Card";
+import ThreeHighestVotedProjects from "../../components/ThreeHighestVotedProjects";
+import "../../App.css";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      threeMostVotedProjects: []
+      threeHighestVotedProjects: []
     };
   };
 
   componentDidMount() {
-    API.getRecentThreeProjects()
+    API.getThreeHighestVotedProjects()
       .then(res => {
-        this.setState({ threeMostVotedProjects: res.data });
+        this.setState({ threeHighestVotedProjects: res.data });
       })
       .catch(err => {
-        alert(err.toString());
+        alert(err);
       });
   };
 
@@ -68,28 +69,13 @@ class Home extends Component {
           <Col size="md-2"></Col>
         </Row>
 
-        <Row>
-          <Col size="md-12">
-            <h1>Join these Projects!</h1>
-          </Col>
-        </Row>
-
-        <div className="row">
-          {
-            this.state.threeMostVotedProjects.map(project => {
-              return (
-                <div key={project._id} className="col-md-4 card">
-                  <div>{project.title}</div>
-                  <div>{project.description}</div>
-                </div>
-              )
-            })
-          }
-        </div>
+        <ThreeHighestVotedProjects
+          threeHighestVotedProjects={this.state.threeHighestVotedProjects}
+        />
 
         <Row>
           <Col size="md-12">
-            <h1>Join these Courses!</h1>
+            <h2>Join these Courses!</h2>
           </Col>
         </Row>
 
@@ -122,12 +108,5 @@ class Home extends Component {
     );
   }
 }
-
-const linkStyle = {
-  marginTop: "5px",
-  paddingTop: "0px",
-  color: "#00628c",
-  textDecoration: ""
-};
 
 export default Home;
