@@ -102,5 +102,16 @@ module.exports = {
       .catch(function (err) {
         res.json(err);
       });
+  },
+  getRecentThreeProjects: function (req, res) {
+    Pitch.find(req.query)
+      .sort({ votes: -1 })
+      .limit(3)
+      .then(function (doc) {
+        res.json(doc);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
   }
 };

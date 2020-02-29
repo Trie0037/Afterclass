@@ -1,33 +1,25 @@
 import React, { Component } from "react";
-import Jumbotron from "../../components/Jumbotron";
 import { Col, Row, Container } from "../../components/Grid";
+import API from "../../utils/pitchApi";
 import "../../App.css";
-import getUser from "../../utils/api";
 import Card from "../../components/Card";
-import { Link } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      id: ""
+      threeMostVotedProjects: []
     };
-  }
+  };
 
   componentDidMount() {
-    getUser().then(response => {
-      if (response.data.user) {
-        this.setState({
-          username: response.data.user.username,
-          id: response.data.user._id
-        });
-      }
-    });
-  }
-
-  handleJoinButton = name => {
-    console.log(`name = ${name}, userid= ${this.state.id}`);
+    API.getRecentThreeProjects()
+      .then(res => {
+        this.setState({ threeMostVotedProjects: res.data });
+      })
+      .catch(err => {
+        alert(err.toString());
+      });
   };
 
   render() {
@@ -35,12 +27,12 @@ class Home extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
-              <h1 className="jumboHeader">
-                <strong>
-                  <i className="fa fa-newspaper-o" /> Login or Signup to meet
-                  others like you!
+            <h1 className="jumboHeader">
+              <strong>
+                <i className="fa fa-newspaper-o" /> Login or Signup to meet
+                others like you!
                 </strong>
-              </h1>
+            </h1>
           </Col>
         </Row>
         <Row>
@@ -82,60 +74,18 @@ class Home extends Component {
           </Col>
         </Row>
 
-        <Row>
-          <Col size="md-4">
-            <Card
-              name="Afterclass"
-              description="Enhanced version of Project3"
-              image="./assets/images/tutorial.jpg"
-              handleJoinButton={this.handleJoinButton}
-            />
-          </Col>
-          <Col size="md-4">
-            <Card
-              name="Reactjs"
-              description="VintageGroup favorate"
-              image="./assets/images/react.png"
-            />
-          </Col>
-          <Col size="md-4">
-            <Card
-              name="Bootstrap"
-              description="Frontend Style"
-              image="\assets\images\bootstrap-social.png"
-            />
-          </Col>
-        </Row>
-
-        <Row>
-          <Col size="md-4">
-            <Link
-              style={linkStyle}
-              to={{ pathname: "https://after-class.herokuapp.com/" }}
-              target="_blank"
-            >
-              Projects
-            </Link>{" "}
-          </Col>
-          <Col size="md-4">
-            <Link
-              style={linkStyle}
-              to={{ pathname: "https://reactjs.org/" }}
-              target="_blank"
-            >
-              Reactjs
-            </Link>{" "}
-          </Col>
-          <Col size="md-4">
-            <Link
-              style={linkStyle}
-              to={{ pathname: "https://getbootstrap.com/" }}
-              target="_blank"
-            >
-              Bootstrap
-            </Link>{" "}
-          </Col>
-        </Row>
+        <div className="row">
+          {
+            this.state.threeMostVotedProjects.map(project => {
+              return (
+                <div key={project._id} className="col-md-4 card">
+                  <div>{project.title}</div>
+                  <div>{project.description}</div>
+                </div>
+              )
+            })
+          }
+        </div>
 
         <Row>
           <Col size="md-12">
