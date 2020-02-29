@@ -28,7 +28,7 @@ const UserProject = props => {
               props.handleValidateDeleteMyProject(event, props._id)
             }
           >
-            Delete
+            <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
         </div>
         <div className="col-md-2">
@@ -37,7 +37,7 @@ const UserProject = props => {
             onClick={event => props.handleEditMyProject(event, props._id)}
             disabled={true}
           >
-            Edit
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </button>
         </div>
       </div>
