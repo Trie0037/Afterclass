@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import "../../App.css";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      props: props,
       username: "",
       password: "",
       confirmPassword: "",
@@ -29,9 +29,8 @@ class Login extends Component {
       })
       .then(response => {
         if (response.data) {
-          this.setState({
-            shouldRedirectDashboard: true
-          });
+          this.setState({ shouldRedirectDashboard: true });
+          this.props.getUser();
         } else {
           alert("Login error");
         }

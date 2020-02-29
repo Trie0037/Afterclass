@@ -1,5 +1,4 @@
 import React from "react";
-import "../../App.css";
 
 const UserProject = props => {
   const formattedDate = props.date.substring(0, 10);
@@ -28,7 +27,7 @@ const UserProject = props => {
               props.handleValidateDeleteMyProject(event, props._id)
             }
           >
-            <i class="fa fa-trash" aria-hidden="true"></i>
+            <i className="fa fa-trash" aria-hidden="true"></i>
           </button>
         </div>
         <div className="col-md-2">
@@ -37,7 +36,7 @@ const UserProject = props => {
             onClick={event => props.handleEditMyProject(event, props._id)}
             disabled={true}
           >
-            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
           </button>
         </div>
       </div>
