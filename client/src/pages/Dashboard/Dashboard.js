@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Jumbotron from "../../components/Jumbotron";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Title from "../../components/Title";

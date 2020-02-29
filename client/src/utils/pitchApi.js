@@ -19,10 +19,13 @@ const API = {
     return axios.get(`/api/checkIfUserVotedForThisProject/${userId}/${projectId}`);
   },
   getProjectsBelongingToUser: userId => {
-  return axios.get(`/api/getProjectsBelongingToUser/${userId}`);
+    return axios.get(`/api/getProjectsBelongingToUser/${userId}`);
   },
   handleDeleteMyProject: userProjectId => {
     return axios.delete(`/api/handleDeleteMyProject/${userProjectId}`);
+  },
+  getRecentThreeProjects: () => {
+    return axios.get("/api/getRecentThreeProjects")
   }
 };
 
