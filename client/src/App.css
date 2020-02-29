@@ -69,6 +69,26 @@ h2 {
   transition: transform 0.25s;
 }
 
+#deleteMyProjectButton {
+  background: rgb(167, 42, 26);
+  color: #fff;
+  border: none;
+  padding: 5px 9px;
+  border-radius: 10%;
+  cursor: pointer;
+  float: right;
+}
+
+#editMyProjectButton {
+  background: rgb(238, 229, 226);
+  color: #fff;
+  border: none;
+  padding: 5px 9px;
+  border-radius: 10%;
+  cursor: pointer;
+  /* float: right; */
+}
+
 .upVoteButton {
   background: rgb(4, 71, 4);
   width: 100%;
