@@ -35,7 +35,7 @@ const Header = () => {
 };
 
 const linkStyle = {
-  color: "#00628c",
+  color: "#f1da4e",
   textDecoration: "none",
   padding: "5px",
   cursor: "pointer"
