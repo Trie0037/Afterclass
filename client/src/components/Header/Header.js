@@ -8,27 +8,27 @@ const Header = () => {
       <div className="headerLinks">
         <Link style={linkStyle} to="/">
           Home |
-      </Link>{" "}
-        <Link style={linkStyle} to="/">
+        </Link>{" "}
+        <Link style={linkStyle} to="/about">
           About |
-      </Link>{" "}
+        </Link>{" "}
         <Link
           style={linkStyle}
           to={{ pathname: "https://after-class.herokuapp.com/" }}
           target="_blank"
         >
           Projects |
-      </Link>{" "}
+        </Link>{" "}
         <Link style={linkStyle} to="/login">
           Login |
-      </Link>
+        </Link>
         {"  "}
         <Link style={linkStyle} to="/logout">
           Logout |
-      </Link>{" "}
+        </Link>{" "}
         <Link style={linkStyle} to="/signup">
           Signup
-      </Link>
+        </Link>
       </div>
     </header>
   );

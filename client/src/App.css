@@ -58,7 +58,7 @@ h2 {
 }
 
 .jumbotron {
-  margin: 15px;
+  /* margin: 15px;
   margin-bottom: 0px;
   padding: 0;
   border: 1px solid rgb(199, 189, 189);
@@ -66,7 +66,7 @@ h2 {
   height: 100%;
   color: #00ccff;
   box-shadow: 0 3px 6px #e44f27, 0 3px 6px #e44f27;
-  transition: transform 0.25s;
+  transition: transform 0.25s; */
 }
 
 #deleteMyProjectButton {
