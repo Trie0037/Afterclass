@@ -23,7 +23,7 @@ const Header = () => {
           Login |
       </Link>
         {"  "}
-        <Link style={linkStyle} to="/">
+        <Link style={linkStyle} to="/logout">
           Logout |
       </Link>{" "}
         <Link style={linkStyle} to="/signup">
