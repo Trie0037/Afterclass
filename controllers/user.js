@@ -25,11 +25,9 @@ router.post("/signup", (req, res) => {
   });
 });
 
-router.post(
-  "/login",
-  function(req, res, next) {
-    next();
-  },
+router.post("/login", (req, res, next) => {
+  next();
+},
   passport.authenticate("local"),
   (req, res) => {
     var userInfo = {
@@ -47,7 +45,7 @@ router.get("/", (req, res, next) => {
   }
 });
 
-router.post("/user/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   if (req.user) {
     req.logout();
     res.send({ msg: "logging out" });

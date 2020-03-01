@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
-import Logout from "./pages/Logout";
 import Dashboard from "./pages/Dashboard";
 import SignUp from "./pages/SignUp";
 import HeaderLoggedOut from "./components/HeaderLoggedOut";
@@ -23,12 +22,12 @@ class App extends Component {
 
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-  }
+  };
 
   componentDidMount() {
     this.getUser();
     this.getThreeHighestVotedProjects();
-  }
+  };
 
   getUser() {
     axios.get("/user/").then(response => {
@@ -44,7 +43,7 @@ class App extends Component {
         });
       }
     });
-  }
+  };
 
   getThreeHighestVotedProjects = () => {
     API.getThreeHighestVotedProjects()
@@ -58,16 +57,17 @@ class App extends Component {
     if (response) {
       this.handleLogOut();
     }
-  }
+  };
 
   handleLogOut = () => {
     axios.get("/user/logout").then(() => {
+      console.log("got here")
       this.setState({
         loggedIn: false,
-        username: "null"
+        username: null
+      }, () => {
+        window.location = "/";
       });
-      window.location=window.location.origin;
-      this.getUser();
     });
   };
 
@@ -81,8 +81,8 @@ class App extends Component {
                 handleValidateLoggedOut={this.handleValidateLoggedOut}
               />
             ) : (
-              <HeaderLoggedOut />
-            )}
+                <HeaderLoggedOut />
+              )}
             <Switch>
               <Route
                 exact
@@ -104,7 +104,6 @@ class App extends Component {
                 component={() => <Login getUser={this.getUser} />}
               />
               <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/logout" component={Logout} />
               <Route exact path="/about" component={About} />
             </Switch>
           </div>
