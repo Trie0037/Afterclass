@@ -12,6 +12,9 @@ const HeaderLoggedIn = props => {
         <Link style={linkStyle} to="/about">
           About |
         </Link>{" "}
+        <Link style={linkStyle} to="/dashboard">
+          Dashboard |
+        </Link>{" "}
         <Link
           style={linkStyle}
           to={{ pathname: "https://after-class.herokuapp.com/" }}

@@ -19,6 +19,7 @@ class Dashboard extends Component {
       userProjects: [],
       date: {},
       url: "",
+      props: props,
       disableUpVoteButton: false,
       disableDownVoteButton: false,
       disableSubmitButton: false
@@ -238,107 +239,119 @@ class Dashboard extends Component {
   render() {
     return (
       <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <h1 className="welcomeUser">
-              <strong>
-                <i className="fa fa-user" /> Welcome{" "}
-                <h1
-                  style={{
-                    fontWeight: "bolder",
-                    fontSize: "44px",
-                    color: "#00ccff"
-                  }}
-                >
-                  {this.state.username}
-                </h1>
-              </strong>
-            </h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-12">
-            <h1>Your Projects</h1>
-          </Col>
-        </Row>
-        {this.state.userProjects < 1 ? (
-          <React.Fragment>
-            <div className="noProjectNotification">
-              You have no project suggestions. Create one below!
+        {this.state.props.loggedIn ?
+          (
+            <React.Fragment>
+              <Row>
+                <Col size="md-12">
+                  <h1 className="welcomeUser">
+                    <strong>
+                      <i className="fa fa-user" /> Welcome{" "}
+                      <h1
+                        style={{
+                          fontWeight: "bolder",
+                          fontSize: "44px",
+                          color: "#00ccff"
+                        }}
+                      >
+                        {this.state.username}
+                      </h1>
+                    </strong>
+                  </h1>
+                </Col>
+              </Row>
+              <Row>
+                <Col size="md-12">
+                  <h1>Your Projects</h1>
+                </Col>
+              </Row>
+              <React.Fragment>
+                {this.state.userProjects < 1 ? (
+                  <React.Fragment>
+                    <div className="noProjectNotification">
+                      You have no project suggestions. Create one below!
             </div>
-            <hr />
-          </React.Fragment>
-        ) : (
-            this.state.userProjects.map(userProject => {
-              return (
-                <Title key={userProject._id}>
-                  <UserProject
-                    _id={userProject._id}
-                    title={userProject.title}
-                    description={userProject.description}
-                    votes={userProject.votes}
-                    date={userProject.date}
-                    handleValidateDeleteMyProject={this.handleValidateDeleteMyProject}
-                    handleEditMyProject={this.handleEditMyProject}
-                  />
-                </Title>
-              );
-            })
-          )}
-        <div className="makeProjectSuggestion">
-          <Row>
-            <Col size="md-2"></Col>
-            <Col size="md-8">
-              <h1>Make A Project Suggestion</h1>
-            </Col>
-            <Col size="md-2"></Col>
-          </Row>
-        </div>
-        <Row>
-          <Col size="md-2"></Col>
-          <Col size="md-8">
-            <form action="POST">
-              <Input
-                name="title"
-                placeholder="Title of project!"
-                onChange={this.handleChange}
-                value={this.state.title}
-              />
-              <TextArea
-                name="description"
-                style={{ height: "125px" }}
-                placeholder="Describe your project!"
-                onChange={this.handleChange}
-                value={this.state.description}
-              />
-              <FormBtn
-                style={{ height: "125px" }}
-                onClick={this.handleSubmit}
-                disabled={this.state.disableSubmitButton}
-              >
-                Submit
+                    <hr />
+                  </React.Fragment>
+                ) : (
+                    this.state.userProjects.map(userProject => {
+                      return (
+                        <Title key={userProject._id}>
+                          <UserProject
+                            _id={userProject._id}
+                            title={userProject.title}
+                            description={userProject.description}
+                            votes={userProject.votes}
+                            date={userProject.date}
+                            handleValidateDeleteMyProject={this.handleValidateDeleteMyProject}
+                            handleEditMyProject={this.handleEditMyProject}
+                          />
+                        </Title>
+                      );
+                    })
+                  )}
+              </React.Fragment>
+              <div className="makeProjectSuggestion">
+                <Row>
+                  <Col size="md-2"></Col>
+                  <Col size="md-8">
+                    <h1>Make A Project Suggestion</h1>
+                  </Col>
+                  <Col size="md-2"></Col>
+                </Row>
+              </div>
+              <Row>
+                <Col size="md-2"></Col>
+                <Col size="md-8">
+                  <form action="POST">
+                    <Input
+                      name="title"
+                      placeholder="Title of project!"
+                      onChange={this.handleChange}
+                      value={this.state.title}
+                    />
+                    <TextArea
+                      name="description"
+                      style={{ height: "125px" }}
+                      placeholder="Describe your project!"
+                      onChange={this.handleChange}
+                      value={this.state.description}
+                    />
+                    <FormBtn
+                      style={{ height: "125px" }}
+                      onClick={this.handleSubmit}
+                      disabled={this.state.disableSubmitButton}
+                    >
+                      Submit
               </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-2"></Col>
-        </Row>
-        {this.state.projects.map(project => {
-          return (
-            <Title key={project._id}>
-              <Project
-                id={project._id}
-                username={project.username}
-                title={project.title}
-                description={project.description}
-                votes={project.votes}
-                date={project.date}
-                hasUserVotedOnThisProject={this.hasUserVotedOnThisProject}
-                disableUpVoteButton={this.state.disableUpVoteButton}
-                disableDownVoteButton={this.state.disableDownVoteButton}
-              />
-            </Title>
-          );
-        })}
+                  </form>
+                </Col>
+                <Col size="md-2"></Col>
+              </Row>
+              <React.Fragment>
+                {this.state.projects.map(project => {
+                  return (
+                    <Title key={project._id}>
+                      <Project
+                        id={project._id}
+                        username={project.username}
+                        title={project.title}
+                        description={project.description}
+                        votes={project.votes}
+                        date={project.date}
+                        hasUserVotedOnThisProject={this.hasUserVotedOnThisProject}
+                        disableUpVoteButton={this.state.disableUpVoteButton}
+                        disableDownVoteButton={this.state.disableDownVoteButton}
+                      />
+                    </Title>
+                  );
+                })}
+              </React.Fragment>
+            </React.Fragment>
+          ) : (
+            <div>You are not authorized to view this page.</div>
+          )}
+
       </Container>
     );
   }

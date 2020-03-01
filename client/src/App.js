@@ -103,7 +103,11 @@ class App extends Component {
                 path="/login"
                 component={() => <Login getUser={this.getUser} />}
               />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <Route 
+                exact 
+                path="/dashboard" 
+                component= {() => <Dashboard loggedIn={this.state.loggedIn} />}
+              />
               <Route exact path="/about" component={About} />
             </Switch>
           </div>
