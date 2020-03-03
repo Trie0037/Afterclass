@@ -12,7 +12,7 @@ const ThreeHighestVotedProjects = props => (
                 <div className="img-container">
                   <img
                     className="projectImage"
-                    src="https://lh3.googleusercontent.com/proxy/FqH48oOUsez5SiX7KGwc1ne2zhTr1-Q89j2AozgNhi-ldjeCy0G1lMpI4wxmjyuDBhitgTStzx2w151mTH5rs40h4hqldQrKl2U9u3zDL5tn7rWDYsI430FxOqFH8M4D6vttDaKHIZSXkA"
+                    src="https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png"
                     alt="default"
                   />
                 </div>
