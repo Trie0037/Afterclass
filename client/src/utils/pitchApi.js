@@ -25,7 +25,10 @@ const API = {
     return axios.delete(`/api/handleDeleteMyProject/${userProjectId}`);
   },
   getThreeHighestVotedProjects: () => {
-    return axios.get("/api/getThreeHighestVotedProjects")
+    return axios.get("/api/getThreeHighestVotedProjects");
+  },
+  checkUserIdExistence: userId => {
+    return axios.get(`/api/checkUserIdExistence/${userId}`);
   }
 };
 
