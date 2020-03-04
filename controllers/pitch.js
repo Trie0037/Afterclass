@@ -113,5 +113,8 @@ module.exports = {
       .catch(function (err) {
         res.json(err);
       });
+  },
+  checkUserIdExistence: function (req, res) {
+    Pitch.find()
   }
 };

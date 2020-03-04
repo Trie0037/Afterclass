@@ -97,7 +97,8 @@ class App extends Component {
                 )}
               />
               <Route exact path="/home" component={Home} />
-              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/signup" component={() => <SignUp getUser={this.getUser} />} />
+            
               <Route
                 exact
                 path="/login"

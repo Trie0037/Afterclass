@@ -59,6 +59,7 @@ router.put("/api/recordVotedProject/:userId/:projectId", pitchController.recordV
 router.get("/api/checkIfUserVotedForThisProject/:userId/:projectId", pitchController.checkIfUserVotedForThisProject);
 router.get("/api/getProjectsBelongingToUser/:userId", pitchController.getProjectsBelongingToUser);
 router.delete("/api/handleDeleteMyProject/:userProjectId", pitchController.handleDeleteMyProject);
+router.get("/api/checkUserIdExistence/:userId", pitchController.checkUserIdExistence);
 app.use("/user", user);
 app.use(router);
 

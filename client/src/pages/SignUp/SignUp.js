@@ -38,9 +38,13 @@ class SignUp extends Component {
             })
             .then(response => {
               if (response.data) {
+      
                 this.setState({
                   shouldRedirectHome: true
+                }, () => {
+                  this.props.getUser()
                 });
+          
               } else {
                 alert("Sign-up error");
               }
