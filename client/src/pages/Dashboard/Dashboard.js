@@ -66,7 +66,7 @@ class Dashboard extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    API.checkUserIdExistence(this.state.userId)
+    // API.checkUserIdExistence(this.state.userId)
     const invalidInputMessage = "Input values cannot be blank.";
     if (
       this.isInputBlank(this.state.title) ||
