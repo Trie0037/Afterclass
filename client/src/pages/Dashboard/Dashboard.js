@@ -11,6 +11,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      props: props,
       userId: "",
       username: "",
       title: "",
@@ -19,7 +20,7 @@ class Dashboard extends Component {
       userProjects: [],
       date: {},
       url: "",
-      props: props,
+      userRole: "user",
       disableUpVoteButton: false,
       disableDownVoteButton: false,
       disableSubmitButton: false
@@ -66,14 +67,10 @@ class Dashboard extends Component {
 
   validateProjectInputs = event => {
     event.preventDefault();
-    API.checkUserPermission(this.state.userId)
+    API.checkUserPermission(this.state.userId, this.state.userRole)
       .then(res => {
         try {
-          let userRoles = res.data[0].roles;
-          if (!userRoles) {
-            alert("You are not authorized to perform this action.");
-            window.location = "/";
-          } else {
+          if (res.data[0].roles[0] === this.state.userRole) {
             const invalidInputMessage = "Input values cannot be blank.";
             if (
               this.isInputBlank(this.state.title) ||
@@ -92,6 +89,10 @@ class Dashboard extends Component {
           alert("You are not authorized to perform this action.");
           window.location = "/";
         }
+      })
+      .catch(() => {
+        alert("You are not authorized to perform this action.");
+        window.location = "/";
       });
   };
 

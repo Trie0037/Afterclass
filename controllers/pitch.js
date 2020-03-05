@@ -115,7 +115,21 @@ module.exports = {
       });
   },
   checkUserPermission: function (req, res) {
-    User.find({ _id: req.params.userId })
+    User.aggregate([
+      { $match: { _id: ObjectId(req.params.userId) } },
+      {
+        $project: {
+          roles: {
+            $filter: {
+              input: "$roles",
+              as: "roles",
+              cond: { $eq: ["$$roles", req.params.roleToCheck] }
+            }
+          },
+          _id: 0
+        }
+      }
+    ])
       .then(function (doc) {
         res.json(doc);
       })

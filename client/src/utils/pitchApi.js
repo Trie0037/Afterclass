@@ -27,8 +27,8 @@ const API = {
   getThreeHighestVotedProjects: () => {
     return axios.get("/api/getThreeHighestVotedProjects");
   },
-  checkUserPermission: userId => {
-    return axios.get(`/api/checkUserPermission/${userId}`);
+  checkUserPermission: (userId, roleToCheck) => {
+    return axios.get(`/api/checkUserPermission/${userId}/${roleToCheck}`);
   },
   assignDefaultUserRole: (userId, role) => {
     return axios.get(`/api/assignDefaultUserRole/${userId}/${role}`);
