@@ -61,7 +61,6 @@ class App extends Component {
 
   handleLogOut = () => {
     axios.get("/user/logout").then(() => {
-      console.log("got here")
       this.setState({
         loggedIn: false,
         username: null
@@ -97,17 +96,20 @@ class App extends Component {
                 )}
               />
               <Route exact path="/home" component={Home} />
-              <Route exact path="/signup" component={() => <SignUp getUser={this.getUser} />} />
-            
+              <Route
+                exact
+                path="/signup"
+                component={() => <SignUp getUser={this.getUser} />}
+              />
               <Route
                 exact
                 path="/login"
                 component={() => <Login getUser={this.getUser} />}
               />
-              <Route 
-                exact 
-                path="/dashboard" 
-                component= {() => <Dashboard loggedIn={this.state.loggedIn} />}
+              <Route
+                exact
+                path="/dashboard"
+                component={() => <Dashboard loggedIn={this.state.loggedIn} />}
               />
               <Route exact path="/about" component={About} />
             </Switch>

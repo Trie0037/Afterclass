@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../App.css";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import API from "../../utils/pitchApi";
 
 class SignUp extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class SignUp extends Component {
       username: "",
       password: "",
       confirmPassword: "",
+      role: "user",
       shouldRedirectHome: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,39 +24,41 @@ class SignUp extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-
-    //request to server here
     axios
       .post("/user/signup", {
         username: this.state.username,
         password: this.state.password
       })
       .then(response => {
-        if (response.data) {
-          axios
-            .post("/user/login", {
-              username: this.state.username,
-              password: this.state.password
-            })
-            .then(response => {
-              if (response.data) {
-      
-                this.setState({
-                  shouldRedirectHome: true
-                }, () => {
-                  this.props.getUser()
+        API.assignDefaultUserRole(response.data._id, this.state.role)
+          .then(() => {
+            if (response.data) {
+              axios
+                .post("/user/login", {
+                  username: this.state.username,
+                  password: this.state.password
+                })
+                .then(response => {
+                  if (response.data) {
+                    this.setState({
+                      shouldRedirectHome: true
+                    }, () => {
+                      this.props.getUser()
+                    });
+                  } else {
+                    alert("Sign-up error");
+                  }
+                })
+                .catch(error => {
+                  alert("Sign up error");
                 });
-          
-              } else {
-                alert("Sign-up error");
-              }
-            })
-            .catch(error => {
-              alert("Sign up error");
-            });
-        } else {
-          alert("Sign-up error");
-        }
+            } else {
+              alert("Sign-up error");
+            }
+          })
+          .catch(error => {
+            alert(error);
+          });
       })
       .catch(error => {
         alert(error);
