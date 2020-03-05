@@ -59,7 +59,8 @@ router.put("/api/recordVotedProject/:userId/:projectId", pitchController.recordV
 router.get("/api/checkIfUserVotedForThisProject/:userId/:projectId", pitchController.checkIfUserVotedForThisProject);
 router.get("/api/getProjectsBelongingToUser/:userId", pitchController.getProjectsBelongingToUser);
 router.delete("/api/handleDeleteMyProject/:userProjectId", pitchController.handleDeleteMyProject);
-router.get("/api/checkUserIdExistence/:userId", pitchController.checkUserIdExistence);
+router.get("/api/checkUserPermission/:userId", pitchController.checkUserPermission);
+router.get("/api/assignDefaultUserRole/:userId/:role", pitchController.assignDefaultUserRole);
 app.use("/user", user);
 app.use(router);
 

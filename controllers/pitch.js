@@ -114,7 +114,25 @@ module.exports = {
         res.json(err);
       });
   },
-  checkUserIdExistence: function (req, res) {
-    Pitch.find()
+  checkUserPermission: function (req, res) {
+    User.find({ _id: req.params.userId })
+      .then(function (doc) {
+        res.json(doc);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  },
+  assignDefaultUserRole: function (req, res) {
+    User.updateOne(
+      { _id: ObjectId(req.params.userId) },
+      { $push: { roles: req.params.role } }
+    )
+      .then(function (doc) {
+        res.json(doc);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
   }
 };

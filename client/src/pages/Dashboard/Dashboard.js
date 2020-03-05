@@ -64,49 +64,66 @@ class Dashboard extends Component {
     return !str || /^\s*$/.test(str);
   };
 
-  handleSubmit = event => {
+  validateProjectInputs = event => {
     event.preventDefault();
-    // API.checkUserIdExistence(this.state.userId)
-    const invalidInputMessage = "Input values cannot be blank.";
-    if (
-      this.isInputBlank(this.state.title) ||
-      this.isInputBlank(this.state.description)
-    ) {
-      alert(invalidInputMessage);
-    } else {
-      if (this.state.title === "" || this.state.description === "") {
-        alert(invalidInputMessage);
-      } else {
-        this.setState({ disableSubmitButton: true });
-        const payload = {
-          userId: this.state.userId,
-          title: this.state.title,
-          description: this.state.description,
-          username: this.state.username,
-          votes: 0
-        };
-        API.saveProject(payload)
-          .then(() => {
-            //re-enables submit button
-            this.setState(
-              {
-                disableSubmitButton: false,
-                title: "",
-                description: ""
-              },
-              () => {
-                this.getAllProjects();
-                this.getProjectsBelongingToUser();
+    API.checkUserPermission(this.state.userId)
+      .then(res => {
+        try {
+          let userRoles = res.data[0].roles;
+          if (!userRoles) {
+            alert("You are not authorized to perform this action.");
+            window.location = "/";
+          } else {
+            const invalidInputMessage = "Input values cannot be blank.";
+            if (
+              this.isInputBlank(this.state.title) ||
+              this.isInputBlank(this.state.description)
+            ) {
+              alert(invalidInputMessage);
+            } else {
+              if (this.state.title === "" || this.state.description === "") {
+                alert(invalidInputMessage);
+              } else {
+                this.handleSubmitProject();
               }
-            );
-          })
-          .catch(err => {
-            alert(err);
-            //re-enable submit button when an error is caught
-            this.setState({ disableSubmitButton: false });
-          });
-      }
-    }
+            }
+          }
+        } catch (err) {
+          alert("You are not authorized to perform this action.");
+          window.location = "/";
+        }
+      });
+  };
+
+  handleSubmitProject = () => {
+    this.setState({ disableSubmitButton: true });
+    const payload = {
+      userId: this.state.userId,
+      title: this.state.title,
+      description: this.state.description,
+      username: this.state.username,
+      votes: 0
+    };
+    API.saveProject(payload)
+      .then(() => {
+        //re-enables submit button
+        this.setState(
+          {
+            disableSubmitButton: false,
+            title: "",
+            description: ""
+          },
+          () => {
+            this.getAllProjects();
+            this.getProjectsBelongingToUser();
+          }
+        );
+      })
+      .catch(err => {
+        alert(err);
+        //re-enable submit button when an error is caught
+        this.setState({ disableSubmitButton: false });
+      });
   };
 
   hasUserVotedOnThisProject = (event, projectId, voteType) => {
@@ -274,24 +291,24 @@ class Dashboard extends Component {
                   <hr />
                 </React.Fragment>
               ) : (
-                this.state.userProjects.map(userProject => {
-                  return (
-                    <Title key={userProject._id}>
-                      <UserProject
-                        _id={userProject._id}
-                        title={userProject.title}
-                        description={userProject.description}
-                        votes={userProject.votes}
-                        date={userProject.date}
-                        handleValidateDeleteMyProject={
-                          this.handleValidateDeleteMyProject
-                        }
-                        handleEditMyProject={this.handleEditMyProject}
-                      />
-                    </Title>
-                  );
-                })
-              )}
+                  this.state.userProjects.map(userProject => {
+                    return (
+                      <Title key={userProject._id}>
+                        <UserProject
+                          _id={userProject._id}
+                          title={userProject.title}
+                          description={userProject.description}
+                          votes={userProject.votes}
+                          date={userProject.date}
+                          handleValidateDeleteMyProject={
+                            this.handleValidateDeleteMyProject
+                          }
+                          handleEditMyProject={this.handleEditMyProject}
+                        />
+                      </Title>
+                    );
+                  })
+                )}
             </React.Fragment>
             <div className="makeProjectSuggestion">
               <Row>
@@ -321,7 +338,7 @@ class Dashboard extends Component {
                   />
                   <FormBtn
                     style={{ height: "125px" }}
-                    onClick={this.handleSubmit}
+                    onClick={this.validateProjectInputs}
                     disabled={this.state.disableSubmitButton}
                   >
                     Submit
@@ -351,8 +368,8 @@ class Dashboard extends Component {
             </React.Fragment>
           </React.Fragment>
         ) : (
-          <div>You are not authorized to view this page.</div>
-        )}
+            <div>You are not authorized to view this page.</div>
+          )}
       </Container>
     );
   }
