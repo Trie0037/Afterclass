@@ -15,11 +15,7 @@ const HeaderLoggedIn = props => {
         <Link style={linkStyle} to="/dashboard">
           Dashboard |
         </Link>{" "}
-        <Link
-          style={linkStyle}
-          to={{ pathname: "https://after-class.herokuapp.com/" }}
-          target="_blank"
-        >
+        <Link style={linkStyle} to="/projects">
           Projects |
         </Link>{" "}
         {"  "}

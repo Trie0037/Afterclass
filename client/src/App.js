@@ -4,6 +4,7 @@ import API from "../src/utils/pitchApi";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Projects from "./pages/Projects";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import SignUp from "./pages/SignUp";
@@ -17,17 +18,19 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       username: "",
-      threeHighestVotedProjects: []
+      threeHighestVotedProjects: [],
+      projects: []
     };
 
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-  };
+  }
 
   componentDidMount() {
     this.getUser();
     this.getThreeHighestVotedProjects();
-  };
+    this.getAllSubmittedProjects();
+  }
 
   getUser() {
     axios.get("/user/").then(response => {
@@ -43,13 +46,20 @@ class App extends Component {
         });
       }
     });
-  };
+  }
 
   getThreeHighestVotedProjects = () => {
     API.getThreeHighestVotedProjects()
       .then(res => this.setState({ threeHighestVotedProjects: res.data }))
       .catch(err => alert(err));
   };
+
+  getAllSubmittedProjects = () => {
+    API.getAllProjects()
+    .then(res => {this.setState({ projects: res.data })
+     console.log(res.data)})
+    .catch(err => alert(err));
+  }
 
   handleValidateLoggedOut = event => {
     event.preventDefault();
@@ -61,12 +71,15 @@ class App extends Component {
 
   handleLogOut = () => {
     axios.get("/user/logout").then(() => {
-      this.setState({
-        loggedIn: false,
-        username: null
-      }, () => {
-        window.location = "/";
-      });
+      this.setState(
+        {
+          loggedIn: false,
+          username: null
+        },
+        () => {
+          window.location = "/";
+        }
+      );
     });
   };
 
@@ -80,8 +93,8 @@ class App extends Component {
                 handleValidateLoggedOut={this.handleValidateLoggedOut}
               />
             ) : (
-                <HeaderLoggedOut />
-              )}
+              <HeaderLoggedOut />
+            )}
             <Switch>
               <Route
                 exact
@@ -96,10 +109,16 @@ class App extends Component {
                 )}
               />
               <Route exact path="/home" component={Home} />
+              <Route exact path="/about" component={About} />
               <Route
                 exact
-                path="/signup"
-                component={() => <SignUp getUser={this.getUser} />}
+                path="/dashboard"
+                component={() => <Dashboard loggedIn={this.state.loggedIn} />}
+              />
+              <Route
+                exact
+                path="/projects"
+                component={() => <Projects projects={this.state.projects} />}
               />
               <Route
                 exact
@@ -108,10 +127,9 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/dashboard"
-                component={() => <Dashboard loggedIn={this.state.loggedIn} />}
+                path="/signup"
+                component={() => <SignUp getUser={this.getUser} />}
               />
-              <Route exact path="/about" component={About} />
             </Switch>
           </div>
         </div>
