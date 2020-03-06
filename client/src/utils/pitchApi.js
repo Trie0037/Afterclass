@@ -3,8 +3,8 @@ const API = {
   getAllProjects: () => {
     return axios.get("/api/getAllProjects");
   },
-  saveProject: payload => {
-    return axios.post("/api/saved", payload);
+  submitProject: payload => {
+    return axios.post("/api/submitProject", payload);
   },
   handleUpVote: projectId => {
     return axios.put(`/api/upVote/${projectId}`);
@@ -30,8 +30,8 @@ const API = {
   checkUserPermission: (userId, roleToCheck) => {
     return axios.get(`/api/checkUserPermission/${userId}/${roleToCheck}`);
   },
-  assignDefaultUserRole: (userId, role) => {
-    return axios.get(`/api/assignDefaultUserRole/${userId}/${role}`);
+  assignRole: (userId, role) => {
+    return axios.get(`/api/assignRole/${userId}/${role}`);
   }
 };
 

@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 
 // Define API routes here
 const pitchController = require("./controllers/pitch");
-router.post("/api/saved", pitchController.insert);
+router.post("/api/submitProject", pitchController.submitProject);
 router.get("/api/getAllProjects", pitchController.getAllProjects);
 router.get("/api/getThreeHighestVotedProjects", pitchController.getThreeHighestVotedProjects)
 router.put("/api/upVote/:projectId", pitchController.upVote);
@@ -60,7 +60,7 @@ router.get("/api/checkIfUserVotedForThisProject/:userId/:projectId", pitchContro
 router.get("/api/getProjectsBelongingToUser/:userId", pitchController.getProjectsBelongingToUser);
 router.delete("/api/handleDeleteMyProject/:userProjectId", pitchController.handleDeleteMyProject);
 router.get("/api/checkUserPermission/:userId/:roleToCheck", pitchController.checkUserPermission);
-router.get("/api/assignDefaultUserRole/:userId/:role", pitchController.assignDefaultUserRole);
+router.get("/api/assignRole/:userId/:role", pitchController.assignRole);
 app.use("/user", user);
 app.use(router);
 

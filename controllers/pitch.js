@@ -3,7 +3,7 @@ const User = require("../models/user");
 const ObjectId = require("mongodb").ObjectId;
 
 module.exports = {
-  insert: function (req, res) {
+  submitProject: function (req, res) {
     Pitch.create(req.body)
       .then(function (doc) {
         res.json(doc);
@@ -122,8 +122,8 @@ module.exports = {
           roles: {
             $filter: {
               input: "$roles",
-              as: "roles",
-              cond: { $eq: ["$$roles", req.params.roleToCheck] }
+              as: "role",
+              cond: { $eq: ["$$role", req.params.roleToCheck] }
             }
           },
           _id: 0
@@ -137,7 +137,7 @@ module.exports = {
         res.json(err);
       });
   },
-  assignDefaultUserRole: function (req, res) {
+  assignRole: function (req, res) {
     User.updateOne(
       { _id: ObjectId(req.params.userId) },
       { $push: { roles: req.params.role } }

@@ -16,12 +16,14 @@ class SignUp extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }
+  };
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
+  };
+
   handleSubmit(event) {
     event.preventDefault();
     axios
@@ -30,7 +32,7 @@ class SignUp extends Component {
         password: this.state.password
       })
       .then(response => {
-        API.assignDefaultUserRole(response.data._id, this.state.role)
+        API.assignRole(response.data._id, this.state.role)
           .then(() => {
             if (response.data) {
               axios
@@ -50,7 +52,7 @@ class SignUp extends Component {
                   }
                 })
                 .catch(error => {
-                  alert("Sign up error");
+                  alert(error);
                 });
             } else {
               alert("Sign-up error");
@@ -63,7 +65,8 @@ class SignUp extends Component {
       .catch(error => {
         alert(error);
       });
-  }
+  };
+
   render() {
     if (this.state.shouldRedirectHome) {
       return <Redirect to="/dashboard" />;
@@ -106,10 +109,8 @@ class SignUp extends Component {
               />
             </div>
           </div>
-
           <div className="form-group ">
             <div className="col-7"></div>
-
             <button
               className="btn btn-primary"
               style={{ flex: "1 1 0%", border: "black" }}
@@ -121,7 +122,7 @@ class SignUp extends Component {
         </form>
       </div>
     );
-  }
-}
+  };
+};
 
 export default SignUp;
