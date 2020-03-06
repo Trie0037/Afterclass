@@ -12,11 +12,7 @@ const HeaderLoggedOut = () => {
         <Link style={linkStyle} to="/about">
           About |
         </Link>{" "}
-        <Link
-          style={linkStyle}
-          to={{ pathname: "https://after-class.herokuapp.com/" }}
-          target="_blank"
-        >
+        <Link style={linkStyle} to="/projects">
           Projects |
         </Link>{" "}
         <Link style={linkStyle} to="/login">
