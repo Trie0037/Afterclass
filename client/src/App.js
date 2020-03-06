@@ -56,14 +56,13 @@ class App extends Component {
 
   getAllSubmittedProjects = () => {
     API.getAllProjects()
-    .then(res => {this.setState({ projects: res.data })
-     console.log(res.data)})
+    .then(res => this.setState({ projects: res.data }))
     .catch(err => alert(err));
   }
 
   handleValidateLoggedOut = event => {
     event.preventDefault();
-    let response = window.confirm("Are you sure you want to Logout?");
+    let response = window.confirm("Are you sure you want to logout?");
     if (response) {
       this.handleLogOut();
     }
