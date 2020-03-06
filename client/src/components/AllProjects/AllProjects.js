@@ -2,7 +2,6 @@ import React from "react";
 
 const AllProjects = props => (
   <React.Fragment>
-    {console.log(props)}
     <h2>All Submitted Projects:</h2>
     <div className="row">
       {

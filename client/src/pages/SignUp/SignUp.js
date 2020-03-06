@@ -24,8 +24,16 @@ class SignUp extends Component {
     });
   };
 
-  handleSubmit(event) {
+  validatePasswordUponSignup = (event) => {
     event.preventDefault();
+    if (this.state.password === this.state.confirmPassword) {
+      this.handleSubmit();
+    } else {
+      alert("Password does not match.");
+    }
+  }
+
+  handleSubmit() {
     axios
       .post("/user/signup", {
         username: this.state.username,
@@ -109,12 +117,29 @@ class SignUp extends Component {
               />
             </div>
           </div>
+          <div className="form-group">
+            <div className="col-1 col-ml-auto">
+              <label className="form-label" htmlFor="password">
+                Confirm Password:{" "}
+              </label>
+            </div>
+            <div className="col-3 col-mr-auto">
+              <input
+                className="form-input"
+                placeholder=""
+                type="password"
+                name="confirmPassword"
+                value={this.state.confirmPassword}
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
           <div className="form-group ">
             <div className="col-7"></div>
             <button
               className="btn btn-primary"
               style={{ flex: "1 1 0%", border: "black" }}
-              onClick={this.handleSubmit}
+              onClick={this.validatePasswordUponSignup}
             >
               Sign up
             </button>
