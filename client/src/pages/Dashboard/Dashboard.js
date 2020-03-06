@@ -61,8 +61,8 @@ class Dashboard extends Component {
     this.setState({ [name]: value });
   };
 
-  isInputBlank = str => {
-    return !str || /^\s*$/.test(str);
+  isInputBlank = string => {
+    return !string || /^\s*$/.test(string);
   };
 
   validateProjectInputs = event => {
@@ -105,7 +105,7 @@ class Dashboard extends Component {
       username: this.state.username,
       votes: 0
     };
-    API.saveProject(payload)
+    API.submitProject(payload)
       .then(() => {
         //re-enables submit button
         this.setState(
