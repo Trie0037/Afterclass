@@ -163,8 +163,18 @@ hr {
   margin-bottom: 35px;
 }
 
+#previewImage {
+  width: 100%;
+}
+
+#scrollablePreviewImage {
+  max-height: 17rem;
+  overflow: hidden;
+}
+
 .highestVotedProjects,
-.projectsToJoin {
+.projectsToJoin,
+.allSubmittedProjects {
   margin-bottom: 1rem;
 }
 

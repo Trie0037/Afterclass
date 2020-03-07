@@ -21,6 +21,9 @@ class Dashboard extends Component {
       date: {},
       url: "",
       userRole: "user",
+      defaultImage: "https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png",
+      imageToSubmit: "https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png",
+      imageURL: "",
       disableUpVoteButton: false,
       disableDownVoteButton: false,
       disableSubmitButton: false
@@ -67,6 +70,10 @@ class Dashboard extends Component {
 
   validateProjectInputs = event => {
     event.preventDefault();
+    this.setState({ imageToSubmit: this.state.imageURL });
+    if (this.state.imageURL === "" || this.isInputBlank(this.state.imageURL)) {
+      this.setState({ imageToSubmit: this.state.defaultImage });
+    }
     API.checkUserPermission(this.state.userId, this.state.userRole)
       .then(res => {
         try {
@@ -81,7 +88,12 @@ class Dashboard extends Component {
               if (this.state.title === "" || this.state.description === "") {
                 alert(invalidInputMessage);
               } else {
-                this.handleSubmitProject();
+                let response = window.confirm("Are you sure you want to submit this project?");
+                if (response) {
+                  this.handleSubmitProject();
+                } else {
+                  this.setState({ imageToSubmit: this.state.defaultImage });
+                }
               }
             }
           }
@@ -103,7 +115,8 @@ class Dashboard extends Component {
       title: this.state.title,
       description: this.state.description,
       username: this.state.username,
-      votes: 0
+      votes: 0,
+      image: this.state.imageToSubmit
     };
     API.submitProject(payload)
       .then(() => {
@@ -112,7 +125,9 @@ class Dashboard extends Component {
           {
             disableSubmitButton: false,
             title: "",
-            description: ""
+            description: "",
+            imageURL: "",
+            imageToSubmit: this.state.defaultImage
           },
           () => {
             this.getAllProjects();
@@ -321,7 +336,15 @@ class Dashboard extends Component {
               </Row>
             </div>
             <Row>
-              <Col size="md-2"></Col>
+              <Col size="md-4">
+                <div id="scrollablePreviewImage">
+                  <img
+                    id="previewImage"
+                    src={this.state.imageToSubmit}
+                    alt="previewImage"
+                  />
+                </div>
+              </Col>
               <Col size="md-8">
                 <form action="POST">
                   <Input
@@ -329,6 +352,12 @@ class Dashboard extends Component {
                     placeholder="Title of project!"
                     onChange={this.handleChange}
                     value={this.state.title}
+                  />
+                  <Input
+                    name="imageURL"
+                    placeholder="Paste image URL"
+                    onChange={this.handleChange}
+                    value={this.state.imageURL}
                   />
                   <TextArea
                     name="description"
@@ -346,7 +375,6 @@ class Dashboard extends Component {
                   </FormBtn>
                 </form>
               </Col>
-              <Col size="md-2"></Col>
             </Row>
             <React.Fragment>
               {this.state.projects.map(project => {

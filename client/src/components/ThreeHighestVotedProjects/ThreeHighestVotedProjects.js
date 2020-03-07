@@ -10,11 +10,23 @@ const ThreeHighestVotedProjects = props => (
             <div key={project._id} className="col-md-4 highestVotedProjects">
               <div className="card">
                 <div className="img-container">
-                  <img
-                    className="projectImage"
-                    src="https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png"
-                    alt="default"
-                  />
+                  {
+                    project.image ?
+                      (
+                        <img
+                          className="projectImage"
+                          src={project.image}
+                          alt="default"
+                        />
+                      ) :
+                      (
+                        <img
+                          className="projectImage"
+                          src="https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png"
+                          alt="default"
+                        />
+                      )
+                  }
                 </div>
                 <div className="content-unordered-list">
                   <ul>
