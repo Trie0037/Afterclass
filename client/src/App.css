@@ -72,9 +72,10 @@ h2 {
 #deleteMyProjectButton {
   background: rgb(167, 42, 26);
   color: #fff;
+  width: 100%;
   border: none;
   padding: 5px 9px;
-  border-radius: 10%;
+  border-radius: 5%;
   cursor: pointer;
   float: right;
 }
@@ -82,9 +83,10 @@ h2 {
 #editMyProjectButton {
   background: rgb(238, 229, 226);
   color: #fff;
+  width: 100%;
   border: none;
   padding: 5px 9px;
-  border-radius: 10%;
+  border-radius: 5%;
   cursor: pointer;
   /* float: right; */
 }

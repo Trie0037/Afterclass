@@ -52,14 +52,36 @@ app.use((req, res, next) => {
 const pitchController = require("./controllers/pitch");
 router.post("/api/submitProject", pitchController.submitProject);
 router.get("/api/getAllProjects", pitchController.getAllProjects);
-router.get("/api/getThreeHighestVotedProjects", pitchController.getThreeHighestVotedProjects)
+router.get(
+  "/api/getThreeHighestVotedProjects",
+  pitchController.getThreeHighestVotedProjects
+);
 router.put("/api/upVote/:projectId", pitchController.upVote);
 router.put("/api/downVote/:projectId", pitchController.downVote);
-router.put("/api/recordVotedProject/:userId/:projectId", pitchController.recordVotedProject);
-router.get("/api/checkIfUserVotedForThisProject/:userId/:projectId", pitchController.checkIfUserVotedForThisProject);
-router.get("/api/getProjectsBelongingToUser/:userId", pitchController.getProjectsBelongingToUser);
-router.delete("/api/handleDeleteMyProject/:userProjectId", pitchController.handleDeleteMyProject);
-router.get("/api/checkUserPermission/:userId/:roleToCheck", pitchController.checkUserPermission);
+router.put(
+  "/api/recordVotedProject/:userId/:projectId",
+  pitchController.recordVotedProject
+);
+router.get(
+  "/api/checkIfUserVotedForThisProject/:userId/:projectId",
+  pitchController.checkIfUserVotedForThisProject
+);
+router.get(
+  "/api/getProjectsBelongingToUser/:userId",
+  pitchController.getProjectsBelongingToUser
+);
+router.delete(
+  "/api/handleDeleteMyProject/:userProjectId",
+  pitchController.handleDeleteMyProject
+);
+router.put(
+  "/api/handleEditMyProject/:userId/:projectId",
+  pitchController.handleEditMyProject
+);
+router.get(
+  "/api/checkUserPermission/:userId/:roleToCheck",
+  pitchController.checkUserPermission
+);
 router.get("/api/assignRole/:userId/:role", pitchController.assignRole);
 app.use("/user", user);
 app.use(router);
@@ -90,5 +112,5 @@ app.listen(PORT, function() {
 });
 
 setInterval(function() {
-    https.get("https://lifeafterclass.herokuapp.com/");
+  https.get("https://lifeafterclass.herokuapp.com/");
 }, 300000); // ping app every 5 minutes (300000)

@@ -3,62 +3,56 @@ const User = require("../models/user");
 const ObjectId = require("mongodb").ObjectId;
 
 module.exports = {
-  submitProject: function (req, res) {
+  submitProject: function(req, res) {
     Pitch.create(req.body)
-      .then(function (doc) {
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   },
-  getAllProjects: function (req, res) {
+  getAllProjects: function(req, res) {
     Pitch.find(req.query)
       .sort({ date: -1 })
-      .then(function (doc) {
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   },
-  upVote: function (req, res) {
-    Pitch.updateOne(
-      { _id: req.params.projectId },
-      { $inc: { votes: 1 } }
-    )
-      .then(function (doc) {
+  upVote: function(req, res) {
+    Pitch.updateOne({ _id: req.params.projectId }, { $inc: { votes: 1 } })
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   },
-  downVote: function (req, res) {
-    Pitch.updateOne(
-      { _id: req.params.projectId },
-      { $inc: { votes: -1 } }
-    )
-      .then(function (doc) {
+  downVote: function(req, res) {
+    Pitch.updateOne({ _id: req.params.projectId }, { $inc: { votes: -1 } })
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   },
-  recordVotedProject: function (req, res) {
+  recordVotedProject: function(req, res) {
     User.updateOne(
       { _id: ObjectId(req.params.userId) },
       { $push: { votedProjects: req.params.projectId } }
     )
-      .then(function (doc) {
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   },
-  checkIfUserVotedForThisProject: function (req, res) {
+  checkIfUserVotedForThisProject: function(req, res) {
     User.aggregate([
       { $match: { _id: ObjectId(req.params.userId) } },
       {
@@ -74,47 +68,65 @@ module.exports = {
         }
       }
     ])
-      .then(function (doc) {
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   },
-  getProjectsBelongingToUser: function (req, res) {
+  getProjectsBelongingToUser: function(req, res) {
     Pitch.find({
       $text: {
         $search: req.params.userId
       }
     })
-      .then(function (doc) {
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   },
-  handleDeleteMyProject: function (req, res) {
+  handleDeleteMyProject: function(req, res) {
     Pitch.deleteOne({ _id: req.params.userProjectId })
-      .then(function (doc) {
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   },
-  getThreeHighestVotedProjects: function (req, res) {
+  handleEditMyProject: function(req, res) {
+    Pitch.updateOne(
+      { _id: req.params.projectId },
+      {
+        $set: {
+          title: req.body.title,
+          description: req.body.description,
+          image: req.body.image
+        }
+      }
+    )
+      .then(function(doc) {
+        res.json(doc);
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
+  },
+  getThreeHighestVotedProjects: function(req, res) {
     Pitch.find(req.query)
       .sort({ votes: -1 })
       .limit(3)
-      .then(function (doc) {
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   },
-  checkUserPermission: function (req, res) {
+  checkUserPermission: function(req, res) {
     User.aggregate([
       { $match: { _id: ObjectId(req.params.userId) } },
       {
@@ -130,22 +142,22 @@ module.exports = {
         }
       }
     ])
-      .then(function (doc) {
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   },
-  assignRole: function (req, res) {
+  assignRole: function(req, res) {
     User.updateOne(
       { _id: ObjectId(req.params.userId) },
       { $push: { roles: req.params.role } }
     )
-      .then(function (doc) {
+      .then(function(doc) {
         res.json(doc);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.json(err);
       });
   }

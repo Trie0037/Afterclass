@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import EditProject from "./pages/EditOneProject";
 import SignUp from "./pages/SignUp";
 import HeaderLoggedOut from "./components/HeaderLoggedOut";
 import HeaderLoggedIn from "./components/HeaderLoggedIn";
@@ -56,9 +57,9 @@ class App extends Component {
 
   getAllSubmittedProjects = () => {
     API.getAllProjects()
-    .then(res => this.setState({ projects: res.data }))
-    .catch(err => alert(err));
-  }
+      .then(res => this.setState({ projects: res.data }))
+      .catch(err => alert(err));
+  };
 
   handleValidateLoggedOut = event => {
     event.preventDefault();
@@ -114,6 +115,7 @@ class App extends Component {
                 path="/dashboard"
                 component={() => <Dashboard loggedIn={this.state.loggedIn} />}
               />
+              <Route exact path="/editproject/:id" component={EditProject} />
               <Route
                 exact
                 path="/projects"
