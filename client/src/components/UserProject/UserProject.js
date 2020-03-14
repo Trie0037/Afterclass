@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserProject = props => {
   const formattedDate = props.date.substring(0, 10);
@@ -31,13 +32,22 @@ const UserProject = props => {
           </button>
         </div>
         <div className="col-md-2">
-          <button
-            id="editMyProjectButton"
-            onClick={event => props.handleEditMyProject(event, props._id)}
-            disabled={true}
+          {/* <Link
+            to={{
+              pathname: "/editproject/" + props._id,
+              state: [
+                props.title,
+                props.description,
+                props.imageURL,
+                props._id,
+                props.userId
+              ]
+            }}
           >
-            <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-          </button>
+            <button id="editMyProjectButton">
+              <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>
+          </Link>{" "} */}
         </div>
       </div>
     </div>

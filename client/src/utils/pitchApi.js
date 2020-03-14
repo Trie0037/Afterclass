@@ -16,10 +16,18 @@ const API = {
     return axios.put(`/api/recordVotedProject/${userId}/${projectId}`);
   },
   checkIfUserVotedForThisProject: (userId, projectId) => {
-    return axios.get(`/api/checkIfUserVotedForThisProject/${userId}/${projectId}`);
+    return axios.get(
+      `/api/checkIfUserVotedForThisProject/${userId}/${projectId}`
+    );
   },
   getProjectsBelongingToUser: userId => {
     return axios.get(`/api/getProjectsBelongingToUser/${userId}`);
+  },
+  handleEditMyProject: (userId, projectId, editedProjectPayload) => {
+    return axios.put(
+      `/api/handleEditMyProject/${userId}/${projectId}`,
+      editedProjectPayload
+    );
   },
   handleDeleteMyProject: userProjectId => {
     return axios.delete(`/api/handleDeleteMyProject/${userProjectId}`);

@@ -6,6 +6,7 @@ import getUser from "../../utils/api";
 import API from "../../utils/pitchApi";
 import Project from "../../components/Project";
 import UserProject from "../../components/UserProject";
+// import EditProject from "../EditOneProject";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -21,8 +22,10 @@ class Dashboard extends Component {
       date: {},
       url: "",
       userRole: "user",
-      defaultImage: "https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png",
-      imageToSubmit: "https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png",
+      defaultImage:
+        "https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png",
+      imageToSubmit:
+        "https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png",
       imageURL: "",
       disableUpVoteButton: false,
       disableDownVoteButton: false,
@@ -88,7 +91,9 @@ class Dashboard extends Component {
               if (this.state.title === "" || this.state.description === "") {
                 alert(invalidInputMessage);
               } else {
-                let response = window.confirm("Are you sure you want to submit this project?");
+                let response = window.confirm(
+                  "Are you sure you want to submit this project?"
+                );
                 if (response) {
                   this.handleSubmitProject();
                 } else {
@@ -247,9 +252,19 @@ class Dashboard extends Component {
       });
   };
 
-  handleEditMyProject = (event, projectId) => {
+  // handleEditMyProject = projectId => {
+  //   API.handleEditMyProject(projectId).then(() => {
+  //     this.getAllProjects();
+  //     this.getProjectsBelongingToUser();
+  //   });
+  // };
+
+  handleValidateEditMyProject = (event, projectId) => {
     event.preventDefault();
-    console.log("edit: " + projectId);
+    let response = window.confirm("Do you wish to edit this project?");
+    // if (response) {
+    //   this.handleValidateEditMyProject(projectId);
+    // }
   };
 
   // Need to do a map over current user projects and filter out project to be deleted
@@ -307,24 +322,28 @@ class Dashboard extends Component {
                   <hr />
                 </React.Fragment>
               ) : (
-                  this.state.userProjects.map(userProject => {
-                    return (
-                      <Title key={userProject._id}>
-                        <UserProject
-                          _id={userProject._id}
-                          title={userProject.title}
-                          description={userProject.description}
-                          votes={userProject.votes}
-                          date={userProject.date}
-                          handleValidateDeleteMyProject={
-                            this.handleValidateDeleteMyProject
-                          }
-                          handleEditMyProject={this.handleEditMyProject}
-                        />
-                      </Title>
-                    );
-                  })
-                )}
+                this.state.userProjects.map(userProject => {
+                  return (
+                    <Title key={userProject._id}>
+                      <UserProject
+                        _id={userProject._id}
+                        userId={this.state.userId}
+                        title={userProject.title}
+                        description={userProject.description}
+                        imageURL={this.state.imageURL}
+                        votes={userProject.votes}
+                        date={userProject.date}
+                        handleValidateDeleteMyProject={
+                          this.handleValidateDeleteMyProject
+                        }
+                        handleValidateEditMyProject={
+                          this.handleValidateEditMyProject
+                        }
+                      />
+                    </Title>
+                  );
+                })
+              )}
             </React.Fragment>
             <div className="makeProjectSuggestion">
               <Row>
@@ -397,8 +416,8 @@ class Dashboard extends Component {
             </React.Fragment>
           </React.Fragment>
         ) : (
-            <div>You are not authorized to view this page.</div>
-          )}
+          <div>You are not authorized to view this page.</div>
+        )}
       </Container>
     );
   }
