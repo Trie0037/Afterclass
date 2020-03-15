@@ -23,11 +23,8 @@ const API = {
   getProjectsBelongingToUser: userId => {
     return axios.get(`/api/getProjectsBelongingToUser/${userId}`);
   },
-  handleEditMyProject: (userId, projectId, editedProjectPayload) => {
-    return axios.put(
-      `/api/handleEditMyProject/${userId}/${projectId}`,
-      editedProjectPayload
-    );
+  handleEditMyProject: (projectId, editedProjectPayload) => {
+    return axios.put(`/api/handleEditMyProject/${projectId}`, editedProjectPayload);
   },
   handleDeleteMyProject: userProjectId => {
     return axios.delete(`/api/handleDeleteMyProject/${userProjectId}`);

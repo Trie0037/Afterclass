@@ -34,12 +34,12 @@ app.use(
 // Passport
 app.use(passport.initialize());
 app.use(passport.session()); // calls the deserializeUser
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
     done(err, user);
   });
 });
@@ -75,7 +75,7 @@ router.delete(
   pitchController.handleDeleteMyProject
 );
 router.put(
-  "/api/handleEditMyProject/:userId/:projectId",
+  "/api/handleEditMyProject/:projectId",
   pitchController.handleEditMyProject
 );
 router.get(
@@ -93,7 +93,7 @@ app.get("*", (req, res) => {
 });
 
 const db = process.env.MONGODB_URI || "mongodb://localhost/project-3";
-mongoose.connect(db, function(error) {
+mongoose.connect(db, function (error) {
   // Log any errors connecting with mongoose
   if (error) {
     console.error(error);
@@ -107,10 +107,10 @@ mongoose.connect(db, function(error) {
 // Display mongo queries for debugging
 // mongoose.set("debug", true);
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
 
-setInterval(function() {
+setInterval(function () {
   https.get("https://lifeafterclass.herokuapp.com/");
 }, 300000); // ping app every 5 minutes (300000)
