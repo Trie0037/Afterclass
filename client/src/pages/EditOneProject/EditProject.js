@@ -47,10 +47,14 @@ class EditProject extends Component {
       .catch(err => alert(err));
   };
 
+  cancelEditProject = () => {
+    window.location = "/dashboard";
+  };
+
   render() {
     return (
       <Container fluid>
-        <h2>Edit Your Project</h2>
+        <h2>Edit Project</h2>
         <Row>
           <Col size="md-4">
             <div id="scrollablePreviewImage">
@@ -87,7 +91,13 @@ class EditProject extends Component {
               disabled={this.state.disableSubmitButton}
             >
               Submit
-              </FormBtn>
+            </FormBtn>
+            <FormBtn
+              style={{ height: "125px" }}
+              onClick={this.cancelEditProject}
+            >
+              Cancel
+            </FormBtn>
           </Col>
         </Row>
       </Container>

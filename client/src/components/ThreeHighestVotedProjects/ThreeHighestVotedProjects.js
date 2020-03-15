@@ -1,8 +1,9 @@
 import React from "react";
+import { defaults } from "../../assets/Defaults";
 
 const ThreeHighestVotedProjects = props => (
   <React.Fragment>
-    <h2>Join these Projects!</h2>
+    <h2>Join These Projects!</h2>
     <div className="row">
       {
         props.threeHighestVotedProjects.map(project => {
@@ -22,7 +23,7 @@ const ThreeHighestVotedProjects = props => (
                       (
                         <img
                           className="projectImage"
-                          src="https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png"
+                          src={defaults.defaultProjectImage}
                           alt="default"
                         />
                       )

@@ -181,8 +181,8 @@ hr {
 }
 
 .projectImage {
-  height: 75%;
-  width: 35%;
+  height: 5rem;
+  width: 8rem;
   cursor: pointer;
 }
 
