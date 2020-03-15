@@ -22,16 +22,15 @@ class App extends Component {
       threeHighestVotedProjects: [],
       projects: []
     };
-
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-  }
+  };
 
   componentDidMount() {
     this.getUser();
     this.getThreeHighestVotedProjects();
     this.getAllSubmittedProjects();
-  }
+  };
 
   getUser() {
     axios.get("/user/").then(response => {
@@ -47,7 +46,7 @@ class App extends Component {
         });
       }
     });
-  }
+  };
 
   getThreeHighestVotedProjects = () => {
     API.getThreeHighestVotedProjects()

@@ -6,7 +6,7 @@ import getUser from "../../utils/api";
 import API from "../../utils/pitchApi";
 import Project from "../../components/Project";
 import UserProject from "../../components/UserProject";
-// import EditProject from "../EditOneProject";
+import { defaults } from "../../assets/Defaults";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -22,10 +22,8 @@ class Dashboard extends Component {
       date: {},
       url: "",
       userRole: "user",
-      defaultImage:
-        "https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png",
-      imageToSubmit:
-        "https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png",
+      defaultImage: defaults.defaultProjectImage,
+      imageToSubmit: defaults.defaultProjectImage,
       imageURL: "",
       disableUpVoteButton: false,
       disableDownVoteButton: false,
@@ -252,21 +250,6 @@ class Dashboard extends Component {
       });
   };
 
-  // handleEditMyProject = projectId => {
-  //   API.handleEditMyProject(projectId).then(() => {
-  //     this.getAllProjects();
-  //     this.getProjectsBelongingToUser();
-  //   });
-  // };
-
-  handleValidateEditMyProject = (event, projectId) => {
-    event.preventDefault();
-    let response = window.confirm("Do you wish to edit this project?");
-    // if (response) {
-    //   this.handleValidateEditMyProject(projectId);
-    // }
-  };
-
   // Need to do a map over current user projects and filter out project to be deleted
   handleDeleteMyProject = userProjectId => {
     API.handleDeleteMyProject(userProjectId).then(() => {
@@ -322,28 +305,27 @@ class Dashboard extends Component {
                   <hr />
                 </React.Fragment>
               ) : (
-                this.state.userProjects.map(userProject => {
-                  return (
-                    <Title key={userProject._id}>
-                      <UserProject
-                        _id={userProject._id}
-                        userId={this.state.userId}
-                        title={userProject.title}
-                        description={userProject.description}
-                        imageURL={this.state.imageURL}
-                        votes={userProject.votes}
-                        date={userProject.date}
-                        handleValidateDeleteMyProject={
-                          this.handleValidateDeleteMyProject
-                        }
-                        handleValidateEditMyProject={
-                          this.handleValidateEditMyProject
-                        }
-                      />
-                    </Title>
-                  );
-                })
-              )}
+                  this.state.userProjects.map(userProject => {
+                    return (
+                      <Title key={userProject._id}>
+                        <UserProject
+                          _id={userProject._id}
+                          title={userProject.title}
+                          description={userProject.description}
+                          image={userProject.image}
+                          votes={userProject.votes}
+                          date={userProject.date}
+                          handleValidateDeleteMyProject={
+                            this.handleValidateDeleteMyProject
+                          }
+                          handleValidateEditMyProject={
+                            this.handleValidateEditMyProject
+                          }
+                        />
+                      </Title>
+                    );
+                  })
+                )}
             </React.Fragment>
             <div className="makeProjectSuggestion">
               <Row>
@@ -365,34 +347,32 @@ class Dashboard extends Component {
                 </div>
               </Col>
               <Col size="md-8">
-                <form action="POST">
-                  <Input
-                    name="title"
-                    placeholder="Title of project!"
-                    onChange={this.handleChange}
-                    value={this.state.title}
-                  />
-                  <Input
-                    name="imageURL"
-                    placeholder="Paste image URL"
-                    onChange={this.handleChange}
-                    value={this.state.imageURL}
-                  />
-                  <TextArea
-                    name="description"
-                    style={{ height: "125px" }}
-                    placeholder="Describe your project!"
-                    onChange={this.handleChange}
-                    value={this.state.description}
-                  />
-                  <FormBtn
-                    style={{ height: "125px" }}
-                    onClick={this.validateProjectInputs}
-                    disabled={this.state.disableSubmitButton}
-                  >
-                    Submit
+                <Input
+                  name="title"
+                  placeholder="Title of project!"
+                  onChange={this.handleChange}
+                  value={this.state.title}
+                />
+                <Input
+                  name="imageURL"
+                  placeholder="Paste image URL"
+                  onChange={this.handleChange}
+                  value={this.state.imageURL}
+                />
+                <TextArea
+                  name="description"
+                  style={{ height: "125px" }}
+                  placeholder="Describe your project!"
+                  onChange={this.handleChange}
+                  value={this.state.description}
+                />
+                <FormBtn
+                  style={{ height: "125px" }}
+                  onClick={this.validateProjectInputs}
+                  disabled={this.state.disableSubmitButton}
+                >
+                  Submit
                   </FormBtn>
-                </form>
               </Col>
             </Row>
             <React.Fragment>
@@ -416,8 +396,8 @@ class Dashboard extends Component {
             </React.Fragment>
           </React.Fragment>
         ) : (
-          <div>You are not authorized to view this page.</div>
-        )}
+            <div>You are not authorized to view this page.</div>
+          )}
       </Container>
     );
   }

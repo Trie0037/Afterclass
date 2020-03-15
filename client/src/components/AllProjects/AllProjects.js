@@ -1,4 +1,5 @@
 import React from "react";
+import { defaults } from "../../assets/Defaults";
 
 const AllProjects = props => (
   <React.Fragment>
@@ -22,7 +23,7 @@ const AllProjects = props => (
                       (
                         <img
                           className="projectImage"
-                          src="https://raw.githubusercontent.com/Trie0037/Afterclass/master/client/public/favicon.png"
+                          src={defaults.defaultProjectImage}
                           alt="default"
                         />
                       )

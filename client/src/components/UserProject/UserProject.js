@@ -32,22 +32,21 @@ const UserProject = props => {
           </button>
         </div>
         <div className="col-md-2">
-          {/* <Link
+          <Link
             to={{
               pathname: "/editproject/" + props._id,
               state: [
                 props.title,
                 props.description,
-                props.imageURL,
-                props._id,
-                props.userId
+                props.image,
+                props._id
               ]
             }}
           >
             <button id="editMyProjectButton">
               <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
             </button>
-          </Link>{" "} */}
+          </Link>{" "}
         </div>
       </div>
     </div>
