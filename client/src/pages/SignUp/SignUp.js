@@ -120,7 +120,7 @@ class SignUp extends Component {
           <div className="form-group">
             <div className="col-1 col-ml-auto">
               <label className="form-label" htmlFor="password">
-                Confirm Password:{" "}
+                Confirm_Password:{" "}
               </label>
             </div>
             <div className="col-3 col-mr-auto">
