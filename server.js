@@ -83,6 +83,10 @@ router.put(
   pitchController.submitInterestedUser
 );
 router.get(
+  "/api/getAllInterestedUsers/:projectId",
+  pitchController.getAllInterestedUsers
+);
+router.get(
   "/api/checkUserPermission/:userId/:roleToCheck",
   pitchController.checkUserPermission
 );

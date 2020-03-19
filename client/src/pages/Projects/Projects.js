@@ -6,6 +6,7 @@ class Projects extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loggedIn: props.loggedIn,
       props: props
     };
   };
@@ -14,6 +15,7 @@ class Projects extends Component {
     return (
       <Container fluid>
         <AllProjects
+          loggedIn={this.state.props.loggedIn}
           projects={this.state.props.projects}
         />
       </Container>

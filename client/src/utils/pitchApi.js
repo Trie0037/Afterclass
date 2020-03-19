@@ -26,6 +26,9 @@ const API = {
       `/api/checkIfUserVotedForThisProject/${userId}/${projectId}`
     );
   },
+  getAllInterestedUsers: projectId => {
+    return axios.get(`/api/getAllInterestedUsers/${projectId}`);
+  },
   getProjectsBelongingToUser: userId => {
     return axios.get(`/api/getProjectsBelongingToUser/${userId}`);
   },
