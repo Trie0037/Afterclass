@@ -93,13 +93,13 @@ class App extends Component {
                 handleValidateLoggedOut={this.handleValidateLoggedOut}
               />
             ) : (
-              <HeaderLoggedOut />
-            )}
+                <HeaderLoggedOut />
+              )}
             <Switch>
               <Route
                 exact
                 path="/"
-                component={() => (
+                component={() =>
                   <Home
                     loggedIn={this.state.loggedIn}
                     username={this.state.username}
@@ -107,7 +107,7 @@ class App extends Component {
                       this.state.threeHighestVotedProjects
                     }
                   />
-                )}
+                }
               />
               <Route exact path="/about" component={About} />
               <Route
@@ -124,7 +124,12 @@ class App extends Component {
               <Route
                 exact
                 path="/projects"
-                component={() => <Projects projects={this.state.projects} />}
+                component={() =>
+                  <Projects
+                    loggedIn={this.state.loggedIn}
+                    projects={this.state.projects}
+                  />
+                }
               />
               <Route
                 exact
