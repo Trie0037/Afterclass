@@ -6,6 +6,12 @@ const API = {
   submitProject: payload => {
     return axios.post("/api/submitProject", payload);
   },
+  submitInterestedUser: (projectId, interestedUserPayload) => {
+    return axios.put(
+      `/api/submitInterestedUser/${projectId}`,
+      interestedUserPayload
+    );
+  },
   handleUpVote: projectId => {
     return axios.put(`/api/upVote/${projectId}`);
   },
@@ -24,7 +30,10 @@ const API = {
     return axios.get(`/api/getProjectsBelongingToUser/${userId}`);
   },
   handleEditMyProject: (projectId, editedProjectPayload) => {
-    return axios.put(`/api/handleEditMyProject/${projectId}`, editedProjectPayload);
+    return axios.put(
+      `/api/handleEditMyProject/${projectId}`,
+      editedProjectPayload
+    );
   },
   handleDeleteMyProject: userProjectId => {
     return axios.delete(`/api/handleDeleteMyProject/${userProjectId}`);
