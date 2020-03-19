@@ -9,6 +9,7 @@ var pitchSchema = new Schema({
   username: String,
   votes: Number,
   image: String,
+  interestedUsers: [{}],
   date: { type: Date, default: Date.now }
 });
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import API from "../src/utils/pitchApi";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
+import DisplayProjectDetails from "./pages/DisplayProjectDetails";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Login from "./pages/Login";
@@ -24,13 +25,13 @@ class App extends Component {
     };
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-  };
+  }
 
   componentDidMount() {
     this.getUser();
     this.getThreeHighestVotedProjects();
     this.getAllSubmittedProjects();
-  };
+  }
 
   getUser() {
     axios.get("/user/").then(response => {
@@ -46,7 +47,7 @@ class App extends Component {
         });
       }
     });
-  };
+  }
 
   getThreeHighestVotedProjects = () => {
     API.getThreeHighestVotedProjects()
@@ -100,6 +101,7 @@ class App extends Component {
                 path="/"
                 component={() => (
                   <Home
+                    loggedIn={this.state.loggedIn}
                     username={this.state.username}
                     threeHighestVotedProjects={
                       this.state.threeHighestVotedProjects
@@ -107,8 +109,12 @@ class App extends Component {
                   />
                 )}
               />
-              <Route exact path="/home" component={Home} />
               <Route exact path="/about" component={About} />
+              <Route
+                exact
+                path="/displayprojectdetails/:id"
+                component={DisplayProjectDetails}
+              />
               <Route
                 exact
                 path="/dashboard"

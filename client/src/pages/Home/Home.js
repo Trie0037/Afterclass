@@ -8,15 +8,17 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loggedIn: props.loggedIn,
       props: props
     };
-  };
+  }
 
   render() {
     return (
       <Container fluid>
         <HomePageDetails />
         <ThreeHighestVotedProjects
+          loggedIn={this.state.loggedIn}
           threeHighestVotedProjects={this.state.props.threeHighestVotedProjects}
         />
         <CoursesToJoin />
