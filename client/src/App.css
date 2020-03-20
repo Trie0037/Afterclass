@@ -9,8 +9,6 @@
 
 html,
 body {
-  /* background: rgb(51, 51, 51); */
-  /* background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); */
   margin: 0;
   padding: 0;
   width: 100%;
@@ -41,7 +39,6 @@ div {
 }
 
 .container {
-  /* background: rgb(51, 51, 51); */
   padding: 0, 0;
   height: 100%;
   width: 100%;
@@ -57,38 +54,23 @@ h2 {
   text-align: center;
 }
 
-.jumbotron {
-  /* margin: 15px;
-  margin-bottom: 0px;
-  padding: 0;
-  border: 1px solid rgb(199, 189, 189);
-  background: rgb(51, 51, 51);
-  height: 100%;
-  color: #00ccff;
-  box-shadow: 0 3px 6px #e44f27, 0 3px 6px #e44f27;
-  transition: transform 0.25s; */
-}
-
 #deleteMyProjectButton {
-  background: rgb(167, 42, 26);
+  background: rgb(218, 0, 4);
   color: #fff;
   width: 100%;
-  border: none;
-  padding: 5px 9px;
-  border-radius: 5%;
+  height: 100%;
+
   cursor: pointer;
   float: right;
 }
 
 #editMyProjectButton {
-  background: rgb(238, 229, 226);
+  background: #00628c;
   color: #fff;
   width: 100%;
-  border: none;
-  padding: 5px 9px;
-  border-radius: 5%;
+  height: 100%;
+
   cursor: pointer;
-  /* float: right; */
 }
 
 .upVoteButton {
@@ -216,7 +198,7 @@ hr {
   width: 100%;
   text-align: center;
   font-size: 1rem;
-  /* text-decoration: underline; */
+
   color: #2a77ae;
 }
 
