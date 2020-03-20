@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import InterestedUserSubmissions from "../../components/InterestedUserSubmissions";
 import { defaults } from "../../assets/Defaults";
 import API from "../../utils/pitchApi";
 
@@ -16,7 +17,7 @@ class DisplayProjectDetails extends Component {
       loggedIn: "",
       email: "",
       comment: "",
-      interestedUsers: ""
+      interestedUsers: []
     };
   };
 
@@ -166,6 +167,10 @@ class DisplayProjectDetails extends Component {
             </FormBtn>
           </Col>
         </Row>
+        <InterestedUserSubmissions
+          loggedIn={this.state.loggedIn}
+          interestedUsers={this.state.interestedUsers}
+        />
       </Container>
     );
   }
