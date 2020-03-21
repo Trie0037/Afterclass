@@ -10,6 +10,7 @@ class Home extends Component {
     this.state = {
       loggedIn: props.loggedIn,
       userId: props.userId,
+      username: props.username,
       props: props
     };
   }
@@ -21,9 +22,10 @@ class Home extends Component {
         <ThreeHighestVotedProjects
           loggedIn={this.state.loggedIn}
           userId={this.state.userId}
+          username={this.state.username}
           threeHighestVotedProjects={this.state.props.threeHighestVotedProjects}
         />
-        <CoursesToJoin />
+        {/* <CoursesToJoin /> */}
       </Container>
     );
   }

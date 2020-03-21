@@ -8,6 +8,8 @@ class Projects extends Component {
     this.state = {
       userId: props.userId,
       loggedIn: props.loggedIn,
+      projects: props.projects,
+      username: props.username,
       props: props
     };
   }
@@ -17,8 +19,9 @@ class Projects extends Component {
       <Container fluid>
         <AllProjects
           userId={this.state.userId}
-          loggedIn={this.state.props.loggedIn}
-          projects={this.state.props.projects}
+          loggedIn={this.state.loggedIn}
+          projects={this.state.projects}
+          username={this.state.username}
         />
       </Container>
     );

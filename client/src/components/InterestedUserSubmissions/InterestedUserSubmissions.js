@@ -32,7 +32,6 @@ const InterestedUserSubmissions = props => {
                           <span>No comments.</span>
                         )
                     }
-
                   </div>
                 </Col>
               </Row>
