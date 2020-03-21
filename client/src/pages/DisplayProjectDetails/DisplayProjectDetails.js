@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { TextArea, FormBtn } from "../../components/Form";
 import InterestedUserSubmissions from "../../components/InterestedUserSubmissions";
 import { defaults } from "../../assets/Defaults";
 import API from "../../utils/pitchApi";
@@ -18,6 +18,7 @@ class DisplayProjectDetails extends Component {
       loggedIn: "",
       email: "",
       comment: "",
+      username: "",
       interestedUsers: []
     };
   }
@@ -31,7 +32,8 @@ class DisplayProjectDetails extends Component {
           imageURL: this.state.props.location.state[2],
           projectId: this.state.props.location.state[3],
           loggedIn: this.state.props.location.state[4],
-          userId: this.state.props.location.state[5]
+          userId: this.state.props.location.state[5],
+          username: this.state.props.location.state[6]
         },
         () => {
           this.getAllInterestedUsers();
@@ -71,10 +73,18 @@ class DisplayProjectDetails extends Component {
   };
 
   handleSubmitInterestedUser = () => {
-    let interestedUserPayload = {
-      email: this.state.email,
-      comment: this.state.comment
-    };
+    let interestedUserPayload;
+    if (this.state.email) {
+      interestedUserPayload = {
+        email: this.state.email,
+        comment: this.state.comment
+      };
+    } else {
+      interestedUserPayload = {
+        email: this.state.username,
+        comment: this.state.comment
+      };
+    }
     API.submitInterestedUser(this.state.projectId, interestedUserPayload)
       .then(() => {
         this.setState(
@@ -106,7 +116,6 @@ class DisplayProjectDetails extends Component {
   render() {
     return (
       <Container fluid>
-        {" "}
         <h2>Join Project</h2>
         <Row>
           <Col size="md-4">
@@ -118,12 +127,12 @@ class DisplayProjectDetails extends Component {
                   alt="previewImage"
                 />
               ) : (
-                <img
-                  id="previewImage"
-                  src={defaults.defaultProjectImage}
-                  alt="previewImage"
-                />
-              )}
+                  <img
+                    id="previewImage"
+                    src={defaults.defaultProjectImage}
+                    alt="previewImage"
+                  />
+                )}
             </div>
           </Col>
           <Col size="md-8">
@@ -153,17 +162,16 @@ class DisplayProjectDetails extends Component {
                 <TextArea
                   name="comment"
                   style={{ height: "125px" }}
-                  placeholder="Comment (Optional)"
+                  placeholder="Comments"
                   onChange={this.handleChange}
                 />
               </React.Fragment>
             ) : null}
-
             {this.state.loggedIn ? (
               <FormBtn
                 style={{ height: "125px" }}
                 onClick={this.handleSubmitInterestedUser}
-                disabled={this.state.disableSubmitButton}
+                disabled={!(this.state.comment)}
               >
                 Submit
               </FormBtn>

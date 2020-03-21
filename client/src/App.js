@@ -132,6 +132,7 @@ class App extends Component {
                     userId={this.state.userId}
                     loggedIn={this.state.loggedIn}
                     projects={this.state.projects}
+                    username={this.state.username}
                   />
                 )}
               />

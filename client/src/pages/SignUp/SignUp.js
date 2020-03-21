@@ -17,13 +17,11 @@ class SignUp extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }
+  };
 
   handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   validatePasswordUponSignup = event => {
     event.preventDefault();
@@ -43,34 +41,34 @@ class SignUp extends Component {
       .then(response => {
         API.assignRole(response.data._id, this.state.role)
           .then(() => {
-            API.assignEmail(response.data._id, this.state.email).then(() => {
-              if (response.data) {
-                axios
-                  .post("/user/login", {
-                    username: this.state.username,
-                    password: this.state.password
-                  })
-                  .then(response => {
-                    if (response.data) {
-                      this.setState(
-                        {
-                          shouldRedirectHome: true
-                        },
-                        () => {
-                          this.props.getUser();
-                        }
-                      );
-                    } else {
-                      alert("Sign-up error");
-                    }
-                  })
-                  .catch(error => {
-                    alert(error);
-                  });
-              } else {
-                alert("Sign-up error");
-              }
-            });
+            API.assignEmail(response.data._id, this.state.email)
+              .then(() => {
+                if (response.data) {
+                  axios
+                    .post("/user/login", {
+                      username: this.state.username,
+                      password: this.state.password
+                    })
+                    .then(response => {
+                      if (response.data) {
+                        this.setState(
+                          { shouldRedirectHome: true },
+                          () => this.props.getUser()
+                        );
+                      } else {
+                        alert("Sign-up error");
+                      }
+                    })
+                    .catch(error => {
+                      alert(error);
+                    });
+                } else {
+                  alert("Sign-up error");
+                }
+              })
+              .catch(error => {
+                alert(error);
+              });
           })
           .catch(error => {
             alert(error);
@@ -79,7 +77,7 @@ class SignUp extends Component {
       .catch(error => {
         alert(error);
       });
-  }
+  };
 
   render() {
     if (this.state.shouldRedirectHome) {
@@ -87,87 +85,85 @@ class SignUp extends Component {
     }
     return (
       <div className="SignupForm">
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-1 col-ml-auto">
-              <label className="form-label" htmlFor="email">
-                Email
+        <div className="form-group">
+          <div className="col-1">
+            <label className="form-label" htmlFor="email">
+              Email
               </label>
-            </div>
-            <div className="col-3 col-mr-auto">
-              <input
-                className="form-input"
-                type="text"
-                placeholder=""
-                name="email"
-                value={this.state.email}
-                onChange={this.handleChange}
-              />
-            </div>
           </div>
-          <div className="form-group">
-            <div className="col-1 col-ml-auto">
-              <label className="form-label" htmlFor="username">
-                Username
+          <div className="col-3">
+            <input
+              className="form-input"
+              type="text"
+              placeholder=""
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="col-1">
+            <label className="form-label" htmlFor="username">
+              Username
               </label>
-            </div>
-            <div className="col-3 col-mr-auto">
-              <input
-                className="form-input"
-                type="text"
-                id="input-example-1"
-                placeholder=""
-                name="username"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
-            </div>
           </div>
-          <div className="form-group">
-            <div className="col-1 col-ml-auto">
-              <label className="form-label" htmlFor="password">
-                Password:{" "}
+          <div className="col-3">
+            <input
+              className="form-input"
+              type="text"
+              id="input-example-1"
+              placeholder=""
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="col-1">
+            <label className="form-label" htmlFor="password">
+              Password:
               </label>
-            </div>
-            <div className="col-3 col-mr-auto">
-              <input
-                className="form-input"
-                placeholder=""
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </div>
           </div>
-          <div className="form-group">
-            <div className="col-1 col-ml-auto">
-              <label className="form-label" htmlFor="password">
-                Confirm_Password:{" "}
+          <div className="col-3">
+            <input
+              className="form-input"
+              placeholder=""
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="col-1">
+            <label className="form-label" htmlFor="password">
+              Confirm_Password:
               </label>
-            </div>
-            <div className="col-3 col-mr-auto">
-              <input
-                className="form-input"
-                placeholder=""
-                type="password"
-                name="confirmPassword"
-                value={this.state.confirmPassword}
-                onChange={this.handleChange}
-              />
-            </div>
           </div>
-          <div className="form-group ">
-            <div className="col-7"></div>
-            <button
-              className="btn btn-primary"
-              style={{ flex: "1 1 0%", border: "black" }}
-              onClick={this.validatePasswordUponSignup}
-            >
-              Sign up
+          <div className="col-3">
+            <input
+              className="form-input"
+              placeholder=""
+              type="password"
+              name="confirmPassword"
+              value={this.state.confirmPassword}
+              onChange={this.handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-group ">
+          <div className="col-7"></div>
+          <button
+            className="btn btn-primary"
+            style={{ flex: "1 1 0%", border: "black" }}
+            onClick={this.validatePasswordUponSignup}
+          >
+            Sign up
             </button>
-          </div>
-        </form>
+        </div>
       </div>
     );
   }

@@ -18,7 +18,8 @@ const ThreeHighestVotedProjects = props => (
                   project.image,
                   project._id,
                   props.loggedIn,
-                  props.userId
+                  props.userId,
+                  props.username
                 ]
               }}
             >
