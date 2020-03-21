@@ -29,7 +29,7 @@ class Dashboard extends Component {
       disableDownVoteButton: false,
       disableSubmitButton: false
     };
-  };
+  }
 
   componentDidMount() {
     getUser().then(response => {
@@ -46,7 +46,7 @@ class Dashboard extends Component {
         );
       }
     });
-  };
+  }
 
   getAllProjects = () => {
     API.getAllProjects()
@@ -305,27 +305,27 @@ class Dashboard extends Component {
                   <hr />
                 </React.Fragment>
               ) : (
-                  this.state.userProjects.map(userProject => {
-                    return (
-                      <Title key={userProject._id}>
-                        <UserProject
-                          _id={userProject._id}
-                          title={userProject.title}
-                          description={userProject.description}
-                          image={userProject.image}
-                          votes={userProject.votes}
-                          date={userProject.date}
-                          handleValidateDeleteMyProject={
-                            this.handleValidateDeleteMyProject
-                          }
-                          handleValidateEditMyProject={
-                            this.handleValidateEditMyProject
-                          }
-                        />
-                      </Title>
-                    );
-                  })
-                )}
+                this.state.userProjects.map(userProject => {
+                  return (
+                    <Title key={userProject._id}>
+                      <UserProject
+                        _id={userProject._id}
+                        title={userProject.title}
+                        description={userProject.description}
+                        image={userProject.image}
+                        votes={userProject.votes}
+                        date={userProject.date}
+                        handleValidateDeleteMyProject={
+                          this.handleValidateDeleteMyProject
+                        }
+                        handleValidateEditMyProject={
+                          this.handleValidateEditMyProject
+                        }
+                      />
+                    </Title>
+                  );
+                })
+              )}
             </React.Fragment>
             <div className="makeProjectSuggestion">
               <Row>
@@ -372,7 +372,7 @@ class Dashboard extends Component {
                   disabled={this.state.disableSubmitButton}
                 >
                   Submit
-                  </FormBtn>
+                </FormBtn>
               </Col>
             </Row>
             <React.Fragment>
@@ -396,8 +396,8 @@ class Dashboard extends Component {
             </React.Fragment>
           </React.Fragment>
         ) : (
-            <div>You are not authorized to view this page.</div>
-          )}
+          <div>You are not authorized to view this page.</div>
+        )}
       </Container>
     );
   }

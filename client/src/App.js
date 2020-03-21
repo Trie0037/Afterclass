@@ -19,6 +19,7 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
+      userId: "",
       username: "",
       threeHighestVotedProjects: [],
       projects: []
@@ -37,6 +38,7 @@ class App extends Component {
     axios.get("/user/").then(response => {
       if (response.data.user) {
         this.setState({
+          userId: response.data.user._id,
           loggedIn: true,
           username: response.data.user.username
         });
@@ -93,21 +95,22 @@ class App extends Component {
                 handleValidateLoggedOut={this.handleValidateLoggedOut}
               />
             ) : (
-                <HeaderLoggedOut />
-              )}
+              <HeaderLoggedOut />
+            )}
             <Switch>
               <Route
                 exact
                 path="/"
-                component={() =>
+                component={() => (
                   <Home
                     loggedIn={this.state.loggedIn}
                     username={this.state.username}
+                    userId={this.state.userId}
                     threeHighestVotedProjects={
                       this.state.threeHighestVotedProjects
                     }
                   />
-                }
+                )}
               />
               <Route exact path="/about" component={About} />
               <Route
@@ -124,12 +127,13 @@ class App extends Component {
               <Route
                 exact
                 path="/projects"
-                component={() =>
+                component={() => (
                   <Projects
+                    userId={this.state.userId}
                     loggedIn={this.state.loggedIn}
                     projects={this.state.projects}
                   />
-                }
+                )}
               />
               <Route
                 exact

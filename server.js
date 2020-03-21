@@ -70,6 +70,10 @@ router.get(
   "/api/getProjectsBelongingToUser/:userId",
   pitchController.getProjectsBelongingToUser
 );
+router.get(
+  "/api/getUserEmail/:userId",
+  pitchController.getUserEmail
+)
 router.delete(
   "/api/handleDeleteMyProject/:userProjectId",
   pitchController.handleDeleteMyProject
@@ -91,6 +95,7 @@ router.get(
   pitchController.checkUserPermission
 );
 router.get("/api/assignRole/:userId/:role", pitchController.assignRole);
+router.get("/api/assignEmail/:userId/:email", pitchController.assignEmail);
 app.use("/user", user);
 app.use(router);
 
