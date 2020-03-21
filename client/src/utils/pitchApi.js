@@ -49,6 +49,12 @@ const API = {
   },
   assignRole: (userId, role) => {
     return axios.get(`/api/assignRole/${userId}/${role}`);
+  },
+  assignEmail: (userId, email) => {
+    return axios.get(`/api/assignEmail/${userId}/${email}`);
+  },
+  getUserEmail: (userId) => {
+    return axios.get(`/api/getUserEmail/${userId}`);
   }
 };
 

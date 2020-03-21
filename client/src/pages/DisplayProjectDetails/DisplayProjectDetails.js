@@ -14,24 +14,30 @@ class DisplayProjectDetails extends Component {
       description: "",
       imageURL: "",
       projectId: "",
+      userId: "",
       loggedIn: "",
       email: "",
       comment: "",
       interestedUsers: []
     };
-  };
+  }
 
   componentDidMount = () => {
     try {
-      this.setState({
-        title: this.state.props.location.state[0],
-        description: this.state.props.location.state[1],
-        imageURL: this.state.props.location.state[2],
-        projectId: this.state.props.location.state[3],
-        loggedIn: this.state.props.location.state[4]
-      }, () => {
-        this.getAllInterestedUsers();
-      });
+      this.setState(
+        {
+          title: this.state.props.location.state[0],
+          description: this.state.props.location.state[1],
+          imageURL: this.state.props.location.state[2],
+          projectId: this.state.props.location.state[3],
+          loggedIn: this.state.props.location.state[4],
+          userId: this.state.props.location.state[5]
+        },
+        () => {
+          this.getAllInterestedUsers();
+          this.getUserEmail();
+        }
+      );
     } catch (e) {
       window.location = "/";
     }
@@ -64,16 +70,6 @@ class DisplayProjectDetails extends Component {
       });
   };
 
-  validateJoinProjectInputs = () => {
-    if ((this.state.email === "") ||
-      (this.isInputBlank(this.state.email)) ||
-      (!this.state.email.includes("@"))) {
-      alert("Please enter a valid email.");
-    } else {
-      this.handleSubmitInterestedUser();
-    }
-  };
-
   handleSubmitInterestedUser = () => {
     let interestedUserPayload = {
       email: this.state.email,
@@ -81,16 +77,29 @@ class DisplayProjectDetails extends Component {
     };
     API.submitInterestedUser(this.state.projectId, interestedUserPayload)
       .then(() => {
-        this.setState({
-          email: "",
-          comment: ""
-        }, () => {
-          alert("Thank you for your submission!");
-          window.location = "/";
-        });
+        this.setState(
+          {
+            email: "",
+            comment: ""
+          },
+          () => {
+            alert("Thank you for your submission!");
+            window.location = "/";
+          }
+        );
       })
       .catch(err => {
-        alert(err)
+        alert(err);
+      });
+  };
+
+  getUserEmail = () => {
+    API.getUserEmail(this.state.userId)
+      .then(res => {
+        this.setState({ email: res.data[0].email });
+      })
+      .catch(err => {
+        alert(err);
       });
   };
 
@@ -102,45 +111,45 @@ class DisplayProjectDetails extends Component {
         <Row>
           <Col size="md-4">
             <div id="scrollablePreviewImage">
-              {
-                this.state.imageURL ?
-                  (
-                    <img
-                      id="previewImage"
-                      src={this.state.imageURL}
-                      alt="previewImage"
-                    />
-                  ) : (
-                    <img
-                      id="previewImage"
-                      src={defaults.defaultProjectImage}
-                      alt="previewImage"
-                    />
-                  )
-              }
+              {this.state.imageURL ? (
+                <img
+                  id="previewImage"
+                  src={this.state.imageURL}
+                  alt="previewImage"
+                />
+              ) : (
+                <img
+                  id="previewImage"
+                  src={defaults.defaultProjectImage}
+                  alt="previewImage"
+                />
+              )}
             </div>
           </Col>
           <Col size="md-8">
             <div className="row">
-              <div className="col-md-3 text-left"><strong>Title:</strong></div>
+              <div className="col-md-3 text-left">
+                <strong>Title:</strong>
+              </div>
               <div className="col-md-9 text-left">{this.state.title}</div>
             </div>
             <div className="row">
-              <div className="col-md-3 text-left"><strong>Description:</strong></div>
+              <div className="col-md-3 text-left">
+                <strong>Description:</strong>
+              </div>
               <div className="col-md-9 text-left">{this.state.description}</div>
             </div>
             <div className="row">
-              <div className="col-md-3 text-left"><strong>Submissions:</strong></div>
-              <div className="col-md-9 text-left">{this.state.interestedUsers.length}</div>
+              <div className="col-md-3 text-left">
+                <strong>Submissions:</strong>
+              </div>
+              <div className="col-md-9 text-left">
+                {this.state.interestedUsers.length}
+              </div>
             </div>
             <br />
             {this.state.loggedIn ? (
               <React.Fragment>
-                <Input
-                  name="email"
-                  placeholder="Email (Required)"
-                  onChange={this.handleChange}
-                />
                 <TextArea
                   name="comment"
                   style={{ height: "125px" }}
@@ -153,7 +162,7 @@ class DisplayProjectDetails extends Component {
             {this.state.loggedIn ? (
               <FormBtn
                 style={{ height: "125px" }}
-                onClick={this.validateJoinProjectInputs}
+                onClick={this.handleSubmitInterestedUser}
                 disabled={this.state.disableSubmitButton}
               >
                 Submit

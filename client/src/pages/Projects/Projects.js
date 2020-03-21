@@ -6,15 +6,17 @@ class Projects extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userId: props.userId,
       loggedIn: props.loggedIn,
       props: props
     };
-  };
+  }
 
   render() {
     return (
       <Container fluid>
         <AllProjects
+          userId={this.state.userId}
           loggedIn={this.state.props.loggedIn}
           projects={this.state.props.projects}
         />

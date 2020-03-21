@@ -9,6 +9,7 @@ class SignUp extends Component {
     super();
     this.state = {
       username: "",
+      email: "",
       password: "",
       confirmPassword: "",
       role: "user",
@@ -16,22 +17,22 @@ class SignUp extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  };
+  }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
-  };
+  }
 
-  validatePasswordUponSignup = (event) => {
+  validatePasswordUponSignup = event => {
     event.preventDefault();
     if (this.state.password === this.state.confirmPassword) {
       this.handleSubmit();
     } else {
       alert("Password does not match.");
     }
-  }
+  };
 
   handleSubmit() {
     axios
@@ -42,29 +43,34 @@ class SignUp extends Component {
       .then(response => {
         API.assignRole(response.data._id, this.state.role)
           .then(() => {
-            if (response.data) {
-              axios
-                .post("/user/login", {
-                  username: this.state.username,
-                  password: this.state.password
-                })
-                .then(response => {
-                  if (response.data) {
-                    this.setState({
-                      shouldRedirectHome: true
-                    }, () => {
-                      this.props.getUser()
-                    });
-                  } else {
-                    alert("Sign-up error");
-                  }
-                })
-                .catch(error => {
-                  alert(error);
-                });
-            } else {
-              alert("Sign-up error");
-            }
+            API.assignEmail(response.data._id, this.state.email).then(() => {
+              if (response.data) {
+                axios
+                  .post("/user/login", {
+                    username: this.state.username,
+                    password: this.state.password
+                  })
+                  .then(response => {
+                    if (response.data) {
+                      this.setState(
+                        {
+                          shouldRedirectHome: true
+                        },
+                        () => {
+                          this.props.getUser();
+                        }
+                      );
+                    } else {
+                      alert("Sign-up error");
+                    }
+                  })
+                  .catch(error => {
+                    alert(error);
+                  });
+              } else {
+                alert("Sign-up error");
+              }
+            });
           })
           .catch(error => {
             alert(error);
@@ -73,7 +79,7 @@ class SignUp extends Component {
       .catch(error => {
         alert(error);
       });
-  };
+  }
 
   render() {
     if (this.state.shouldRedirectHome) {
@@ -82,6 +88,23 @@ class SignUp extends Component {
     return (
       <div className="SignupForm">
         <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-1 col-ml-auto">
+              <label className="form-label" htmlFor="email">
+                Email
+              </label>
+            </div>
+            <div className="col-3 col-mr-auto">
+              <input
+                className="form-input"
+                type="text"
+                placeholder=""
+                name="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
           <div className="form-group">
             <div className="col-1 col-ml-auto">
               <label className="form-label" htmlFor="username">
@@ -147,7 +170,7 @@ class SignUp extends Component {
         </form>
       </div>
     );
-  };
-};
+  }
+}
 
 export default SignUp;

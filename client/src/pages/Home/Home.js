@@ -9,6 +9,7 @@ class Home extends Component {
     super(props);
     this.state = {
       loggedIn: props.loggedIn,
+      userId: props.userId,
       props: props
     };
   }
@@ -19,6 +20,7 @@ class Home extends Component {
         <HomePageDetails />
         <ThreeHighestVotedProjects
           loggedIn={this.state.loggedIn}
+          userId={this.state.userId}
           threeHighestVotedProjects={this.state.props.threeHighestVotedProjects}
         />
         <CoursesToJoin />
