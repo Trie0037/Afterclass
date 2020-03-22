@@ -81,12 +81,10 @@ class Login extends Component {
               />
             </div>
           </div>
-
           <div className="form-group ">
             <div className="col-7"></div>
-
             <button
-              className="btn btn-primary"
+              id="btn-btn-primary"
               style={{ flex: "1 1 0%", border: "black" }}
               onClick={this.handleSubmit}
             >

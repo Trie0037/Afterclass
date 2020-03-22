@@ -17,11 +17,11 @@ class SignUp extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  };
+  }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-  };
+  }
 
   validatePasswordUponSignup = event => {
     event.preventDefault();
@@ -51,9 +51,8 @@ class SignUp extends Component {
                     })
                     .then(response => {
                       if (response.data) {
-                        this.setState(
-                          { shouldRedirectHome: true },
-                          () => this.props.getUser()
+                        this.setState({ shouldRedirectHome: true }, () =>
+                          this.props.getUser()
                         );
                       } else {
                         alert("Sign-up error");
@@ -77,7 +76,7 @@ class SignUp extends Component {
       .catch(error => {
         alert(error);
       });
-  };
+  }
 
   render() {
     if (this.state.shouldRedirectHome) {
@@ -89,7 +88,7 @@ class SignUp extends Component {
           <div className="col-1">
             <label className="form-label" htmlFor="email">
               Email
-              </label>
+            </label>
           </div>
           <div className="col-3">
             <input
@@ -106,7 +105,7 @@ class SignUp extends Component {
           <div className="col-1">
             <label className="form-label" htmlFor="username">
               Username
-              </label>
+            </label>
           </div>
           <div className="col-3">
             <input
@@ -124,7 +123,7 @@ class SignUp extends Component {
           <div className="col-1">
             <label className="form-label" htmlFor="password">
               Password:
-              </label>
+            </label>
           </div>
           <div className="col-3">
             <input
@@ -141,7 +140,7 @@ class SignUp extends Component {
           <div className="col-1">
             <label className="form-label" htmlFor="password">
               Confirm_Password:
-              </label>
+            </label>
           </div>
           <div className="col-3">
             <input
@@ -157,12 +156,12 @@ class SignUp extends Component {
         <div className="form-group ">
           <div className="col-7"></div>
           <button
-            className="btn btn-primary"
+            id="btn-btn-primary"
             style={{ flex: "1 1 0%", border: "black" }}
             onClick={this.validatePasswordUponSignup}
           >
             Sign up
-            </button>
+          </button>
         </div>
       </div>
     );

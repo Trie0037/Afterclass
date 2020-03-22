@@ -14,7 +14,7 @@ class EditProject extends Component {
       imageURL: "",
       projectId: ""
     };
-  };
+  }
 
   componentWillMount = () => {
     try {
@@ -56,7 +56,7 @@ class EditProject extends Component {
       image: this.state.imageURL
     };
     API.handleEditMyProject(this.state.projectId, editedProjectPayload)
-      .then(() => window.location = "/dashboard")
+      .then(() => (window.location = "/dashboard"))
       .catch(err => alert(err));
   };
 
@@ -99,23 +99,17 @@ class EditProject extends Component {
               value={this.state.description}
             />
             <FormBtn
-              style={{ height: "125px" }}
               onClick={this.validateEditProjectInputs}
               disabled={this.state.disableSubmitButton}
             >
               Submit
             </FormBtn>
-            <FormBtn
-              style={{ height: "125px" }}
-              onClick={this.cancelEditProject}
-            >
-              Cancel
-            </FormBtn>
+            <FormBtn onClick={this.cancelEditProject}>Cancel</FormBtn>
           </Col>
         </Row>
       </Container>
     );
-  };
-};
+  }
+}
 
 export default EditProject;

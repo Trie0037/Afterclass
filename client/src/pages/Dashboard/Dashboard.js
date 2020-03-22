@@ -367,7 +367,7 @@ class Dashboard extends Component {
                   value={this.state.description}
                 />
                 <FormBtn
-                  style={{ height: "125px" }}
+                  // style={{ height: "125px" }}
                   onClick={this.validateProjectInputs}
                   disabled={this.state.disableSubmitButton}
                 >

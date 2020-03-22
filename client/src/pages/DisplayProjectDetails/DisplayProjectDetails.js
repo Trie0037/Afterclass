@@ -127,12 +127,12 @@ class DisplayProjectDetails extends Component {
                   alt="previewImage"
                 />
               ) : (
-                  <img
-                    id="previewImage"
-                    src={defaults.defaultProjectImage}
-                    alt="previewImage"
-                  />
-                )}
+                <img
+                  id="previewImage"
+                  src={defaults.defaultProjectImage}
+                  alt="previewImage"
+                />
+              )}
             </div>
           </Col>
           <Col size="md-8">
@@ -169,19 +169,13 @@ class DisplayProjectDetails extends Component {
             ) : null}
             {this.state.loggedIn ? (
               <FormBtn
-                style={{ height: "125px" }}
                 onClick={this.handleSubmitInterestedUser}
-                disabled={!(this.state.comment)}
+                disabled={!this.state.comment}
               >
                 Submit
               </FormBtn>
             ) : null}
-            <FormBtn
-              style={{ height: "125px" }}
-              onClick={this.cancelJoinProject}
-            >
-              Cancel
-            </FormBtn>
+            <FormBtn onClick={this.cancelJoinProject}>Cancel</FormBtn>
           </Col>
         </Row>
         <InterestedUserSubmissions
