@@ -73,6 +73,10 @@ h2 {
   cursor: pointer;
 }
 
+.breakWord {
+  word-wrap: break-word;
+}
+
 .upVoteButton {
   background: rgb(4, 71, 4);
   color: #fff;
