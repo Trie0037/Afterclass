@@ -5,7 +5,7 @@ const Project = props => {
   const formattedDate = props.date.substring(0, 10);
   return (
     <div className="upVoteDownVote">
-      <hr/>
+      <hr />
       <div className="row">
         <div className="col-md-3">
           <div className="row">
