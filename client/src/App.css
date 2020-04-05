@@ -73,6 +73,22 @@ h2 {
   cursor: pointer;
 }
 
+#dashboardbutton {
+  background: rgb(16, 16, 16);
+  color: #00628c;
+  float: none;
+  text-align: center;
+  height: 100%;
+  padding: 7px 20px;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+#dashboardbutton:hover {
+  background: #f1da4e;
+  color: white;
+}
+
 .breakWord {
   word-wrap: break-word;
 }
@@ -170,6 +186,7 @@ hr {
 #scrollablePreviewImage {
   max-height: 17rem;
   overflow: hidden;
+  margin-bottom: 15px;
 }
 
 .highestVotedProjects,
