@@ -366,8 +366,12 @@ class Dashboard extends Component {
                   onChange={this.handleChange}
                   value={this.state.description}
                 />
+              </Col>
+            </Row>
+            <Row>
+              <Col size="md-12">
                 <FormBtn
-                  // style={{ height: "125px" }}
+                  id="dashboardbutton"
                   onClick={this.validateProjectInputs}
                   disabled={this.state.disableSubmitButton}
                 >
