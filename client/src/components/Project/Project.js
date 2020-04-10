@@ -43,8 +43,9 @@ const Project = props => {
         </div>
         <div className="col-md-2">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-6">
               <img
+                className="thumbUp"
                 src={thumbUp}
                 onClick={event =>
                   props.hasUserVotedOnThisProject(event, props.id, "upVote")
@@ -52,10 +53,9 @@ const Project = props => {
                 disabled={props.disableUpVoteButton}
               />
             </div>
-          </div>
-          <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-6">
               <img
+                className="thumbDown"
                 src={thumbDown}
                 onClick={event =>
                   props.hasUserVotedOnThisProject(event, props.id, "downVote")
