@@ -1,5 +1,7 @@
 import React from "react";
 import "../../App.css";
+import thumbDown from "../../assets/images/thumbDown.png";
+import thumbUp from "../../assets/images/thumbUp.png";
 
 const Project = props => {
   const formattedDate = props.date.substring(0, 10);
@@ -42,28 +44,24 @@ const Project = props => {
         <div className="col-md-2">
           <div className="row">
             <div className="col-md-12">
-              <button
-                className="upVoteButton btnStyle"
+              <img
+                src={thumbUp}
                 onClick={event =>
                   props.hasUserVotedOnThisProject(event, props.id, "upVote")
                 }
                 disabled={props.disableUpVoteButton}
-              >
-                Up Vote
-              </button>
+              />
             </div>
           </div>
           <div className="row">
             <div className="col-md-12">
-              <button
-                className="downVoteButton btnStyle"
+              <img
+                src={thumbDown}
                 onClick={event =>
                   props.hasUserVotedOnThisProject(event, props.id, "downVote")
                 }
                 disabled={props.disableDownVoteButton}
-              >
-                Down Vote
-              </button>
+              />
             </div>
           </div>
         </div>
