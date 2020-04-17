@@ -25,10 +25,34 @@ class SignUp extends Component {
 
   validatePasswordUponSignup = event => {
     event.preventDefault();
-    if (this.state.password === this.state.confirmPassword) {
-      this.handleSubmit();
+    if (this.state.password.length >= 6) {
+      if (this.state.password === this.state.confirmPassword) {
+        this.validateEmailUponSignup();
+      } else {
+        alert("Password does not match.");
+      }
     } else {
-      alert("Password does not match.");
+      alert("Password must be at least 6 characters");
+    }
+  };
+
+  validateEmailUponSignup = () => {
+    if (this.state.email.includes("@") && this.state.email.includes(".")) {
+      this.validateUsernameUponSignup();
+    } else {
+      alert("Must have valid email address");
+    }
+  };
+
+  validateUsernameUponSignup = () => {
+    if (this.state.username.length >= 6) {
+      if (!this.state.username.includes(" ")) {
+        this.handleSubmit();
+      } else {
+        alert("Username may not include spaces");
+      }
+    } else {
+      alert("Username must be at least six characters");
     }
   };
 
