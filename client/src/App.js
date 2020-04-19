@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import EditProject from "./pages/EditOneProject";
 import SignUp from "./pages/SignUp";
+import Settings from "./pages/Settings";
 import HeaderLoggedOut from "./components/HeaderLoggedOut";
 import HeaderLoggedIn from "./components/HeaderLoggedIn";
 import "./App.css";
@@ -32,6 +33,7 @@ class App extends Component {
     this.getUser();
     this.getThreeHighestVotedProjects();
     this.getAllSubmittedProjects();
+    console.log("working");
   }
 
   getUser() {
@@ -145,6 +147,16 @@ class App extends Component {
                 exact
                 path="/signup"
                 component={() => <SignUp getUser={this.getUser} />}
+              />
+              <Route
+                exact
+                path="/settings"
+                component={() => (
+                  <Settings
+                    userId={this.state.userId}
+                    loggedIn={this.state.loggedIn}
+                  />
+                )}
               />
             </Switch>
           </div>

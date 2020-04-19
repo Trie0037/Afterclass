@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../App.css";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import API from "../../utils/pitchApi";
@@ -118,7 +117,6 @@ class SignUp extends Component {
             <input
               className="form-input"
               type="text"
-              placeholder=""
               name="email"
               value={this.state.email}
               onChange={this.handleChange}

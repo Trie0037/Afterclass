@@ -38,6 +38,9 @@ const API = {
       editedProjectPayload
     );
   },
+  handleSaveBackgroundImage: (userId, payload) => {
+    return axios.put(`/api/handleSaveBackgroundImage/${userId}`, payload);
+  },
   handleDeleteMyProject: userProjectId => {
     return axios.delete(`/api/handleDeleteMyProject/${userProjectId}`);
   },
@@ -53,7 +56,7 @@ const API = {
   assignEmail: (userId, email) => {
     return axios.get(`/api/assignEmail/${userId}/${email}`);
   },
-  getUserEmail: (userId) => {
+  getUserEmail: userId => {
     return axios.get(`/api/getUserEmail/${userId}`);
   }
 };

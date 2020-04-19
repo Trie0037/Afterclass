@@ -20,6 +20,10 @@ div {
   margin: auto 0 px;
 }
 
+.previewSettingsImage {
+  max-width: 100%;
+}
+
 #applicationTitle {
   margin-top: 30px;
   background: rgb(16, 16, 16);
@@ -177,8 +181,14 @@ hr {
   margin-bottom: 35px;
 }
 
-#previewImage {
+#previewImage,
+#backgroundPreviewImage {
   width: 100%;
+}
+
+.backgroundPreviewImageContainer {
+  overflow: hidden;
+  margin-bottom: 15px;
 }
 
 #scrollablePreviewImage {
