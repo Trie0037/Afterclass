@@ -23,7 +23,8 @@ class App extends Component {
       userId: "",
       username: "",
       threeHighestVotedProjects: [],
-      projects: []
+      projects: [],
+      backgroundImage: ""
     };
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -33,7 +34,6 @@ class App extends Component {
     this.getUser();
     this.getThreeHighestVotedProjects();
     this.getAllSubmittedProjects();
-    console.log("working");
   }
 
   getUser() {
@@ -43,6 +43,8 @@ class App extends Component {
           userId: response.data.user._id,
           loggedIn: true,
           username: response.data.user.username
+        }, () => {
+          this.getUserBackgroundImage();
         });
       } else {
         this.setState({
@@ -63,6 +65,20 @@ class App extends Component {
     API.getAllProjects()
       .then(res => this.setState({ projects: res.data }))
       .catch(err => alert(err));
+  };
+
+  getUserBackgroundImage = () => {
+    API.getBackgroundImage(this.state.userId)
+    .then(res => {
+      this.setState({ backgroundImage: res.data[0].backgroundImage }, () => {
+        this.renderBackgroundImage();
+      })
+    })
+    .catch(err => alert(err));
+  };
+
+  renderBackgroundImage = () => {
+    document.body.style.backgroundImage = "url(" + this.state.backgroundImage + ")";
   };
 
   handleValidateLoggedOut = event => {

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import API from "../../utils/pitchApi";
 import defaults from "../../assets/Defaults";
 
@@ -31,17 +30,16 @@ class Settings extends Component {
   };
 
   handleSaveBackgroundImage = () => {
-    let backgroundImage = {
-      image: this.state.imageURL
-    };
-    API.handleSaveBackgroundImage(this.state.userId, backgroundImage)
-      .then(res => (console.log(res)))
+    API.handleSaveBackgroundImage(this.state.userId, this.state.imageURL)
+      .then(() => window.location.reload())
       .catch(err => alert(err));
   };
 
   validateBackgroundImageInput = e => {
     e.preventDefault();
     if (this.state.imageURL === "" || this.isInputBlank(this.state.imageURL)) {
+      alert("Image URL cannot be blank.");
+    } else {
       this.handleSaveBackgroundImage();
     }
   };
@@ -64,6 +62,7 @@ class Settings extends Component {
               <div className="col-md-4">
                 <button
                   id="backgroundImageButton"
+                  type="button"
                   onClick={this.validateBackgroundImageInput}
                 >
                   Submit

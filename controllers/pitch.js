@@ -116,15 +116,15 @@ module.exports = {
       });
   },
   handleSaveBackgroundImage: function (req, res) {
-    console.log(req.body)
-    console.log("__________________")
-    Pitch.updateOne(
+    console.log(req.params)
+    let backgroundImage = "";
+    for (let url in req.body) {
+      backgroundImage = url;
+      break;
+    }
+    User.updateOne(
       { _id: req.params.userId },
-      {
-        $set: {
-          backgroundImage: req.body.backgroundImage,
-        },
-      }
+      { $set: { backgroundImage: backgroundImage } }
     )
       .then(function (doc) {
         res.json(doc);
@@ -221,4 +221,13 @@ module.exports = {
         res.json(err);
       });
   },
+  getBackgroundImage: function (req, res) {
+    User.find({ _id: req.params.userId }, { backgroundImage: 1 })
+      .then(function (doc) {
+        res.json(doc);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  }
 };

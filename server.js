@@ -15,7 +15,7 @@ const https = require("https");
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -94,6 +94,10 @@ router.get(
 router.get(
   "/api/checkUserPermission/:userId/:roleToCheck",
   pitchController.checkUserPermission
+);
+router.get(
+  "/api/getBackgroundImage/:userId",
+  pitchController.getBackgroundImage
 );
 router.get("/api/assignRole/:userId/:role", pitchController.assignRole);
 router.get("/api/assignEmail/:userId/:email", pitchController.assignEmail);

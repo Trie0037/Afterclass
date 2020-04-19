@@ -32,6 +32,9 @@ const API = {
   getProjectsBelongingToUser: userId => {
     return axios.get(`/api/getProjectsBelongingToUser/${userId}`);
   },
+  getBackgroundImage: userId => {
+    return axios.get(`/api/getBackgroundImage/${userId}`);
+  },
   handleEditMyProject: (projectId, editedProjectPayload) => {
     return axios.put(
       `/api/handleEditMyProject/${projectId}`,
