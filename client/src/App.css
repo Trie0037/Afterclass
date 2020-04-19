@@ -61,8 +61,8 @@ h1,
 h2 {
   font-display: Arial, Helvetica, sans-serif;
   padding: 20px;
-  color:#f81f22;
-  /* color: #00628c; */
+  /* color:#f81f22; */
+  color: #00628c;
   text-align: center;
 }
 
