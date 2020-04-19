@@ -9,6 +9,8 @@
 
 html,
 body {
+  /* color:#980002; */
+  background-size: cover;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -26,7 +28,7 @@ div {
 
 #applicationTitle {
   margin-top: 30px;
-  background: rgb(16, 16, 16);
+  background: black;
   padding-bottom: 0.1rem;
 }
 
@@ -43,18 +45,24 @@ div {
 }
 
 .container {
+  background: black;
+  opacity: 0.9;
+  /* color: #980002; */
+  color: #00ccff;
   padding: 0, 0;
   height: 100%;
   width: 100%;
   margin: 0 auto;
   padding-bottom: 45px;
+  margin-bottom: 30px;
 }
 
 h1,
 h2 {
   font-display: Arial, Helvetica, sans-serif;
   padding: 20px;
-  color: #00628c;
+  color:#f81f22;
+  /* color: #00628c; */
   text-align: center;
 }
 
@@ -79,7 +87,8 @@ h2 {
 
 #dashboardbutton {
   background: rgb(16, 16, 16);
-  color: #00628c;
+  /* color: #00628c; */
+  color: #00ccff;
   float: none;
   text-align: center;
   height: 100%;
@@ -123,18 +132,20 @@ hr {
   float: right;
   border: 1px solid rgb(99, 7, 7);
   background: rgb(16, 16, 16);
-  color: #00628c;
+  /* color: #00628c; */
+  color: #00ccff;
   padding: 7px 20px;
   cursor: pointer;
 }
-
+#backgroundImageButton,
 #btn-btn-primary {
   justify-content: center;
   align-content: center;
   border-radius: 5%;
-  border: 1px solid rgb(99, 7, 7);
+  border: 1px solid black;
   background: rgb(16, 16, 16);
-  color: #00628c;
+  /* color: #00628c; */
+  color: #00ccff;
   padding: 7px 20px;
   cursor: pointer;
 }
@@ -166,7 +177,7 @@ hr {
   word-wrap: break-word;
   height: 100%;
   width: 100%;
-  background: rgb(16, 16, 16);
+  background: black;
   color: #00ccff;
   box-shadow: 0 3px 6px #e44f27, 0 3px 6px #e44f27;
   transition: transform 0.25s;
@@ -212,7 +223,7 @@ hr {
 .card > .img-container {
   height: 100%;
   width: 100%;
-  background: rgb(16, 16, 16);
+  background: black;
 }
 
 .card:hover {
@@ -224,6 +235,7 @@ hr {
 }
 
 .yourProjectStyle {
+  /* color:#980002; */
   color: #00ccff;
   text-align: left;
 }
@@ -240,17 +252,20 @@ hr {
   text-align: center;
   font-size: 1rem;
   color: #2a77ae;
+  /* color:#980002; */
+  /* color: #00ccff; */
 }
 
 .form-label {
   margin-top: 25px;
-  color: #00628c;
+  color: #00ccff;
 }
 
 p {
   text-align: center;
   font-size: 18;
-  color: #00628c;
+  color: #00ccff;
+  /* color:#980002; */
 }
 
 .jumboHeader {
@@ -262,5 +277,5 @@ p {
 }
 
 .noProjectNotification {
-  color: #306d21;
+  color: #00ccff;
 }

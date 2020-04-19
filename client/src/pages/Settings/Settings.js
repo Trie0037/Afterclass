@@ -55,6 +55,7 @@ class Settings extends Component {
                   id="backgroundImageInput"
                   type="text"
                   name="imageURL"
+                  placeholder="image URL"
                   onChange={this.handleChange}
                   value={this.state.imageURL}
                 />
