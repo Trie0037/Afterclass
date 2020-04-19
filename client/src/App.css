@@ -45,20 +45,23 @@ div {
 }
 
 .container {
-  background: black;
+  background: rgb(252, 251, 251);
   opacity: 0.9;
   /* color: #980002; */
   color: #00ccff;
   padding: 0, 0;
+  padding-top: 1px;
   height: 100%;
   width: 100%;
   margin: 0 auto;
   padding-bottom: 45px;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
 h1,
 h2 {
+  margin: auto;
   font-display: Arial, Helvetica, sans-serif;
   padding: 20px;
   /* color:#f81f22; */
