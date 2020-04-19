@@ -18,6 +18,9 @@ const HeaderLoggedIn = props => {
         <Link style={linkStyle} to="/projects">
           Projects |
         </Link>{" "}
+        <Link style={linkStyle} to="/settings">
+          Settings |
+        </Link>{" "}
         {"  "}
         <span
           onClick={event => props.handleValidateLoggedOut(event)}

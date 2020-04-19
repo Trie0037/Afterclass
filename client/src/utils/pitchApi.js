@@ -32,11 +32,17 @@ const API = {
   getProjectsBelongingToUser: userId => {
     return axios.get(`/api/getProjectsBelongingToUser/${userId}`);
   },
+  getBackgroundImage: userId => {
+    return axios.get(`/api/getBackgroundImage/${userId}`);
+  },
   handleEditMyProject: (projectId, editedProjectPayload) => {
     return axios.put(
       `/api/handleEditMyProject/${projectId}`,
       editedProjectPayload
     );
+  },
+  handleSaveBackgroundImage: (userId, payload) => {
+    return axios.put(`/api/handleSaveBackgroundImage/${userId}`, payload);
   },
   handleDeleteMyProject: userProjectId => {
     return axios.delete(`/api/handleDeleteMyProject/${userProjectId}`);
@@ -53,7 +59,7 @@ const API = {
   assignEmail: (userId, email) => {
     return axios.get(`/api/assignEmail/${userId}/${email}`);
   },
-  getUserEmail: (userId) => {
+  getUserEmail: userId => {
     return axios.get(`/api/getUserEmail/${userId}`);
   }
 };

@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import EditProject from "./pages/EditOneProject";
 import SignUp from "./pages/SignUp";
+import Settings from "./pages/Settings";
 import HeaderLoggedOut from "./components/HeaderLoggedOut";
 import HeaderLoggedIn from "./components/HeaderLoggedIn";
 import "./App.css";
@@ -22,7 +23,8 @@ class App extends Component {
       userId: "",
       username: "",
       threeHighestVotedProjects: [],
-      projects: []
+      projects: [],
+      backgroundImage: ""
     };
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -41,6 +43,8 @@ class App extends Component {
           userId: response.data.user._id,
           loggedIn: true,
           username: response.data.user.username
+        }, () => {
+          this.getUserBackgroundImage();
         });
       } else {
         this.setState({
@@ -61,6 +65,20 @@ class App extends Component {
     API.getAllProjects()
       .then(res => this.setState({ projects: res.data }))
       .catch(err => alert(err));
+  };
+
+  getUserBackgroundImage = () => {
+    API.getBackgroundImage(this.state.userId)
+    .then(res => {
+      this.setState({ backgroundImage: res.data[0].backgroundImage }, () => {
+        this.renderBackgroundImage();
+      })
+    })
+    .catch(err => alert(err));
+  };
+
+  renderBackgroundImage = () => {
+    document.body.style.backgroundImage = "url(" + this.state.backgroundImage + ")";
   };
 
   handleValidateLoggedOut = event => {
@@ -145,6 +163,16 @@ class App extends Component {
                 exact
                 path="/signup"
                 component={() => <SignUp getUser={this.getUser} />}
+              />
+              <Route
+                exact
+                path="/settings"
+                component={() => (
+                  <Settings
+                    userId={this.state.userId}
+                    loggedIn={this.state.loggedIn}
+                  />
+                )}
               />
             </Switch>
           </div>

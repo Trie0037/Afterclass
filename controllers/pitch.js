@@ -61,12 +61,12 @@ module.exports = {
             $filter: {
               input: "$votedProjects",
               as: "votedProjects",
-              cond: { $eq: ["$$votedProjects", req.params.projectId] }
-            }
+              cond: { $eq: ["$$votedProjects", req.params.projectId] },
+            },
           },
-          _id: 0
-        }
-      }
+          _id: 0,
+        },
+      },
     ])
       .then(function (doc) {
         res.json(doc);
@@ -78,8 +78,8 @@ module.exports = {
   getProjectsBelongingToUser: function (req, res) {
     Pitch.find({
       $text: {
-        $search: req.params.userId
-      }
+        $search: req.params.userId,
+      },
     })
       .then(function (doc) {
         res.json(doc);
@@ -104,9 +104,27 @@ module.exports = {
         $set: {
           title: req.body.title,
           description: req.body.description,
-          image: req.body.image
-        }
+          image: req.body.image,
+        },
       }
+    )
+      .then(function (doc) {
+        res.json(doc);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  },
+  handleSaveBackgroundImage: function (req, res) {
+    console.log(req.params)
+    let backgroundImage = "";
+    for (let url in req.body) {
+      backgroundImage = url;
+      break;
+    }
+    User.updateOne(
+      { _id: req.params.userId },
+      { $set: { backgroundImage: backgroundImage } }
     )
       .then(function (doc) {
         res.json(doc);
@@ -144,12 +162,12 @@ module.exports = {
             $filter: {
               input: "$roles",
               as: "role",
-              cond: { $eq: ["$$role", req.params.roleToCheck] }
-            }
+              cond: { $eq: ["$$role", req.params.roleToCheck] },
+            },
           },
-          _id: 0
-        }
-      }
+          _id: 0,
+        },
+      },
     ])
       .then(function (doc) {
         res.json(doc);
@@ -195,10 +213,16 @@ module.exports = {
       });
   },
   getUserEmail: function (req, res) {
-    User.find(
-      { _id: req.params.userId },
-      { email: 1 }
-    )
+    User.find({ _id: req.params.userId }, { email: 1 })
+      .then(function (doc) {
+        res.json(doc);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  },
+  getBackgroundImage: function (req, res) {
+    User.find({ _id: req.params.userId }, { backgroundImage: 1 })
       .then(function (doc) {
         res.json(doc);
       })
