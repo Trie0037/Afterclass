@@ -275,25 +275,29 @@ class Dashboard extends Component {
           <React.Fragment>
             <Row>
               <Col size="md-12">
-                <h1 className="welcomeUser">
-                  <strong>
-                    <i className="fa fa-user" /> Welcome{" "}
-                    <h1
-                      style={{
-                        fontWeight: "bolder",
-                        fontSize: "44px",
-                        color: "#00ccff"
-                      }}
-                    >
-                      {this.state.username}
-                    </h1>
-                  </strong>
-                </h1>
+                <div>
+                  <h1 className="welcomeUser">
+                    <strong>
+                      <i className="fa fa-user" /> Welcome{" "}
+                      <h1
+                        style={{
+                          fontWeight: "bolder",
+                          fontSize: "44px",
+                          color: "#00ccff"
+                        }}
+                      >
+                        {this.state.username}
+                      </h1>
+                    </strong>
+                  </h1>
+                </div>
               </Col>
             </Row>
             <Row>
               <Col size="md-12">
-                <h1>Your Projects</h1>
+                <div>
+                  <h1>Your Projects</h1>
+                </div>
               </Col>
             </Row>
             <React.Fragment>
@@ -349,19 +353,21 @@ class Dashboard extends Component {
               <Col size="md-8">
                 <Input
                   name="title"
+                  style={{ backgroundColor: "black" }}
                   placeholder="Title of project!"
                   onChange={this.handleChange}
                   value={this.state.title}
                 />
                 <Input
                   name="imageURL"
+                  style={{ backgroundColor: "black" }}
                   placeholder="Paste image URL"
                   onChange={this.handleChange}
                   value={this.state.imageURL}
                 />
                 <TextArea
                   name="description"
-                  style={{ height: "125px" }}
+                  style={{ height: "125px", backgroundColor: "black" }}
                   placeholder="Describe your project!"
                   onChange={this.handleChange}
                   value={this.state.description}
