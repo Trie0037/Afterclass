@@ -55,7 +55,8 @@ class Settings extends Component {
                   id="backgroundImageInput"
                   type="text"
                   name="imageURL"
-                  placeholder="image URL"
+                  style={{ backgroundColor: "black" }}
+                  placeholder=" image URL"
                   onChange={this.handleChange}
                   value={this.state.imageURL}
                 />
