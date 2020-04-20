@@ -81,19 +81,25 @@ class EditProject extends Component {
           <Col size="md-8">
             <Input
               name="title"
+              style={{ backgroundColor: "black", color: "white" }}
               placeholder="Edit your title!"
               onChange={this.handleChange}
               value={this.state.title}
             />
             <Input
               name="imageURL"
+              style={{ backgroundColor: "black", color: "white" }}
               placeholder="Edit image URL"
               onChange={this.handleChange}
               value={this.state.imageURL}
             />
             <TextArea
               name="description"
-              style={{ height: "125px" }}
+              style={{
+                height: "125px",
+                backgroundColor: "black",
+                color: "white"
+              }}
               placeholder="Edit your description!"
               onChange={this.handleChange}
               value={this.state.description}
