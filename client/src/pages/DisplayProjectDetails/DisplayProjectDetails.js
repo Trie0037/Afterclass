@@ -161,7 +161,11 @@ class DisplayProjectDetails extends Component {
               <React.Fragment>
                 <TextArea
                   name="comment"
-                  style={{ height: "125px", backgroundColor: "black" }}
+                  style={{
+                    height: "125px",
+                    backgroundColor: "black",
+                    color: "white"
+                  }}
                   placeholder="Comments"
                   onChange={this.handleChange}
                 />
