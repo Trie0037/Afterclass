@@ -125,17 +125,10 @@ h2 {
   word-wrap: break-word;
 }
 
-.thumbUp {
-  margin: auto;
-  padding: 7px 20px;
-  cursor: pointer;
-  float: none;
-  text-align: center;
-}
-
+.thumbUp,
 .thumbDown {
   margin: auto;
-  padding: 7px 20px;
+  padding: 7px;
   cursor: pointer;
   float: none;
   text-align: center;
