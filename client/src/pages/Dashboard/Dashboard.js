@@ -353,14 +353,14 @@ class Dashboard extends Component {
               <Col size="md-8">
                 <Input
                   name="title"
-                  // style={{ backgroundColor: "black", color: "white" }}
+                  style={{ backgroundColor: "black", color: "white" }}
                   placeholder="Title of project!"
                   onChange={this.handleChange}
                   value={this.state.title}
                 />
                 <Input
                   name="imageURL"
-                  // style={{ backgroundColor: "black", color: "white" }}
+                  style={{ backgroundColor: "black", color: "white" }}
                   placeholder="Paste image URL"
                   onChange={this.handleChange}
                   value={this.state.imageURL}
@@ -369,8 +369,8 @@ class Dashboard extends Component {
                   name="description"
                   style={{
                     height: "125px",
-                    // backgroundColor: "black",
-                    // color: "white"
+                    backgroundColor: "black",
+                    color: "white"
                   }}
                   placeholder="Describe your project!"
                   onChange={this.handleChange}
