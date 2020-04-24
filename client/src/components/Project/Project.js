@@ -43,7 +43,7 @@ const Project = props => {
         </div>
         <div className="col-md-2">
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-6 widthAuto">
               <img
                 className="thumbUp"
                 src={thumbUp}
@@ -53,7 +53,7 @@ const Project = props => {
                 disabled={props.disableUpVoteButton}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 widthAuto">
               <img
                 className="thumbDown"
                 src={thumbDown}

@@ -31,7 +31,7 @@ div {
 
 #applicationTitle {
   margin-top: 30px;
-  background: black;
+  background: rgba(0,0,0,0.55);
   padding-bottom: 0.1rem;
 }
 
@@ -50,10 +50,7 @@ div {
 }
 
 .container {
-  background: black;
-  /* background: rgb(252, 251, 251); */
-  opacity: 0.85;
-  /* color: #980002; */
+  background: rgba(0,0,0,0.85);
   color: #00ccff;
   padding: 0, 0;
   padding-top: 1px;
@@ -66,21 +63,17 @@ div {
 }
 
 h1 {
-  background: black;
   margin: auto;
   font-display: Arial, Helvetica, sans-serif;
   padding: 20px;
-  /* color:#f81f22; */
   color: #00628c;
   text-align: center;
 }
 
 h2 {
-  background: black;
   margin: auto;
   font-display: Arial, Helvetica, sans-serif;
   padding: 20px;
-  /* color:#f81f22; */
   color: #00628c;
   text-align: center;
 }
@@ -125,17 +118,10 @@ h2 {
   word-wrap: break-word;
 }
 
-.thumbUp {
-  margin: auto;
-  padding: 7px 20px;
-  cursor: pointer;
-  float: none;
-  text-align: center;
-}
-
+.thumbUp,
 .thumbDown {
   margin: auto;
-  padding: 7px 20px;
+  padding: 7px;
   cursor: pointer;
   float: none;
   text-align: center;
@@ -299,4 +285,29 @@ p {
 
 .noProjectNotification {
   color: #00ccff;
+}
+
+@media only screen and (max-width: 991px) {
+  .thumbUp,
+  .thumbDown {
+    padding: 2px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #deleteMyProjectButton,
+  #editMyProjectButton {
+    /* width: 5rem; */
+  }
+
+  .widthAuto {
+    margin-top: 0.5rem;
+    width: auto;
+  }
+
+  .thumbUp,
+  .thumbDown {
+    width: 2rem;
+  }
 }

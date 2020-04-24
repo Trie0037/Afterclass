@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/pitchApi";
-import defaults from "../../assets/Defaults";
+import { Container } from "../../components/Grid";
 
 class Settings extends Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class Settings extends Component {
     return (
       <div>
         {this.state.loggedIn ? (
-          <div className="container">
+          <Container fluid>
             <div className="row">
               <div className="col-md-8">
                 <input
@@ -77,10 +77,10 @@ class Settings extends Component {
                 <img id="backgroundPreviewImage" src={this.state.imageURL} />
               </div>
             </div>
-          </div>
+          </Container>
         ) : (
-          <div>You are not authorized to view this page.</div>
-        )}
+            <div>You are not authorized to view this page.</div>
+          )}
       </div>
     );
   }
