@@ -51,6 +51,7 @@ const Project = props => {
                   props.hasUserVotedOnThisProject(event, props.id, "upVote")
                 }
                 disabled={props.disableUpVoteButton}
+                alt="Thumbs Up"
               />
             </div>
             <div className="col-md-6 widthAuto">
@@ -61,6 +62,7 @@ const Project = props => {
                   props.hasUserVotedOnThisProject(event, props.id, "downVote")
                 }
                 disabled={props.disableDownVoteButton}
+                alt="Thumbs Down"
               />
             </div>
           </div>

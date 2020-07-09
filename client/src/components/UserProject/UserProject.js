@@ -54,21 +54,21 @@ const UserProject = props => {
           </div>
           <div className="row">
             <div className="col-md-12">
-              <button id="editMyProjectButton">
-                <Link
-                  to={{
-                    pathname: "/editproject/" + props._id,
-                    state: [
-                      props.title,
-                      props.description,
-                      props.image,
-                      props._id
-                    ]
-                  }}
-                >
+              <Link
+                to={{
+                  pathname: "/editproject/" + props._id,
+                  state: [
+                    props.title,
+                    props.description,
+                    props.image,
+                    props._id
+                  ]
+                }}
+              >
+                <button id="editMyProjectButton">
                   <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </Link>{" "}
-              </button>
+                </button>
+              </Link>{" "}
             </div>
           </div>
         </div>

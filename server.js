@@ -49,58 +49,58 @@ app.use((req, res, next) => {
 });
 
 // Define API routes here
-const pitchController = require("./controllers/pitch");
-router.post("/api/submitProject", pitchController.submitProject);
-router.get("/api/getAllProjects", pitchController.getAllProjects);
+const projectController = require("./controllers/projectController");
+router.post("/api/submitProject", projectController.submitProject);
+router.get("/api/getAllProjects", projectController.getAllProjects);
 router.get(
   "/api/getThreeHighestVotedProjects",
-  pitchController.getThreeHighestVotedProjects
+  projectController.getThreeHighestVotedProjects
 );
-router.put("/api/upVote/:projectId", pitchController.upVote);
-router.put("/api/downVote/:projectId", pitchController.downVote);
+router.put("/api/upVote/:projectId", projectController.upVote);
+router.put("/api/downVote/:projectId", projectController.downVote);
 router.put(
   "/api/recordVotedProject/:userId/:projectId",
-  pitchController.recordVotedProject
+  projectController.recordVotedProject
 );
 router.get(
   "/api/checkIfUserVotedForThisProject/:userId/:projectId",
-  pitchController.checkIfUserVotedForThisProject
+  projectController.checkIfUserVotedForThisProject
 );
 router.get(
   "/api/getProjectsBelongingToUser/:userId",
-  pitchController.getProjectsBelongingToUser
+  projectController.getProjectsBelongingToUser
 );
-router.get("/api/getUserEmail/:userId", pitchController.getUserEmail);
+router.get("/api/getUserEmail/:userId", projectController.getUserEmail);
 router.delete(
   "/api/handleDeleteMyProject/:userProjectId",
-  pitchController.handleDeleteMyProject
+  projectController.handleDeleteMyProject
 );
 router.put(
   "/api/handleEditMyProject/:projectId",
-  pitchController.handleEditMyProject
+  projectController.handleEditMyProject
 );
 router.put(
   "/api/handleSaveBackgroundImage/:userId",
-  pitchController.handleSaveBackgroundImage
+  projectController.handleSaveBackgroundImage
 );
 router.put(
   "/api/submitInterestedUser/:projectId",
-  pitchController.submitInterestedUser
+  projectController.submitInterestedUser
 );
 router.get(
   "/api/getAllInterestedUsers/:projectId",
-  pitchController.getAllInterestedUsers
+  projectController.getAllInterestedUsers
 );
 router.get(
   "/api/checkUserPermission/:userId/:roleToCheck",
-  pitchController.checkUserPermission
+  projectController.checkUserPermission
 );
 router.get(
   "/api/getBackgroundImage/:userId",
-  pitchController.getBackgroundImage
+  projectController.getBackgroundImage
 );
-router.get("/api/assignRole/:userId/:role", pitchController.assignRole);
-router.get("/api/assignEmail/:userId/:email", pitchController.assignEmail);
+router.get("/api/assignRole/:userId/:role", projectController.assignRole);
+router.get("/api/assignEmail/:userId/:email", projectController.assignEmail);
 app.use("/user", user);
 app.use(router);
 
