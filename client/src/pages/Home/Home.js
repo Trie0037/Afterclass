@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Container } from "../../components/Grid";
 import HomePageDetails from "../../components/HomePageDetails";
 import ThreeHighestVotedProjects from "../../components/ThreeHighestVotedProjects";
-import CoursesToJoin from "../../components/CoursesToJoin";
 
 class Home extends Component {
   constructor(props) {
@@ -25,7 +24,6 @@ class Home extends Component {
           username={this.state.username}
           threeHighestVotedProjects={this.state.props.threeHighestVotedProjects}
         />
-        {/* <CoursesToJoin /> */}
       </Container>
     );
   }

@@ -74,8 +74,12 @@ class Settings extends Component {
             <div className="row">
               <div className="col-md-2">Preview</div>
               <div className="backgroundPreviewImageContainer col-md-10">
-                <img id="backgroundPreviewImage" src={this.state.imageURL} />
-              </div>
+                <img
+                  id="backgroundPreviewImage"
+                  src={this.state.imageURL}
+                  alt="Background preview"
+                />
+              </div> 
             </div>
           </Container>
         ) : (

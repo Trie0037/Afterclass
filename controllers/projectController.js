@@ -1,10 +1,10 @@
-const Pitch = require("../models/pitch");
+const Project = require("../models/project");
 const User = require("../models/user");
 const ObjectId = require("mongodb").ObjectId;
 
 module.exports = {
   submitProject: function (req, res) {
-    Pitch.create(req.body)
+    Project.create(req.body)
       .then(function (doc) {
         res.json(doc);
       })
@@ -13,7 +13,7 @@ module.exports = {
       });
   },
   getAllProjects: function (req, res) {
-    Pitch.find(req.query)
+    Project.find(req.query)
       .sort({ date: -1 })
       .then(function (doc) {
         res.json(doc);
@@ -23,7 +23,7 @@ module.exports = {
       });
   },
   upVote: function (req, res) {
-    Pitch.updateOne({ _id: req.params.projectId }, { $inc: { votes: 1 } })
+    Project.updateOne({ _id: req.params.projectId }, { $inc: { votes: 1 } })
       .then(function (doc) {
         res.json(doc);
       })
@@ -32,7 +32,7 @@ module.exports = {
       });
   },
   downVote: function (req, res) {
-    Pitch.updateOne({ _id: req.params.projectId }, { $inc: { votes: -1 } })
+    Project.updateOne({ _id: req.params.projectId }, { $inc: { votes: -1 } })
       .then(function (doc) {
         res.json(doc);
       })
@@ -76,7 +76,7 @@ module.exports = {
       });
   },
   getProjectsBelongingToUser: function (req, res) {
-    Pitch.find({
+    Project.find({
       $text: {
         $search: req.params.userId,
       },
@@ -89,7 +89,7 @@ module.exports = {
       });
   },
   handleDeleteMyProject: function (req, res) {
-    Pitch.deleteOne({ _id: req.params.userProjectId })
+    Project.deleteOne({ _id: req.params.userProjectId })
       .then(function (doc) {
         res.json(doc);
       })
@@ -98,7 +98,7 @@ module.exports = {
       });
   },
   handleEditMyProject: function (req, res) {
-    Pitch.updateOne(
+    Project.updateOne(
       { _id: req.params.projectId },
       {
         $set: {
@@ -116,7 +116,6 @@ module.exports = {
       });
   },
   handleSaveBackgroundImage: function (req, res) {
-    console.log(req.params)
     let backgroundImage = "";
     for (let url in req.body) {
       backgroundImage = url;
@@ -134,7 +133,7 @@ module.exports = {
       });
   },
   getAllInterestedUsers: function (req, res) {
-    Pitch.find({ _id: req.params.projectId })
+    Project.find({ _id: req.params.projectId })
       .then(function (doc) {
         res.json(doc);
       })
@@ -143,7 +142,7 @@ module.exports = {
       });
   },
   getThreeHighestVotedProjects: function (req, res) {
-    Pitch.find(req.query)
+    Project.find(req.query)
       .sort({ votes: -1 })
       .limit(3)
       .then(function (doc) {
@@ -177,7 +176,7 @@ module.exports = {
       });
   },
   submitInterestedUser: function (req, res) {
-    Pitch.updateOne(
+    Project.updateOne(
       { _id: req.params.projectId },
       { $push: { interestedUsers: req.body } }
     )
