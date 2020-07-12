@@ -17,7 +17,7 @@ class Home extends Component {
   render() {
     return (
       <Container fluid>
-        <HomePageDetails />
+        <HomePageDetails loggedIn={this.state.loggedIn} />
         <ThreeHighestVotedProjects
           loggedIn={this.state.loggedIn}
           userId={this.state.userId}
