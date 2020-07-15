@@ -84,6 +84,10 @@ router.put(
   projectController.handleSaveBackgroundImage
 );
 router.put(
+  "/api/handleResetBackgroundImage/:userId",
+  projectController.handleResetBackgroundImage
+);
+router.put(
   "/api/submitInterestedUser/:projectId",
   projectController.submitInterestedUser
 );

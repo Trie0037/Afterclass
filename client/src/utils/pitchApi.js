@@ -44,6 +44,9 @@ const API = {
   handleSaveBackgroundImage: (userId, payload) => {
     return axios.put(`/api/handleSaveBackgroundImage/${userId}`, payload);
   },
+  handleResetBackgroundImage: userId => {
+    return axios.put(`/api/handleResetBackgroundImage/${userId}`);
+  },
   handleDeleteMyProject: userProjectId => {
     return axios.delete(`/api/handleDeleteMyProject/${userProjectId}`);
   },

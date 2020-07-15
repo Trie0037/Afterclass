@@ -132,6 +132,18 @@ module.exports = {
         res.json(err);
       });
   },
+  handleResetBackgroundImage: function (req, res) {
+    User.updateOne(
+      { _id: req.params.userId },
+      { $set: { backgroundImage: "" } }
+    )
+      .then(function (doc) {
+        res.json(doc);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  },
   getAllInterestedUsers: function (req, res) {
     Project.find({ _id: req.params.projectId })
       .then(function (doc) {
