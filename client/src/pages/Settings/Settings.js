@@ -35,8 +35,7 @@ class Settings extends Component {
       .catch(err => alert(err));
   };
 
-  validateBackgroundImageInput = e => {
-    e.preventDefault();
+  validateBackgroundImageInput = () => {
     if (this.state.imageURL === "" || this.isInputBlank(this.state.imageURL)) {
       alert("Image URL cannot be blank.");
     } else {
@@ -44,47 +43,84 @@ class Settings extends Component {
     }
   };
 
+  validateResetBackgroundImage = () => {
+    let response = window.confirm(
+      "Reset your background image back to default?"
+    );
+    if (response) {
+      this.handleResetBackgroundImage();
+    }
+  };
+
+  handleResetBackgroundImage = () => {
+    API.handleResetBackgroundImage(this.state.userId)
+      .then(() => window.location.reload())
+      .catch(err => alert(err));
+  };
+
   render() {
     return (
       <div>
-        {this.state.loggedIn ? (
-          <Container fluid>
-            <div className="row">
-              <div className="col-md-8">
-                <input
-                  id="backgroundImageInput"
-                  type="text"
-                  name="imageURL"
-                  style={{ color: "white", backgroundColor: "black" }}
-                  placeholder=" image URL"
-                  onChange={this.handleChange}
-                  value={this.state.imageURL}
-                />
-              </div>
-              <div className="col-md-4">
-                <button
-                  id="backgroundImageButton"
-                  type="button"
-                  onClick={this.validateBackgroundImageInput}
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-2">Preview</div>
-              <div className="backgroundPreviewImageContainer col-md-10">
-                <img
-                  id="backgroundPreviewImage"
-                  src={this.state.imageURL}
-                  alt="Background preview"
-                />
-              </div> 
-            </div>
-          </Container>
-        ) : (
-            <div>You are not authorized to view this page.</div>
-          )}
+        {
+          this.state.loggedIn ?
+            (
+              <Container fluid>
+                <br />
+                <div className="row">
+                  <div className="col-md-4">Background Image:</div>
+                  <div className="col-md-4">
+                    <input
+                      id="backgroundImageInput"
+                      type="text"
+                      name="imageURL"
+                      placeholder="Image URL"
+                      onChange={this.handleChange}
+                      value={this.state.imageURL}
+                    />
+                  </div>
+                  <div className="col-md-2">
+                    <button
+                      id="backgroundImageButton"
+                      type="button"
+                      onClick={this.validateBackgroundImageInput}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                  <div className="col-md-2">
+                    <button
+                      id="backgroundImageResetButton"
+                      type="button"
+                      onClick={this.validateResetBackgroundImage}
+                    >
+                      Reset
+                    </button>
+                  </div>
+                </div>
+                <br />
+                <div className="row">
+                  <div className="backgroundPreviewImageContainer col-md-12">
+                    {
+                      this.state.imageURL ?
+                        (
+                          <img
+                            id="backgroundPreviewImage"
+                            src={this.state.imageURL}
+                            alt="Background preview"
+                          />
+                        ) :
+                        (
+                          null
+                        )
+                    }
+                  </div>
+                </div>
+              </Container>
+            ) :
+            (
+              <div>You are not authorized to view this page.</div>
+            )
+        }
       </div>
     );
   }

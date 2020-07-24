@@ -144,6 +144,7 @@ hr {
 }
 
 #backgroundImageButton,
+#backgroundImageResetButton,
 #btn-btn-primary {
   justify-content: center;
   align-content: center;
@@ -287,6 +288,11 @@ p {
 
 .noProjectNotification {
   color: #00ccff;
+}
+
+#backgroundImageInput {
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 @media only screen and (max-width: 991px) {
