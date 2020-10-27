@@ -114,7 +114,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-const db = process.env.MONGODB_URI || "mongodb://localhost/project-3";
+const db = process.env.DB_URI || "mongodb://localhost/project-3";
 mongoose.connect(db, function (error) {
   // Log any errors connecting with mongoose
   if (error) {
