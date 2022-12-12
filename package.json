@@ -24,7 +24,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "bootstrap": "^4.4.1",
-    "express": "^4.15.4",
+    "express": "^4.17.3",
     "express-session": "^1.17.0",
     "if-env": "^1.0.4",
     "mongoose": "^5.7.5",
